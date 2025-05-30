@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/aspect-ratio";
+@plugin 'tailwind-scrollbar';
 
 :root {
   --background: #ffffff;
@@ -10,6 +12,24 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-primary: #3875c5;
+  --color-primary-600: #4086d0;
+  --color-primary-500: #549fdd;
+  --color-primary-400: #75bae5;
+  --color-primary-300: #a1d3ef;
+  --color-primary-200: #c7e4f6;
+  --color-primary-100: #e0eff9;
+  --color-primary-100: #f1f8fd;
+
+  --color-green: #00ff00;
+  --color-green-light: #e7ffe4;
+
+  --color-red: #ff0000;
+  --color-red-light: #fff0f0;
+
+  --color-orange: #ff5733;
+  --color-orange-light: #fff2ed;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +43,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom class */
+.fluid-container {
+  @apply max-sm:p-4 sm:max-w-xl md:max-w-3xl lg:max-w-4xl xl:max-w-6xl 2xl:max-w-7xl sm:mx-auto;
 }

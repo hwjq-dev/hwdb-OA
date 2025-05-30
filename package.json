@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "3",
+    "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/postcss": "4",
     "@types/node": "20",
     "@types/react": "19",
@@ -28,6 +29,7 @@
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.4.0",
     "prettier": "3.5.3",
+    "tailwind-scrollbar": "4.0.2",
     "tailwindcss": "4",
     "typescript": "5"
   }
