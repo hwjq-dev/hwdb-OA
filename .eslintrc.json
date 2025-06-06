@@ -1,10 +1,14 @@
 {
   "extends": [
+    "next",
     "next/core-web-vitals",
     "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
     "plugin:import/recommended",
+    "plugin:react/recommended",
     "plugin:import/typescript",
     "plugin:prettier/recommended",
+    "plugin:@tanstack/query/recommended",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -15,36 +19,32 @@
       "jsx": true
     }
   },
-  "plugins": ["import", "@typescript-eslint", "prettier"],
+  "plugins": ["import", "@typescript-eslint", "@tanstack/query", "prettier", "react"],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "globals": {
+    "React": "readonly"
+  },
   "rules": {
+    "no-undef": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "@tanstack/query/exhaustive-deps": "error",
     "prettier/prettier": "error",
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/default": "error",
+    "import/export": "error",
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal", ["parent", "sibling"], "index", "object", "type"],
+        "groups": ["builtin", "external", "internal", ["parent", "sibling", "index"]],
         "pathGroups": [
-          {
-            "pattern": "next/**",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "react",
-            "group": "builtin",
-            "position": "before"
-          },
           {
             "pattern": "@/**",
             "group": "internal"
-          },
-          {
-            "pattern": "components/**",
-            "group": "internal"
-          },
-          {
-            "pattern": "**/*.{scss,css,less}",
-            "group": "index",
-            "position": "after"
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"],
@@ -55,6 +55,19 @@
         }
       }
     ],
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off"
+  },
+  // ADD THIS SECTION
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "project": "./tsconfig.json"
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
   }
 }
