@@ -11,7 +11,7 @@ export const NavMenu = () => {
   const pathname = usePathname();
 
   return (
-    <div className="absolute bg-white !bottom-0 right-0 left-0 !z-40 w-full p-3.5 shadow-[0px_-4px_25px_-13px_#a3b0b8]">
+    <div className="flex flex-col justify-center absolute bg-white !bottom-0 right-0 left-0 !z-40 w-full px-3.5 h-16 shadow-[0px_-4px_25px_-13px_#a3b0b8]">
       <div className="grid grid-cols-4 gap-4">
         <Menu
           icon="mail"

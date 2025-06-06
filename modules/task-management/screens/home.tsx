@@ -5,16 +5,16 @@ import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { CreateRequest } from '../components/base/create-task/create-request';
-import { TaskList } from '../components/base/task-list';
+import { CompleteTask } from '../components/home/complete-task';
 import { ProgressTask } from '../components/home/progress-task';
 import { Stats } from '../components/home/stats';
 
 export const TaskHomeScreen = () => {
   const tabs = [
-    { label: '执行中', value: '执行中', content: ProgressTask },
-    { label: '已完成', value: '已完成', content: ProgressTask },
-    { label: '审批中', value: '审批中', content: ProgressTask },
-    { label: '已审批', value: '已审批', content: ProgressTask },
+    { label: '执行中', value: '执行中', content: () => <div> Not Available</div> },
+    { label: '已完成', value: '已完成', content: CompleteTask },
+    { label: '审批中', value: '审批中', content: () => <div> Not Available</div> },
+    { label: '已审批', value: '已审批', content: () => <div> Not Available</div> },
     { label: '已超时', value: '已超时', content: ProgressTask },
   ];
 
@@ -55,9 +55,9 @@ export const TaskHomeScreen = () => {
         </Tabs>
       </div>
 
-      <div className="p-2 mt-1">
+      {/* <div className="p-2 mt-1">
         <TaskList />
-      </div>
+      </div> */}
     </div>
   );
 };

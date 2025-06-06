@@ -48,11 +48,11 @@
           }
         ],
         "pathGroupsExcludedImportTypes": ["builtin"],
-        "newlines-between": "always",
-        "alphabetize": {
-          "order": "asc",
-          "caseInsensitive": true
-        }
+        "newlines-between": "always"
+        // "alphabetize": {
+        //   "order": "desc",
+        //   "caseInsensitive": true
+        // }
       }
     ],
     "@typescript-eslint/no-explicit-any": "off",

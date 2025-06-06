@@ -78,7 +78,7 @@ const data = [
 export const List = () => {
   return (
     <div className="mt-3">
-      <TaskList items={data as never} />
+      <TaskList items={[]} />
     </div>
   );
 };
