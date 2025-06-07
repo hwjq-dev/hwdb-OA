@@ -1,6 +1,6 @@
 'use client';
 
-import { ClipboardList, MailIcon, SquareCheckBig, UserRoundPen } from 'lucide-react';
+import { Bell, ClipboardList, SquareCheckBig, UserRoundPen } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -14,25 +14,35 @@ export const NavMenu = () => {
     <div className="flex flex-col justify-center absolute bg-white !bottom-0 right-0 left-0 !z-40 w-full px-3.5 h-16 shadow-[0px_-4px_25px_-13px_#a3b0b8]">
       <div className="grid grid-cols-4 gap-4">
         <Menu
-          icon="mail"
-          label="消息"
-          active={pathname === ROUTES.NOTIFICATION}
+          icon="notification"
+          label="通知"
+          active={pathname.startsWith(ROUTES.NOTIFICATION)}
           link={ROUTES.NOTIFICATION}
         />
         <Menu
           icon="check"
           label="审批"
-          active={pathname === ROUTES.REQUEST}
+          active={pathname.startsWith(ROUTES.REQUEST)}
           link={ROUTES.REQUEST}
         />
-        <Menu icon="list" label="任务" active={pathname === ROUTES.TASK} link={ROUTES.TASK} />
-        <Menu icon="profile" label="我的" active={pathname === ROUTES.ABOUT} link={ROUTES.ABOUT} />
+        <Menu
+          icon="list"
+          label="任务"
+          active={pathname.startsWith(ROUTES.TASK)}
+          link={ROUTES.TASK}
+        />
+        <Menu
+          icon="profile"
+          label="我的"
+          active={pathname.startsWith(ROUTES.ABOUT)}
+          link={ROUTES.ABOUT}
+        />
       </div>
     </div>
   );
 };
 
-type Icon = 'mail' | 'check' | 'list' | 'profile';
+type Icon = 'notification' | 'check' | 'list' | 'profile';
 
 interface MenuProps {
   icon: Icon;
@@ -56,8 +66,8 @@ const Menu: React.FC<MenuProps> = ({ active, icon, label, link }) => {
 
 function getIcon(type: Icon) {
   switch (type) {
-    case 'mail':
-      return MailIcon;
+    case 'notification':
+      return Bell;
 
     case 'check':
       return SquareCheckBig;

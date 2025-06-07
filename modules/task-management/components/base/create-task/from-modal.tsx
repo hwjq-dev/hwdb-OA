@@ -4,6 +4,7 @@ import { Plus, X } from 'lucide-react';
 import { useState } from 'react';
 
 import DateTimeCustomPicker from '@/components/molecules/day-picker';
+import { SearchSelect } from '@/components/molecules/search-select';
 import { CustomSelect } from '@/components/molecules/select';
 import { TextInput } from '@/components/molecules/text-input';
 import { Button } from '@/components/ui/button';
@@ -46,7 +47,7 @@ export const FormModal = () => {
 
           <div className="grid grid-cols-2 gap-2">
             {/*--- Select department ---*/}
-            <CustomSelect
+            {/* <CustomSelect
               placeholder="选择部门"
               items={[
                 { lable: '运维部门', value: '运维部门' },
@@ -54,6 +55,18 @@ export const FormModal = () => {
                 { lable: '技术部门', value: '技术部门' },
                 { lable: '人事部门', value: '人事部门' },
                 { lable: '交易员部门', value: '交易员部门' },
+              ]}
+              onChange={(value) => null}
+            /> */}
+
+            <SearchSelect
+              placeholder="选择部门"
+              items={[
+                { label: '运维部门', value: '运维部门' },
+                { label: '产品部门', value: '产品部门' },
+                { label: '技术部门', value: '技术部门' },
+                { label: '人事部门', value: '人事部门' },
+                { label: '交易员部门', value: '交易员部门' },
               ]}
               onChange={(value) => null}
             />

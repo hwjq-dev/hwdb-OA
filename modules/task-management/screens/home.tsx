@@ -5,17 +5,20 @@ import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { CreateRequest } from '../components/base/create-task/create-request';
+import { ApproveTask } from '../components/home/approve-task';
 import { CompleteTask } from '../components/home/complete-task';
+import { OverdueTask } from '../components/home/overdue-task';
 import { ProgressTask } from '../components/home/progress-task';
 import { Stats } from '../components/home/stats';
+import { WaitAprovalTask } from '../components/home/wait-approve-task';
 
 export const TaskHomeScreen = () => {
   const tabs = [
-    { label: '执行中', value: '执行中', content: () => <div> Not Available</div> },
+    { label: '执行中', value: '执行中', content: ProgressTask },
     { label: '已完成', value: '已完成', content: CompleteTask },
-    { label: '审批中', value: '审批中', content: () => <div> Not Available</div> },
-    { label: '已审批', value: '已审批', content: () => <div> Not Available</div> },
-    { label: '已超时', value: '已超时', content: ProgressTask },
+    { label: '审批中', value: '审批中', content: WaitAprovalTask },
+    { label: '已审批', value: '已审批', content: ApproveTask },
+    { label: '已超时', value: '已超时', content: OverdueTask },
   ];
 
   const [value, setValue] = useState(tabs[0].value || '');

@@ -1,10 +1,32 @@
 import { cn } from '@/lib/utils';
+import lottieAnimateRotate from '@/public/lotties/lottie-2.json';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 export const Stats = () => {
   return (
     <div className="tornado-pattern relative w-full h-36 bg-primary rounded-b-5xl p-5">
+      <div className="absolute top-3 right-5 w-28 h-auto z-10">
+        <Player
+          autoplay
+          loop
+          className="flex justify-center items-center"
+          src={lottieAnimateRotate}
+          speed={0.12}
+        />
+      </div>
+
+      <div className="absolute top-3 left-5 w-28 h-auto z-10">
+        <Player
+          autoplay
+          loop
+          className="flex justify-center items-center"
+          src={lottieAnimateRotate}
+          speed={0.12}
+        />
+      </div>
+
       <p className="text-white text-xl font-bold text-center">任务</p>
-      <div className="absolute bottom-0 translate-y-1/4 right-0 left-0 w-5/6 rounded-2xl bg-white h-20 mx-auto shadow-[0px_2px_28px_-5px_#78cbff]">
+      <div className="absolute bottom-0 translate-y-1/4 right-0 left-0 w-5/6 rounded-2xl bg-white h-20 mx-auto shadow-[0px_2px_28px_-5px_#78cbff] z-30">
         <div className="grid h-full grid-cols-3">
           <Item type="current" label="现有任务" value="2" />
           <Item type="wait-approval" label="审批中任务" value="1" />

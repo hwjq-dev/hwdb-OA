@@ -16,6 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { getHumanReadablePeriod } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
 
 // ---------- utils start ----------
@@ -654,6 +655,7 @@ type DateTimePickerProps = {
   /** showing `AM/PM` or not. */
   hourCycle?: 12 | 24;
   placeholder?: string;
+  type?: 'normal' | 'datetime';
   /**
    * The year range will be: `This year + yearRange` and `this year - yearRange`.
    * Default is 50.
@@ -696,6 +698,7 @@ const DateTimePicker = forwardRef<Partial<DateTimePickerRef>, DateTimePickerProp
       displayFormat,
       granularity = 'second',
       placeholder = 'Pick a date',
+      type = 'datetime',
       className,
       ...props
     },
@@ -778,6 +781,15 @@ const DateTimePicker = forwardRef<Partial<DateTimePickerRef>, DateTimePickerProp
       };
     }
 
+    const rawDate = displayDate
+      ? format(displayDate, hourCycle === 24 ? initHourFormat.hour24 : initHourFormat.hour12, {
+          locale: loc,
+        })
+      : null;
+
+    const datePresent =
+      !!rawDate && type === 'normal' ? getHumanReadablePeriod(displayDate as Date) : rawDate;
+
     return (
       <Popover>
         <PopoverTrigger asChild disabled={disabled}>
@@ -792,15 +804,7 @@ const DateTimePicker = forwardRef<Partial<DateTimePickerRef>, DateTimePickerProp
           >
             <CalendarIcon className="mr-2 h-4 w-4 text-primary" />
             {displayDate ? (
-              <span className="text-sm">
-                {format(
-                  displayDate,
-                  hourCycle === 24 ? initHourFormat.hour24 : initHourFormat.hour12,
-                  {
-                    locale: loc,
-                  },
-                )}
-              </span>
+              <span className="text-sm">{datePresent}</span>
             ) : (
               <span className="!text-sm text-dark">{placeholder}</span>
             )}

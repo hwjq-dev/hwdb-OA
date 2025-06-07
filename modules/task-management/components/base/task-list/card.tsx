@@ -48,59 +48,61 @@ export const Card: React.FC<Props> = (props) => {
   } = props;
 
   return (
-    <div className="relative border-[1px] bg-white rounded-md px-2 py-4 shadow-[0px_4px_19px_0px_rgba(0,_0,_0,_0.1)]">
-      {/*--- priority ---*/}
-      <Priority type={priority} />
+    <Link href={link || '#'}>
+      <div className="relative border-[1px] bg-white rounded-md px-2 py-4 shadow-[0px_4px_19px_0px_rgba(0,_0,_0,_0.1)]">
+        {/*--- priority ---*/}
+        <Priority type={priority} />
 
-      {/*--- assign period ---*/}
-      <div className="py-1.5 px-3 absolute top-0 right-0 flex items-center space-x-5">
-        <div className="flex space-x-1">
-          <User className="size-4 text-primary" />
-          <span className="text-dark text-sm">
-            {assignerOrAssignee}
-            {variant === '上级' && <span className="mx-1">/</span>}
-            {variant === '上级' && <span>{tgUsername}</span>}
-          </span>
-        </div>
-        {variant === '上级' && (
-          <div className="flex items-center space-x-1.5">
-            <Clock className="size-4 text-primary stroke-2" />
-            <span className="text-sm text-dark">{assignPeriod}</span>
+        {/*--- assign period ---*/}
+        <div className="py-1.5 px-3 absolute top-0 right-0 flex items-center space-x-5">
+          <div className="flex space-x-1">
+            <User className="size-4 text-primary" />
+            <span className="text-dark text-sm">
+              {assignerOrAssignee}
+              {variant === '上级' && <span className="mx-1">/</span>}
+              {variant === '上级' && <span>{tgUsername}</span>}
+            </span>
           </div>
-        )}
+          {variant === '上级' && (
+            <div className="flex items-center space-x-1.5">
+              <Clock className="size-4 text-primary stroke-2" />
+              <span className="text-sm text-dark">{assignPeriod}</span>
+            </div>
+          )}
+        </div>
+
+        {/*--- title ---*/}
+        <div className="mt-4">
+          <div className="grid grid-cols-12">
+            <div className="col-span-9 space-y-1.5">
+              <p className="font-bold line-clamp-2">
+                {title} <span className="text-sm">{taskId}</span>
+              </p>
+              <p className="text-sm line-clamp-1 text-dark">{subtitle}</p>
+            </div>
+            <div className="col-span-3 my-auto ml-auto">
+              <Button size="sm" className="rounded-full !text-sm px-4">
+                查看进度
+              </Button>
+            </div>
+          </div>
+
+          <TaskStatus type={status} />
+
+          <div className="mt-2 flex justify-between">
+            <div className="flex items-center space-x-1 text-[10px]">
+              <span className="text-primary font-semibold">开始时间：</span>
+              <span>{startDate}</span>
+            </div>
+            <div className="border-r border-dashed" />
+            <div className="flex items-center space-x-1 text-[10px]">
+              <span className="text-primary font-semibold">结束时间：</span>
+              <span>{endDate}</span>
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/*--- title ---*/}
-      <div className="mt-4">
-        <div className="grid grid-cols-12">
-          <div className="col-span-9 space-y-1.5">
-            <p className="font-bold line-clamp-2">
-              {title} <span className="text-sm">{taskId}</span>
-            </p>
-            <p className="text-sm line-clamp-1 text-dark">{subtitle}</p>
-          </div>
-          <div className="col-span-3 my-auto ml-auto">
-            <Button size="sm" className="rounded-full !text-sm px-4">
-              <Link href={link || '#'}>查看进度</Link>
-            </Button>
-          </div>
-        </div>
-
-        <TaskStatus type={status} />
-
-        <div className="mt-2 flex justify-between">
-          <div className="flex items-center space-x-1 text-[10px]">
-            <span className="text-primary font-semibold">开始时间：</span>
-            <span>{startDate}</span>
-          </div>
-          <div className="border-r border-dashed" />
-          <div className="flex items-center space-x-1 text-[10px]">
-            <span className="text-primary font-semibold">结束时间：</span>
-            <span>{endDate}</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    </Link>
   );
 };
 

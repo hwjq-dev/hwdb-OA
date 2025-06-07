@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 
-import { NavMenu } from '@/components/nav-menu';
 import { TanstackProvider } from '@/lib/tanstack-provider';
 
 import { pingFang, ubuntu } from './fonts';
@@ -14,11 +13,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="zh">
-      <body className={`relative h-[100dvh] ${ubuntu.className} ${pingFang.className} antialiased`}>
-        <TanstackProvider>
-          {children}
-          <NavMenu />
-        </TanstackProvider>
+      <body
+        className={`relative h-[100dvh] ${ubuntu.className} ${pingFang.className} antialiased`}
+        suppressHydrationWarning
+      >
+        <TanstackProvider>{children}</TanstackProvider>
       </body>
     </html>
   );

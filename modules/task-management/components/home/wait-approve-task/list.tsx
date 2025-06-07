@@ -6,7 +6,7 @@ const data = [
     taskId: '#2025010605',
     title: '跟进公群频道',
     priority: 'medium',
-    status: 'inprogress',
+    status: 'wait-approval',
     subtitle: '今天三点之前把这个任务完成',
     assignPeriod: '2小时前',
     assignerOrAssignee: '由主管分配',
@@ -18,7 +18,7 @@ const data = [
     taskId: '#2025010605',
     title: '跟进公群频道',
     priority: 'low',
-    status: 'done',
+    status: 'wait-approval',
     subtitle: '今天三点之前把这个任务完成',
     assignPeriod: '2小时前',
     assignerOrAssignee: '由主管分配',
@@ -30,7 +30,7 @@ const data = [
     taskId: '#2025010605',
     title: '跟进公群频道',
     priority: 'high',
-    status: 'approved',
+    status: 'wait-approval',
     subtitle: '今天三点之前把这个任务完成',
     assignPeriod: '2小时前',
     assignerOrAssignee: '由主管分配',
@@ -42,7 +42,7 @@ const data = [
     taskId: '#2025010605',
     title: '跟进公群频道',
     priority: 'high',
-    status: 'approved',
+    status: 'wait-approval',
     subtitle: '今天三点之前把这个任务完成',
     assignPeriod: '2小时前',
     assignerOrAssignee: '由主管分配',
@@ -54,7 +54,7 @@ const data = [
     taskId: '#2025010605',
     title: '跟进公群频道',
     priority: 'high',
-    status: 'approved',
+    status: 'wait-approval',
     subtitle: '今天三点之前把这个任务完成',
     assignPeriod: '2小时前',
     assignerOrAssignee: '由主管分配',
@@ -66,7 +66,7 @@ const data = [
     taskId: '#2025010605',
     title: '跟进公群频道',
     priority: 'high',
-    status: 'approved',
+    status: 'wait-approval',
     subtitle: '今天三点之前把这个任务完成',
     assignPeriod: '2小时前',
     assignerOrAssignee: '由主管分配',
@@ -79,9 +79,9 @@ export const List = () => {
   return (
     <div className="mt-3">
       <TaskList
-        items={data as never}
+        items={data.slice(0, 1) as never}
         emptyState={{
-          title: '未执行中记录',
+          title: '未审批中记录',
           subtitle: '尝试查看其他类型',
         }}
       />

@@ -4,4 +4,8 @@ export const ROUTES = {
   REQUEST: '/request',
   TASK: '/task',
   ABOUT: '/about',
+
+  $TASK: function (id: string | number) {
+    return `${this.TASK}/${id}`;
+  },
 } as const;
