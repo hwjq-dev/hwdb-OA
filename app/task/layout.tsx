@@ -1,7 +1,8 @@
 'use client';
 
-import { NavMenu } from '@/components/nav-menu';
 import { usePathname } from 'next/navigation';
+
+import { NavMenu } from '@/components/nav-menu';
 
 export default function TaskLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

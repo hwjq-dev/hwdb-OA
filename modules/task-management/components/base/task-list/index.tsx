@@ -1,25 +1,35 @@
 import { EmptyState } from '@/components/molecules/empty-state';
-import { ScrollArea } from '@/components/ui/scroll-area';
-
 import { ROUTES } from '@/config/route';
-import { Card, type Props as CardProps } from './card';
+
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { Card } from './card';
 
 interface Props {
   emptyState: { title: string; subtitle: string };
-  items: CardProps[];
+  items: TaskProps[];
+  className?: string;
+  type?: 'request-approve' | 'detail';
 }
 
-export const TaskList: React.FC<Props> = ({ items, emptyState }) => {
+export const TaskList: React.FC<Props> = ({ items, emptyState, className, type = 'detail' }) => {
   return (
     <>
       {items.length ? (
-        <ScrollArea className="h-[50dvh] mb-16 scroll-smooth relative !scrollbar-none !scrollbar-thin">
+        <div
+          className={cn(
+            'h-[50dvh] overflow-y-auto mb-16 scroll-smooth relative !scrollbar-none !scrollbar-thin',
+            className,
+          )}
+        >
           <div className="flex flex-col space-y-1.5">
             {items.map((t, i) => (
-              <Card key={i} {...t} link={ROUTES.$TASK(1)} />
+              <Link key={i} href={type === 'detail' ? ROUTES.$TASK(1) : ROUTES.$REQUEST_APPROVE(1)}>
+                <Card {...t} />
+              </Link>
             ))}
           </div>
-        </ScrollArea>
+        </div>
       ) : (
         <EmptyState {...emptyState} />
       )}

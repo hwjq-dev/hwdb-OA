@@ -68,25 +68,42 @@ const CircularProgress = ({
           className={cn('stroke-primary', progressClassName)}
         />
       </svg>
-      {showLabel && (
-        <div
-          className={cn(
-            'absolute inset-0 flex flex-col space-y-0 items-center justify-center',
-            labelClassName,
-          )}
-        >
-          <span className="text-base">{renderLabel ? renderLabel(value) : value}</span>
-          <span className="text-xs text-dark">进度</span>
-        </div>
-      )}
+
+      <div
+        className={cn(
+          'absolute inset-0 flex flex-col space-y-0 items-center justify-center',
+          labelClassName,
+        )}
+      >
+        <span className={cn('text-base', labelClassName)}>
+          {renderLabel ? renderLabel(value) : value}
+        </span>
+        {showLabel && <span className="text-xs text-dark">进度</span>}
+      </div>
     </div>
   );
 };
 
-export const CircularProgressBar: React.FC<{ value: number; size?: number }> = ({
-  value = 10,
-  size = 110,
-}) => {
+export const CircularProgressBar: React.FC<{
+  value: number;
+  size?: number;
+  small?: boolean;
+  color?: 'green' | 'primary';
+}> = ({ value = 10, size = 110, small, color = 'primary' }) => {
+  if (small) {
+    return (
+      <CircularProgress
+        value={value}
+        size={size}
+        strokeWidth={6}
+        labelClassName="text-sm font-semibold"
+        renderLabel={(progress) => `${progress}%`}
+        className="stroke-gray-100"
+        progressClassName="stroke-green-500"
+      />
+    );
+  }
+
   return (
     <div className="w-fit">
       <CircularProgress
@@ -97,7 +114,7 @@ export const CircularProgressBar: React.FC<{ value: number; size?: number }> = (
         labelClassName="text-xl font-bold"
         renderLabel={(progress) => `${progress}%`}
         className="stroke-gray-100"
-        progressClassName="stroke-primary"
+        progressClassName={cn('stroke-primary', { 'stroke-green-500': color === 'green' })}
       />
     </div>
   );

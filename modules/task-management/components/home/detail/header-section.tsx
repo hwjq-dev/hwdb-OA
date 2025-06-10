@@ -1,11 +1,12 @@
-import { CircularProgressBar } from '@/components/molecules/circular-progress-bar';
 import { Clock, User } from 'lucide-react';
+
+import { CircularProgressBar } from '@/components/molecules/circular-progress-bar';
 
 export const HeaderSection = () => {
   return (
     <div className="relative grid grid-cols-2 gap-3 shadow-[0px_0px_32px_0px_#dae7f5] m-2 rounded-lg border border-gray-200">
       <div className="flex justify-between items-center">
-        <CircularProgressBar size={118} value={(4 / 5) * 100} />
+        <CircularProgressBar size={110} value={(4 / 5) * 100} />
         <div className="flex flex-col space-y-1.5 pr-3">
           <span className="font-semibold text-sm">总数任务</span>
           <span className="text-center text-dark text-sm">4/5</span>

@@ -2,10 +2,11 @@ import { useId } from 'react';
 
 import { Input } from '@/components/ui/input';
 
-export const TextInput: React.FC<{ label: string; onChange: (value: string) => void }> = ({
-  label,
-  onChange,
-}) => {
+export const TextInput: React.FC<{
+  label: string;
+  onChange: (value: string) => void;
+  value?: string;
+}> = ({ label, onChange, value }) => {
   const id = useId();
   return (
     <div className="group relative">
@@ -19,6 +20,7 @@ export const TextInput: React.FC<{ label: string; onChange: (value: string) => v
         id={id}
         type="text"
         className="text-sm rounded-sm"
+        value={value}
         placeholder=" "
         onChange={(e) => onChange(e.target.value)}
       />

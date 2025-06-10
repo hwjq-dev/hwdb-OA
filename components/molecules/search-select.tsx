@@ -19,11 +19,12 @@ interface Props {
   placeholder: string;
   items: { label: string; value: string }[];
   onChange: (value: string) => void;
+  defaultValue?: string;
 }
 
-export const SearchSelect: React.FC<Props> = ({ items, onChange, placeholder }) => {
+export const SearchSelect: React.FC<Props> = ({ items, onChange, placeholder, defaultValue }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(defaultValue || '');
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -32,12 +33,12 @@ export const SearchSelect: React.FC<Props> = ({ items, onChange, placeholder }) 
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-auto justify-between rounded-sm font-normal"
+          className="w-full justify-between rounded-sm font-normal"
         >
           {value ? (
             <span>{items.find((item) => item.value === value)?.label}</span>
           ) : (
-            <span className="text-dark">选择部门</span>
+            <span className="text-dark">{placeholder}</span>
           )}
           <ChevronDown className="opacity-50 text-primary" />
         </Button>
@@ -45,7 +46,7 @@ export const SearchSelect: React.FC<Props> = ({ items, onChange, placeholder }) 
 
       <PopoverContent className="p-1 ml-10 w-52" side="bottom">
         <Command defaultValue={value}>
-          <CommandInput placeholder="搜素部门..." className="h-9" />
+          <CommandInput placeholder={`搜素...`} className="h-9" />
           <CommandList>
             <CommandEmpty>未找到您在搜素部门</CommandEmpty>
             <CommandGroup>

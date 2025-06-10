@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
+import { Toaster } from '@/components/ui/sonner';
 import { TanstackProvider } from '@/lib/tanstack-provider';
 
 import { pingFang, ubuntu } from './fonts';
+
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -18,6 +20,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
         suppressHydrationWarning
       >
         <TanstackProvider>{children}</TanstackProvider>
+        <Toaster />
       </body>
     </html>
   );

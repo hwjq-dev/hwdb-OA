@@ -16,7 +16,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { getHumanReadablePeriod } from '@/lib/dayjs';
+import { getFormatDate } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
 
 // ---------- utils start ----------
@@ -788,7 +788,7 @@ const DateTimePicker = forwardRef<Partial<DateTimePickerRef>, DateTimePickerProp
       : null;
 
     const datePresent =
-      !!rawDate && type === 'normal' ? getHumanReadablePeriod(displayDate as Date) : rawDate;
+      !!rawDate && type === 'normal' ? getFormatDate(displayDate as Date) : rawDate;
 
     return (
       <Popover>

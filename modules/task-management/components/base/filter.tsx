@@ -38,7 +38,7 @@ export const Filter = () => {
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
-          <DrawerTitle className="pb-5 pt-3"> 选择过滤选项</DrawerTitle>
+          <DrawerTitle className="pb-5 pt-3">选择过滤选项</DrawerTitle>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
               <Label htmlFor="select" className="text-dark">
@@ -62,13 +62,48 @@ export const Filter = () => {
               </Label>
               <DatePicker />
             </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="select" className="text-dark">
+                任务优先
+              </Label>
+              <CustomSelect
+                placeholder="选择优先"
+                items={[
+                  { lable: '高优先', value: '高优先' },
+                  { lable: '中优先', value: '中优先' },
+                  { lable: '低优先', value: '低优先' },
+                ]}
+                onChange={(value) => null}
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="select" className="text-dark">
+                任务状态
+              </Label>
+              <CustomSelect
+                placeholder="选择状态"
+                items={[
+                  { lable: '执行中', value: '执行中' },
+                  { lable: '已完成', value: '已完成' },
+                  { lable: '审批中', value: '审批中' },
+                  { lable: '已审批', value: '已审批' },
+                  { lable: '已超时', value: '已超时' },
+                ]}
+                onChange={(value) => null}
+              />
+            </div>
           </div>
 
           <div className="border-t border-t-gray-500/30 border-dashed my-5" />
 
           <DrawerFooter className="grid grid-cols-2 gap-x-2 p-0 pb-2">
             <DrawerClose asChild>
-              <Button variant="outline" className="rounded-sm border-red text-red font-semibold">
+              <Button
+                variant="outline"
+                className="rounded-sm border-primary text-primary font-semibold"
+              >
                 取消
               </Button>
             </DrawerClose>

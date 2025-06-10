@@ -8,9 +8,10 @@ import { DateTimePicker } from './datetime';
 interface Props {
   date?: Date;
   onSelected: (date?: Date) => void;
+  placeholder?: string;
 }
 
-const DateTimeCustomPicker: React.FC<Props> = ({ date, onSelected }) => {
+const DateTimeCustomPicker: React.FC<Props> = ({ date, onSelected, placeholder }) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(date);
 
   return (
@@ -21,7 +22,7 @@ const DateTimeCustomPicker: React.FC<Props> = ({ date, onSelected }) => {
         setSelectedDate(date);
         onSelected(date);
       }}
-      placeholder="开始日期"
+      placeholder={placeholder}
     />
   );
 };

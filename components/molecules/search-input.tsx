@@ -27,7 +27,7 @@ export const SearchInput = () => {
       <div className="relative">
         <Input
           id={id}
-          className="peer ps-8 pe-8 h-10 text-sm font-medium text-dark rounded-lg"
+          className="peer ps-8 pe-8 h-10 text-sm font-medium text-dark bg-white rounded-lg"
           placeholder="搜素任务标题或编号..."
           type="search"
           value={inputValue}

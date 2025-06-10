@@ -85,10 +85,10 @@ export const FormModal = () => {
           </div>
 
           {/*--- Start date ---*/}
-          <DateTimeCustomPicker onSelected={(date) => null} />
+          <DateTimeCustomPicker placeholder="开始时间" onSelected={(date) => null} />
 
           {/*--- Complete date ---*/}
-          <DateTimeCustomPicker onSelected={(date) => null} />
+          <DateTimeCustomPicker placeholder="截止时间" onSelected={(date) => null} />
 
           {/*--- Priority ---*/}
           <CustomSelect
