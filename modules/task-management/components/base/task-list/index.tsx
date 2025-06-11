@@ -10,9 +10,16 @@ interface Props {
   items: TaskProps[];
   className?: string;
   type?: 'request-approve' | 'detail';
+  showAssignee?: boolean;
 }
 
-export const TaskList: React.FC<Props> = ({ items, emptyState, className, type = 'detail' }) => {
+export const TaskList: React.FC<Props> = ({
+  items,
+  emptyState,
+  className,
+  type = 'detail',
+  showAssignee,
+}) => {
   return (
     <>
       {items.length ? (
@@ -25,7 +32,7 @@ export const TaskList: React.FC<Props> = ({ items, emptyState, className, type =
           <div className="flex flex-col space-y-1.5">
             {items.map((t, i) => (
               <Link key={i} href={type === 'detail' ? ROUTES.$TASK(1) : ROUTES.$REQUEST_APPROVE(1)}>
-                <Card {...t} />
+                <Card {...t} showAssignee={showAssignee} />
               </Link>
             ))}
           </div>

@@ -6,8 +6,20 @@ import { getFormatDatetime, getFormatHumanReadable } from '@/lib/dayjs';
 import { Priority } from './priority';
 import { TaskStatus } from './task-status';
 
-export const Card: React.FC<TaskProps> = (props) => {
-  const { title, subtitle, priority, status, tgId, assigner, assignedAt, startAt, endAt } = props;
+export const Card: React.FC<TaskProps & { showAssignee?: boolean }> = (props) => {
+  const {
+    title,
+    subtitle,
+    priority,
+    status,
+    tgId,
+    assigner,
+    assignee,
+    showAssignee,
+    assignedAt,
+    startAt,
+    endAt,
+  } = props;
 
   return (
     <div className="relative border-[1px] bg-white rounded-md px-2 py-4 shadow-[0px_4px_19px_0px_rgba(0,_0,_0,_0.1)]">
@@ -19,7 +31,7 @@ export const Card: React.FC<TaskProps> = (props) => {
         <div className="flex space-x-1">
           <User className="size-4 text-primary" />
           <span className="text-dark text-sm">
-            <span>{assigner}</span>
+            <span> {showAssignee ? assignee : assigner}</span>
           </span>
         </div>
 

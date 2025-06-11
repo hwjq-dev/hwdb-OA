@@ -89,17 +89,35 @@ export const CircularProgressBar: React.FC<{
   size?: number;
   small?: boolean;
   color?: 'green' | 'primary';
-}> = ({ value = 10, size = 110, small, color = 'primary' }) => {
+  showLabel?: boolean;
+  rawValue?: number;
+}> = ({ value = 10, size = 110, small, color = 'primary', showLabel = true, rawValue }) => {
   if (small) {
     return (
       <CircularProgress
         value={value}
         size={size}
-        strokeWidth={6}
+        strokeWidth={8}
         labelClassName="text-sm font-semibold"
         renderLabel={(progress) => `${progress}%`}
         className="stroke-gray-100"
         progressClassName="stroke-green-500"
+        showLabel={showLabel}
+      />
+    );
+  }
+
+  if (rawValue) {
+    return (
+      <CircularProgress
+        value={value}
+        size={size}
+        strokeWidth={14}
+        showLabel={showLabel}
+        labelClassName="text-lg font-bold"
+        renderLabel={() => `${rawValue}`}
+        className="stroke-gray-100"
+        progressClassName={cn('stroke-primary', { 'stroke-green-500': color === 'green' })}
       />
     );
   }
@@ -109,9 +127,9 @@ export const CircularProgressBar: React.FC<{
       <CircularProgress
         value={value}
         size={size}
-        strokeWidth={12}
-        showLabel
-        labelClassName="text-xl font-bold"
+        strokeWidth={14}
+        showLabel={showLabel}
+        labelClassName="text-lg font-bold"
         renderLabel={(progress) => `${progress}%`}
         className="stroke-gray-100"
         progressClassName={cn('stroke-primary', { 'stroke-green-500': color === 'green' })}

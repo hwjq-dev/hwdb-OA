@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 
 import { TaskStatusType } from './interface';
 
-const TaskStatusData: Record<TaskStatusType, string> = {
+export const TaskStatusData: Record<TaskStatusType, string> = {
   'in-progress': '执行中',
   done: '已完成',
   'wait-approval': '审批中',

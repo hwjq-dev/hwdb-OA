@@ -55,6 +55,7 @@ export const HomeList = () => {
   return (
     <div className="mt-3 px-2 pb-4">
       <TaskList
+        showAssignee
         type="request-approve"
         items={sampleTasks}
         emptyState={{

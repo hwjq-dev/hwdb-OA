@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 import { CreateRequest } from '../components/base/create-task/create-request';
@@ -11,6 +9,7 @@ import { OverdueTask } from '../components/home/overdue-task';
 import { ProgressTask } from '../components/home/progress-task';
 import { Stats } from '../components/home/stats';
 import { WaitAprovalTask } from '../components/home/wait-approve-task';
+import { usePreserveTab } from '../hooks/use-preserve-tab';
 
 export const StaffTaskHomeScreen = () => {
   const tabs = [
@@ -21,7 +20,8 @@ export const StaffTaskHomeScreen = () => {
     { label: '已超时', value: '已超时', content: OverdueTask },
   ];
 
-  const [value, setValue] = useState(tabs[0].value || '');
+  // const [value, setValue] = useState(tabs[0].value || '');
+  const { activeTab, setActiveTab } = usePreserveTab();
 
   return (
     <div className="size-full">
@@ -35,7 +35,7 @@ export const StaffTaskHomeScreen = () => {
 
       {/*--- TAB 板块 ---*/}
       <div className="p-2 mt-2">
-        <Tabs value={value} onValueChange={setValue}>
+        <Tabs value={activeTab || tabs[0].value} onValueChange={setActiveTab}>
           <div className="w-fit mx-auto">
             <TabsList className="bg-primary-200/50">
               {tabs.map((tab) => (

@@ -39,7 +39,7 @@ export const HeadStats = () => {
                 <Link href="#">详情查看</Link>
               </Button>
             </div>
-            <CircularProgressBar size={80} value={(4 / 5) * 100} small />
+            <CircularProgressBar size={90} value={(4 / 5) * 100} small />
           </div>
           <div className="absolute left-1/2 h-3/5 top-1/2 -translate-y-1/2 border-r-[1px] border-dashed border-r-gray-300" />
           <div className="p-4 m-auto">

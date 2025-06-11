@@ -16,7 +16,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="zh">
       <body
-        className={`relative h-[100dvh] ${ubuntu.className} ${pingFang.className} antialiased`}
+        className={`relative h-[100dvh] overflow-hidden ${ubuntu.className} ${pingFang.className} antialiased`}
         suppressHydrationWarning
       >
         <TanstackProvider>{children}</TanstackProvider>
