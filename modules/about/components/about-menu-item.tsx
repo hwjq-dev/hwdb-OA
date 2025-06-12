@@ -1,38 +1,39 @@
-import AttendanceLogo from '@/public/images/attendance-logo.png';
-import ProfileSettingLogo from '@/public/images/profile-setting-logo.png';
-import PunishmentLogo from '@/public/images/punishment-logo.png';
-
 import { ChevronRight } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+
+import { ROUTES } from '@/config/route';
+import AttendanceLogo from '@/public/images/attendance-logo.png';
+import ProfileSettingLogo from '@/public/images/profile-setting-logo.png';
+import PunishmentLogo from '@/public/images/punishment-logo.png';
 
 const data = [
   {
     id: 1,
     alt: 'profile-setting.png',
     icon: ProfileSettingLogo,
-    label: '头像设置',
-    link: '#',
+    label: '账号设置',
+    link: ROUTES.ABOUT_ACCOUNTS,
   },
   {
     id: 2,
     alt: 'attendance-logo.png',
     icon: AttendanceLogo,
     label: '我的考勤',
-    link: '#',
+    link: ROUTES.ABOUT_ATTENDENCES,
   },
   {
     id: 3,
     alt: 'punishment-log.png',
     icon: PunishmentLogo,
     label: '我的罚单',
-    link: '#',
+    link: ROUTES.ABOUT_PUNISHMENTS,
   },
 ];
 
 export const AboutMenuItem = () => {
   return (
-    <div className="mt-2 flex flex-col space-y-2.5">
+    <div className="mt-6 flex flex-col space-y-2.5">
       {data.map((x, i) => (
         <Item key={i} {...x} />
       ))}

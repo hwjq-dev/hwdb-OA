@@ -12,7 +12,7 @@ export function getFormatDate(date: Date) {
 
 export function getFormatDatetime(date: Date) {
   extend(relativeTime);
-  return dayjs(date).locale('zh-cn').format('YYYY年 MM月 DD日 HH:mm:ss');
+  return dayjs(date).locale('zh-cn').format('YYYY年 MM月 DD日 HH:mm');
 }
 
 export function getFormatHumanReadable(date: Date) {
