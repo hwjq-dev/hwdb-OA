@@ -1,5 +1,6 @@
-import HrApprovalBlocksManager from '@/modules/hr-management/components/approval-blocks';
 import { NextPage } from 'next';
+
+import HrApprovalBlocksManager from '@/modules/hr-management/components/approval-blocks';
 
 const Page: NextPage = () => {
   return (

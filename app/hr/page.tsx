@@ -1,5 +1,6 @@
-import HrMainBlocksManager from '@/modules/hr-management/components/main-blocks';
 import { NextPage } from 'next';
+
+import HrMainBlocksManager from '@/modules/hr-management/components/main-blocks';
 
 const Page: NextPage = () => {
   return (
