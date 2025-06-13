@@ -1,8 +1,13 @@
-import { ChevronRight } from 'lucide-react';
+'use client';
+
+import { ChevronRight, LogOut } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
+import { redirect, RedirectType } from 'next/navigation';
 
+import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/config/route';
+import { useAccountDetect } from '@/hooks/use-account-detect';
 import AttendanceLogo from '@/public/images/attendance-logo.png';
 import ProfileSettingLogo from '@/public/images/profile-setting-logo.png';
 import PunishmentLogo from '@/public/images/punishment-logo.png';
@@ -32,11 +37,28 @@ const data = [
 ];
 
 export const AboutMenuItem = () => {
+  const { setLevel } = useAccountDetect();
+
   return (
     <div className="mt-6 flex flex-col space-y-2.5">
       {data.map((x, i) => (
         <Item key={i} {...x} />
       ))}
+      <div className="flex justify-center mt-2 !rounded-full">
+        <Button
+          variant="default"
+          onClick={(e) => {
+            e.preventDefault();
+            setLevel('');
+            return redirect('/', RedirectType.replace);
+          }}
+        >
+          <span>
+            <LogOut />
+          </span>
+          注销
+        </Button>
+      </div>
     </div>
   );
 };

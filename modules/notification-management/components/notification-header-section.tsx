@@ -26,7 +26,8 @@ export const NotificationHeaderSection = () => {
           speed={0.12}
         />
       </div>
-      <div className="absolute z-50 left-1 top-3 rounded-xl pl-3 pr-6 py-1.5 bg-primary/10 backdrop-blur-2xl">
+      <p className="text-center text-lg font-semibold text-white pt-3">通知</p>
+      {/* <div className="absolute z-50 left-1 top-3 rounded-xl pl-3 pr-6 py-1.5 bg-primary/10 backdrop-blur-2xl">
         <p className="text-white text-xl font-bold z-50">欢迎来到好旺OA</p>
         <p className="text-gray-200 text-xs font-bold">提供现代办公的专业操作</p>
       </div>
@@ -34,7 +35,7 @@ export const NotificationHeaderSection = () => {
       <div className="absolute z-50 right-2 top-3 rounded-xl pl-6 pr-3 py-1.5 bg-primary/10 backdrop-blur-2xl">
         <p className="text-white text-base font-bold z-50 text-end">明华</p>
         <p className="text-gray-200 text-xs font-bold">TG-456370987</p>
-      </div>
+      </div> */}
     </div>
   );
 };

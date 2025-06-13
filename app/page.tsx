@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
-import { redirect, RedirectType } from 'next/navigation';
 
-import { ROUTES } from '@/config/route';
+import { TestLogin } from '@/components/molecules/test-login';
 
 const Page: NextPage = () => {
-  return redirect(ROUTES.NOTIFICATION, RedirectType.replace);
+  return <TestLogin />;
+  // return redirect(ROUTES.REQUEST, RedirectType.replace);
 };
 
 export default Page;

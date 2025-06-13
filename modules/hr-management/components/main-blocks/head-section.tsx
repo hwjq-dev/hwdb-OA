@@ -6,7 +6,7 @@ import lottieAnimateRotate from '@/public/lotties/lottie-2.json';
 
 export const HrHeaderSection = () => {
   return (
-    <div className="tornado-pattern relative w-full h-36 bg-primary rounded-b-5xl p-5">
+    <div className="tornado-pattern relative w-full h-28 z-0 bg-primary p-5">
       <div className="absolute top-3 right-5 w-28 h-auto z-10">
         <Player
           autoplay
@@ -27,7 +27,15 @@ export const HrHeaderSection = () => {
         />
       </div>
 
-      <p className="text-white text-xl font-bold text-center">审批</p>
+      <div className="absolute z-50 left-1 top-3 rounded-xl pl-3 pr-6 py-1.5 bg-primary/10 backdrop-blur-2xl">
+        <p className="text-white text-xl font-bold z-50">欢迎来到好旺OA</p>
+        <p className="text-gray-200 text-xs font-bold">提供现代办公的专业操作</p>
+      </div>
+
+      <div className="absolute z-50 right-2 top-3 rounded-xl pl-6 pr-3 py-1.5 bg-primary/10 backdrop-blur-2xl">
+        <p className="text-white text-base font-bold z-50 text-end">晚上好，明华</p>
+        <p className="text-gray-200 text-xs mt-0.5 font-bold text-end">TG-456370987</p>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 'use client';
 
-import { Bell, ClipboardList, SquareCheckBig, UserRoundPen } from 'lucide-react';
+import { Bell, ClipboardList, LayoutDashboard, UserRoundPen } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -14,16 +14,16 @@ export const NavMenu = () => {
     <div className="flex flex-col justify-center absolute bg-white !bottom-0 right-0 left-0 !z-40 w-full px-3.5 h-16 shadow-[0px_-4px_25px_-13px_#a3b0b8]">
       <div className="grid grid-cols-4 gap-4">
         <Menu
+          icon="check"
+          label="工作台"
+          active={pathname.startsWith(ROUTES.HR)}
+          link={ROUTES.HR}
+        />
+        <Menu
           icon="notification"
           label="通知"
           active={pathname.startsWith(ROUTES.NOTIFICATION)}
           link={ROUTES.NOTIFICATION}
-        />
-        <Menu
-          icon="check"
-          label="审批"
-          active={pathname.startsWith(ROUTES.REQUEST)}
-          link={ROUTES.REQUEST}
         />
         <Menu
           icon="list"
@@ -70,7 +70,7 @@ function getIcon(type: Icon) {
       return Bell;
 
     case 'check':
-      return SquareCheckBig;
+      return LayoutDashboard;
 
     case 'list':
       return ClipboardList;

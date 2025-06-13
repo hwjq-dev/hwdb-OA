@@ -1,7 +1,8 @@
 'use client';
 
-import { Plus, X } from 'lucide-react';
+import { CircleCheck, Plus, X } from 'lucide-react';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 import DateTimeCustomPicker from '@/components/molecules/day-picker';
 import { SearchSelect } from '@/components/molecules/search-select';
@@ -41,7 +42,17 @@ export const FormModal = () => {
         {/*--- Indicator ---*/}
         <div className="bg-gradient-to-r my-2 from-gray-400/10 via-60% via-primary to-gray-400/10 w-full h-[1px] rounded-full" />
 
-        <form className="flex flex-col space-y-3">
+        <form
+          className="flex flex-col space-y-3"
+          onSubmit={(e) => {
+            e.preventDefault();
+            setOpen(false);
+            toast('记录已创建成功.', {
+              icon: <CircleCheck className="text-green-500" />,
+              position: 'top-right',
+            });
+          }}
+        >
           {/*--- Title ---*/}
           <TextInput label="请输入任务标题" onChange={(v) => null} />
 
@@ -104,7 +115,7 @@ export const FormModal = () => {
           {/*--- Description ---*/}
           <Textarea placeholder="请输入任务描述 ..." onChange={(e) => null} />
 
-          <Button type="submit" className="hover:!bg-primary/50" onClick={() => alert('提交成功')}>
+          <Button type="submit" className="hover:!bg-primary/50">
             提交申请
           </Button>
         </form>

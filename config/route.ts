@@ -1,9 +1,12 @@
 export const ROUTES = {
+  // Main routing (主要路由)
   HOME: '/',
   NOTIFICATION: '/notification',
-  REQUEST: '/request',
+  HR: '/hr',
   TASK: '/task',
   ABOUT: '/about',
+
+  // Sub routing (副路由)
   TASK_ASSIGNMENT: '/task/assignment',
   REPORT: '/task/report',
   REQUEST_APPROVAL: '/task/request-approval',
