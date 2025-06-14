@@ -38,7 +38,7 @@ const items: ItemProps[] = [
   },
   {
     icon: <IconAdjustmentsPause className="size-4 text-purple-500 bg-purple-50" />,
-    label: '权限与角色',
+    label: '权限角色',
     className: 'bg-purple-100/70',
     textClassName: 'text-purple-500',
     link: '#',
