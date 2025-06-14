@@ -7,6 +7,7 @@ import RequestPassProbation from '@/public/images/request-pass-probation.png';
 import RequestPermission from '@/public/images/request-permission.png';
 import RequestResign from '@/public/images/request-resign.png';
 import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
+
 import { FeatureItemsList } from './feature-item-list';
 
 const application = [

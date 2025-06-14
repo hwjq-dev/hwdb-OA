@@ -3,6 +3,7 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { motion, MotionConfig } from 'framer-motion';
 import { createContext, forwardRef, useContext } from 'react';
+import { usePathname } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 
@@ -80,12 +81,13 @@ const TabsTrigger = forwardRef<
 >(({ className, children, ...props }, ref) => {
   const { value } = useTabs();
   const isActive = value === props.value;
+  const pathname = usePathname();
 
   return (
     <div className="relative">
       {isActive && (
         <motion.div
-          layoutId="active-tab-bg"
+          layoutId={`active-tab-bg-${pathname}`}
           style={{ borderRadius: 8 }}
           className="absolute inset-0 rounded-lg bg-primary shadow-[rgba(0,0,0,0.04)_0px_1px_6px] dark:bg-white dark:shadow-[rgba(0,0,0,0.2)_0px_1px_6px]"
         />

@@ -8,12 +8,12 @@ interface Props {
 
 export const FeatureItemsList: React.FC<Props> = ({ label, items }) => {
   return (
-    <div className="bg-white p-4 -mt-6 mx-4 rounded-2xl shadow-[0px_4px_30px_0px_#bababa]">
+    <div className="bg-white p-4 -mt-6 mx-4 rounded-2xl shadow-[0px_0px_45px_0px_#dbdbdb]">
       <div className="flex space-x-1 items-center">
         <div className="h-4 w-1 bg-primary rounded-sm" />
         <p className="font-bold">{label}</p>
       </div>
-      <div className="mt-6 grid grid-cols-4 gap-2.5">
+      <div className="mt-4 grid grid-cols-4 gap-2.5">
         {items.map((x, i) => (
           <Item key={i} {...x} />
         ))}

@@ -5,6 +5,7 @@ export const ROUTES = {
   HR: '/hr',
   TASK: '/task',
   ABOUT: '/about',
+  PUBLISH: '/publish',
 
   // Sub routing (副路由)
   TASK_ASSIGNMENT: '/task/assignment',

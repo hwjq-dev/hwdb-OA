@@ -4,6 +4,7 @@
 import { HrApplicationSection } from './application-section';
 import { HrApprovalSection } from './approval-section';
 import { HrHeaderSection } from './head-section';
+import { OthersSection } from './others-section';
 import { HrViewSubmissionSection } from './submission-section';
 
 export default function HrMainBlocksManager() {
@@ -11,6 +12,7 @@ export default function HrMainBlocksManager() {
     <>
       <HrHeaderSection />
       <HrViewSubmissionSection />
+      <OthersSection />
       <HrApplicationSection />
       <HrApprovalSection />
     </>
