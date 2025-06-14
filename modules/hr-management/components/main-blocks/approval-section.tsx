@@ -53,7 +53,7 @@ const approval = [
     id: 6,
     alt: 'RequestAddionalScan.png',
     icon: RequestAddionalScan,
-    label: '审批扑打卡',
+    label: '审批补打卡',
     link: '',
   },
   {

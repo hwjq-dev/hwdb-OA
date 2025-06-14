@@ -50,7 +50,7 @@ const application = [
     id: 6,
     alt: 'RequestAddionalScan.png',
     icon: RequestAddionalScan,
-    label: '申请扑打卡',
+    label: '申请补打卡',
     link: '',
   },
   {
