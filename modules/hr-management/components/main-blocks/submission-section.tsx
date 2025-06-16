@@ -9,7 +9,7 @@ const items: ItemProps[] = [
 
 export const HrViewSubmissionSection = () => {
   return (
-    <div className="bg-white p-4 mt-2 -translate-y-2/5 mx-4 rounded-2xl shadow-[0px_4px_30px_0px_#bababa]">
+    <div className="bg-white p-4 mt-2 mx-4 rounded-2xl shadow-[0px_4px_30px_0px_#bababa]">
       <div className="grid grid-cols-3 gap-4 place-items-center">
         {items.map((x, i) => (
           <Item key={i} {...x} />

@@ -25,9 +25,9 @@ const items: ItemProps[] = [
   {
     icon: <IconSitemap className="size-4 text-yellow-400" />,
     label: '组织架构',
-    className: 'bg-yellow-100/70',
+    className: 'bg-yellow-100/60',
     textClassName: 'text-yellow-500',
-    link: '#',
+    link: ROUTES.STRUCTURE,
   },
   {
     icon: <IconUser className="size-4 text-green-500" />,
@@ -58,7 +58,7 @@ export const OthersSection = () => {
 
   if (level == '上级')
     return (
-      <div className="bg-white p-4 mt-9 -translate-y-2/5 mx-4 rounded-2xl shadow-[0px_0px_45px_0px_#dbdbdb]">
+      <div className="bg-white p-4 mx-4 rounded-2xl shadow-[0px_0px_45px_0px_#dbdbdb]">
         <div className="flex space-x-1 items-center">
           <span className="p-1 bg-primary/15 rounded-sm">
             <LayoutGrid className="size-3.5 text-primary" />

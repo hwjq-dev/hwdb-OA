@@ -1,3 +1,5 @@
+'use client';
+
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
 import RequestChangePosition from '@/public/images/request-change-position.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
@@ -76,4 +78,9 @@ const application = [
   },
 ];
 
-export const HrApplicationSection = () => <FeatureItemsList label="申请管理" items={application} />;
+export const HrApplicationSection = () => {
+  // const { level } = useAccountDetect();
+  // if (level == '下级') return null;
+
+  return <FeatureItemsList label="申请管理" items={application} />;
+};

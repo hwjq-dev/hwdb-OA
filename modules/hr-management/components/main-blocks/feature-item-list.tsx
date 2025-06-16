@@ -8,7 +8,7 @@ interface Props {
 
 export const FeatureItemsList: React.FC<Props> = ({ label, items }) => {
   return (
-    <div className="bg-white p-4 -mt-6 mx-4 rounded-2xl shadow-[0px_0px_45px_0px_#dbdbdb]">
+    <div className="bg-white p-4 mx-4 rounded-2xl shadow-[0px_0px_45px_0px_#dbdbdb]">
       <div className="flex space-x-1 items-center">
         <div className="h-4 w-1 bg-primary rounded-sm" />
         <p className="font-bold">{label}</p>

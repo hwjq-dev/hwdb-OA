@@ -1,5 +1,6 @@
 'use client';
 
+import { useAccountDetect } from '@/hooks/use-account-detect';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
 import RequestChangePosition from '@/public/images/request-change-position.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
@@ -10,7 +11,6 @@ import RequestPermission from '@/public/images/request-permission.png';
 import RequestResign from '@/public/images/request-resign.png';
 import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
 
-import { useAccountDetect } from '@/hooks/use-account-detect';
 import { FeatureItemsList } from './feature-item-list';
 
 const approval = [
@@ -83,10 +83,5 @@ export const HrApprovalSection = () => {
   const { level } = useAccountDetect();
   if (level == '下级') return null;
 
-  if (level == '上级')
-    return (
-      <div className="mt-10">
-        <FeatureItemsList label="审批管理" items={approval} />
-      </div>
-    );
+  if (level == '上级') return <FeatureItemsList label="审批管理" items={approval} />;
 };

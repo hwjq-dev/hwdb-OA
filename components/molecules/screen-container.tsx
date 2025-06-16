@@ -11,12 +11,14 @@ import lottieAnimateRotate from '@/public/lotties/lottie-2.json';
 interface Props extends PropsWithChildren {
   headerLabel: string;
   className?: string;
+  containerClassName?: string;
   showBack?: boolean;
 }
 
 export const ScreenContainer: React.FC<Props> = ({
   headerLabel,
   className,
+  containerClassName,
   children,
   showBack = false,
 }) => {
@@ -59,7 +61,12 @@ export const ScreenContainer: React.FC<Props> = ({
         <p className="text-center text-lg font-semibold text-white pt-3">{headerLabel}</p>
       </div>
 
-      <div className="bg-white -translate-y-16 rounded-t-4xl h-[84dvh] p-4 overflow-hidden">
+      <div
+        className={cn(
+          'bg-white -translate-y-16 rounded-t-4xl h-[84dvh] p-4 overflow-hidden',
+          containerClassName,
+        )}
+      >
         {children}
       </div>
     </div>

@@ -11,9 +11,9 @@ export default function HrMainBlocksManager() {
   return (
     <>
       <HrHeaderSection />
-      <HrViewSubmissionSection />
-      <OthersSection />
-      <div className="flex flex-col -mt-4">
+      <div className="relative flex flex-col space-y-4 -translate-y-11">
+        <HrViewSubmissionSection />
+        <OthersSection />
         <HrApplicationSection />
         <HrApprovalSection />
       </div>
