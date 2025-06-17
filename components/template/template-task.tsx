@@ -1,13 +1,17 @@
-import { HeadTaskHomeScreen } from '@/modules/task-management/screens/home-head';
-import { StaffTaskHomeScreen } from '@/modules/task-management/screens/home-staff';
+'use client';
 
-const TemplateTask: React.FC<{ variant?: '下级' | '上级' }> = ({ variant = '下级' }) => {
-  switch (variant) {
+import { useAccountDetect } from '@/hooks/use-account-detect';
+import { HighPositionScreen, LowPositionScreen } from '@/modules/task/screens';
+
+const TemplateTask = () => {
+  const { level } = useAccountDetect();
+
+  switch (level) {
     case '下级':
-      return <StaffTaskHomeScreen />;
+      return <LowPositionScreen />;
 
     case '上级':
-      return <HeadTaskHomeScreen />;
+      return <HighPositionScreen />;
 
     default:
       return null;

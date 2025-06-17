@@ -1,35 +1,46 @@
 export const ROUTES = {
-  // Main routing (主要路由)
+  //-- Default-Routing
   HOME: '/',
-  NOTIFICATION: '/notification',
-  HR: '/hr',
-  TASK: '/task',
-  ABOUT: '/about',
-  PUBLISH: '/publish',
-  STRUCTURE: '/structure',
+  DASHBOARD: '/dashboard',
 
-  // Sub routing (副路由)
-  TASK_ASSIGNMENT: '/task/assignment',
-  REPORT: '/task/report',
-  REQUEST_APPROVAL: '/task/request-approval',
-  PERSONAL_TASK: '/task/personal-task',
-  ABOUT_ACCOUNTS: '/about/accounts',
-  ABOUT_ATTENDENCES: '/about/attendances',
-  ABOUT_PUNISHMENTS: '/about/punishments',
-
-  $STRUCTURE: function (id: string | number) {
-    return `${this.STRUCTURE}/${id}`;
+  //-- Organization Structure-Routing
+  ORGANIZATIONAL_STRUCTURE: '/organizational-structure',
+  $ORGANZATIONAL_STRUCTURE: function (id: string | number) {
+    return `${this.ORGANIZATIONAL_STRUCTURE}/${id}`;
   },
 
+  //-- Annoucement-Routing
+  ANNOUCEMENT: '/annoucement',
+
+  //-- Notification-Routing
+  NOTIFICATION: '/notification',
   $NOTIFICATION: function (id: string | number) {
     return `${this.NOTIFICATION}/${id}`;
   },
+
+  //-- Task-Routing
+  TASK: '/task',
+  TASK_ASSIGNMENT: '/task/assignment',
+  TASK_PERSONAL_TASK: '/task/personal-task',
+  TASK_REPORT: '/task/report',
+  TASK_REQUEST_APPROVAL: '/task/request-approval',
 
   $TASK: function (id: string | number) {
     return `${this.TASK}/${id}`;
   },
 
-  $REQUEST_APPROVE: function (id: string | number) {
-    return `${this.REQUEST_APPROVAL}/${id}`;
+  $TASK_REQUEST_APPROVE: function (id: string | number) {
+    return `${this.TASK_REQUEST_APPROVAL}/${id}`;
   },
+
+  //-- HR-Routing
+  HR: '/hr',
+  HR_APPLICATION: '/hr/application',
+  HR_APPROVAL: '/hr/approval',
+
+  //-- Profile-Routing
+  PROFILE: '/profile',
+  PROFILE_ACCOUNTS: '/profile/accounts',
+  PROFILE_ATTENDENCES: '/profile/attendances',
+  PROFILE_PUNISHMENTS: '/profile/punishments',
 } as const;

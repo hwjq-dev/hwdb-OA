@@ -34,8 +34,8 @@ export const NavMenu = () => {
         <Menu
           icon="profile"
           label="我的"
-          active={pathname.startsWith(ROUTES.ABOUT)}
-          link={ROUTES.ABOUT}
+          active={pathname.startsWith(ROUTES.PROFILE)}
+          link={ROUTES.PROFILE}
         />
       </div>
     </div>

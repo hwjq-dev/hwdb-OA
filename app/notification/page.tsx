@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 
 import { ScreenContainer } from '@/components/molecules/screen-container';
-import { NotificationTab } from '@/modules/notification-management/components/notification-tab';
+import { NotificationTab } from '@/modules/notifications/components/notification-tab';
 
 const Page: NextPage = () => {
   return (

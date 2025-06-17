@@ -1,13 +1,21 @@
 import { NextPage } from 'next';
 
 import { BackSection } from '@/components/molecules/back-section';
-import { PersonalTaskScreen } from '@/modules/task-management/screens/personal-task';
+import {
+  PersonalTaskCreate,
+  PersonalTaskList,
+} from '@/modules/task/components/high-position/personal-task';
+import { TaskFilter } from '@/modules/task/components/shared';
 
 const Page: NextPage = () => {
   return (
     <section className="overflow-hidden h-[100dvh]">
       <BackSection label="个人任务" />
-      <PersonalTaskScreen />
+      <div className="px-2">
+        <PersonalTaskCreate />
+        <TaskFilter />
+        <PersonalTaskList />
+      </div>
     </section>
   );
 };
