@@ -36,7 +36,17 @@ export const ROUTES = {
   //-- HR-Routing
   HR: '/hr',
   HR_APPLICATION: '/hr/application',
+  HR_APPROVED: '/hr/approved',
+  HR_WAIT_APPROVAL: '/hr/wait-approval',
+  HR_SUBMISSION: '/hr/submission',
+  $HR_APPLICATION: function (params: ApplicationType) {
+    return `${this.HR_APPLICATION}?type=${params}`;
+  },
   HR_APPROVAL: '/hr/approval',
+  //TODO: add type to params
+  $HR_APPROVAL: function (params: string) {
+    return `${this.HR_APPROVAL}?type=${params}`;
+  },
 
   //-- Profile-Routing
   PROFILE: '/profile',

@@ -1,5 +1,5 @@
 // src/config/env.ts
-import { object, string, enum as enum_, parse, InferInput, pipe, minLength } from 'valibot';
+import { enum as enum_, InferInput, minLength, object, parse, pipe, string } from 'valibot';
 
 export enum AppEnv {
   Development = 'development',
@@ -25,6 +25,7 @@ export const validateEnv = () => {
 };
 
 declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
     interface ProcessEnv extends InferInput<typeof envSchema> {}
   }

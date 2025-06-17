@@ -1,10 +1,25 @@
 import { CheckCircle, Clock, Send } from 'lucide-react';
+import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { ROUTES } from '@/config/route';
+
 const items: ItemProps[] = [
-  { icon: <Clock className="size-8 text-yellow-500" />, label: '待我审批', link: '#' },
-  { icon: <CheckCircle className="size-8 text-green-500" />, label: '我已审批', link: '#' },
-  { icon: <Send className="size-8 text-primary-500" />, label: '我发起的', link: '#' },
+  {
+    icon: <Clock className="size-8 text-yellow-500" />,
+    label: '待我审批',
+    link: ROUTES.HR_WAIT_APPROVAL,
+  },
+  {
+    icon: <CheckCircle className="size-8 text-green-500" />,
+    label: '我已审批',
+    link: ROUTES.HR_APPROVED,
+  },
+  {
+    icon: <Send className="size-8 text-primary-500" />,
+    label: '我发起的',
+    link: ROUTES.HR_SUBMISSION,
+  },
 ];
 
 export const HrViewSubmissionSection = () => {
@@ -12,7 +27,9 @@ export const HrViewSubmissionSection = () => {
     <div className="bg-white p-4 mt-2 mx-4 rounded-2xl shadow-[0px_4px_30px_0px_#bababa]">
       <div className="grid grid-cols-3 gap-4 place-items-center">
         {items.map((x, i) => (
-          <Item key={i} {...x} />
+          <Link key={i} href={x.link || '#'}>
+            <Item {...x} />
+          </Link>
         ))}
       </div>
     </div>

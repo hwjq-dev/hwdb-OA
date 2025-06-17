@@ -1,5 +1,6 @@
 'use client';
 
+import { ROUTES } from '@/config/route';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
 import RequestChangePosition from '@/public/images/request-change-position.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
@@ -18,69 +19,66 @@ const application = [
     alt: 'RequestPermission.png',
     icon: RequestPermission,
     label: '申请请假',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请请假'),
   },
   {
     id: 2,
     alt: 'RequestOvertime.png',
     icon: RequestOvertime,
     label: '申请加班',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请加班'),
   },
   {
     id: 3,
     alt: 'RequestChangeShift.png',
     icon: RequestChangeShift,
     label: '申请调班',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请调班'),
   },
   {
     id: 4,
     alt: 'RequestShiftDayOff.png',
     icon: RequestShiftDayOff,
     label: '申请调休',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请调休'),
   },
   {
     id: 5,
     alt: 'RequestLate.png',
     icon: RequestLate,
     label: '申请免迟到',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请免迟到'),
   },
   {
     id: 6,
     alt: 'RequestAddionalScan.png',
     icon: RequestAddionalScan,
     label: '申请补打卡',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请补打卡'),
   },
   {
     id: 7,
     alt: 'RequestPassProbation.png',
     icon: RequestPassProbation,
     label: '申请转正',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请转正'),
   },
   {
     id: 8,
     alt: 'RequestChangePosition.png',
     icon: RequestChangePosition,
     label: '申请转岗',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请转刚'),
   },
   {
     id: 9,
     alt: 'RequestResign.png',
     icon: RequestResign,
     label: '申请离职',
-    link: '',
+    link: ROUTES.$HR_APPLICATION('申请离职'),
   },
 ];
 
 export const HrApplicationSection = () => {
-  // const { level } = useAccountDetect();
-  // if (level == '下级') return null;
-
   return <FeatureItemsList label="申请管理" items={application} />;
 };
