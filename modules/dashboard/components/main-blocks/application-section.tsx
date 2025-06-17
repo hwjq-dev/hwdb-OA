@@ -32,8 +32,8 @@ const application = [
     id: 3,
     alt: 'RequestChangeShift.png',
     icon: RequestChangeShift,
-    label: '申请调班',
-    link: ROUTES.$HR_APPLICATION('申请调班'),
+    label: '申请排班',
+    link: ROUTES.$HR_APPLICATION('申请排班'),
   },
   {
     id: 4,

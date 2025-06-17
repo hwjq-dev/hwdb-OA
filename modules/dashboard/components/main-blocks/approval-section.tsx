@@ -33,8 +33,8 @@ const approval = [
     id: 3,
     alt: 'RequestChangeShift.png',
     icon: RequestChangeShift,
-    label: '审批调班',
-    link: ROUTES.$HR_APPROVAL('审批调班'),
+    label: '审批排班',
+    link: ROUTES.$HR_APPROVAL('审批排班'),
   },
   {
     id: 4,
