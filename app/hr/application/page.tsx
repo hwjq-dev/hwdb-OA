@@ -1,5 +1,6 @@
 import { NextPage } from 'next';
 
+import { ScreenContainer } from '@/components/molecules/screen-container';
 import { HrApplicationBlocksManager } from '@/modules/human-resouce/components';
 
 interface PageProps {
@@ -8,12 +9,11 @@ interface PageProps {
 
 const Page: NextPage<PageProps> = async ({ searchParams }) => {
   const type = (await searchParams).type;
-  console.log(type);
 
   return (
-    <div>
-      <HrApplicationBlocksManager />
-    </div>
+    <ScreenContainer headerLabel={type} containerClassName="h-[90dvh]" showBack>
+      <HrApplicationBlocksManager type={type} />
+    </ScreenContainer>
   );
 };
 

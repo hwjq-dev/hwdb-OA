@@ -2,9 +2,10 @@ import Image from 'next/image';
 
 import EmptyStateImg from '@/public/images/empty-state.png';
 import EmptyStateNotificationImg from '@/public/images/no-notification.png';
+import EmptyStateServiceUnavailableImg from '@/public/images/service-unavailable.png';
 
 interface Props {
-  type?: 'default' | 'notification';
+  type?: 'default' | 'notification' | 'service-unavailabel';
   title: string;
   subtitle: string;
 }
@@ -33,5 +34,8 @@ function getImage(type: Exclude<Props['type'], undefined>) {
 
     case 'notification':
       return EmptyStateNotificationImg;
+
+    case 'service-unavailabel':
+      return EmptyStateServiceUnavailableImg;
   }
 }

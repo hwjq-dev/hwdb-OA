@@ -43,8 +43,7 @@ export const ROUTES = {
     return `${this.HR_APPLICATION}?type=${params}`;
   },
   HR_APPROVAL: '/hr/approval',
-  //TODO: add type to params
-  $HR_APPROVAL: function (params: string) {
+  $HR_APPROVAL: function (params: ApprovalType) {
     return `${this.HR_APPROVAL}?type=${params}`;
   },
 
