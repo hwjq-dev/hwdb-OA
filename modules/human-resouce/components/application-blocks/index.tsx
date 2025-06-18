@@ -21,10 +21,10 @@ export function HrApplicationBlocksManager(props: { type: ApplicationType }) {
       return <OvertimeRequestForm />;
 
     case '申请排班':
-      return <ChangeShiftRequestForm />;
+      return <ChangeDayoffRequestForm />;
 
     case '申请调休':
-      return <ChangeDayoffRequestForm />;
+      return <ChangeShiftRequestForm />;
 
     case '申请免迟到':
       return <LateExeptiontRequestForm />;

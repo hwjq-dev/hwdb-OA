@@ -1,6 +1,9 @@
 'use client';
 
 import { IconExclamationCircle, IconStopwatch } from '@tabler/icons-react';
+import { CircleCheckBig } from 'lucide-react';
+import { useMemo, useState } from 'react';
+import { toast } from 'sonner';
 
 import DateTimeCustomPicker from '@/components/molecules/day-picker';
 import { OfficialBadge } from '@/components/molecules/official-badge';
@@ -8,9 +11,7 @@ import { CustomSelect } from '@/components/molecules/select';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { getDiff } from '@/lib/dayjs';
-import { CircleCheckBig } from 'lucide-react';
-import { useMemo, useState } from 'react';
-import { toast } from 'sonner';
+
 import { ApprovalProcessWrapper } from './base/approval-process-wrapper';
 import { Approver } from './base/approver';
 import { FormFieldWrapper } from './base/form-field-wrapper';
@@ -44,7 +45,7 @@ const Form = () => {
   const duration = useMemo(() => {
     if (date?.startAt && date?.endAt) {
       const result = getDiff(date.startAt, date.endAt);
-      if (!Boolean(result.trim())) return null;
+      if (!result.trim()) return null;
       return result;
     } else {
       return null;
@@ -61,7 +62,7 @@ const Form = () => {
         className="flex flex-col space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
-          toast('您的申请已提交成功.', {
+          toast('您的请假申请已提交成功.', {
             className: '!w-1/2 !ml-auto !mr-6',
             icon: <CircleCheckBig className="text-green-500" />,
             position: 'top-center',
@@ -130,7 +131,7 @@ const Form = () => {
 
         <div>
           <Button type="submit" className="w-full cursor-pointer font-bold h-11 rounded-xl">
-            提交申请
+            提交请假申请
           </Button>
         </div>
       </form>

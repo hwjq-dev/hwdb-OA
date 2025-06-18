@@ -1,5 +1,6 @@
-import { cn } from '@/lib/utils';
 import { IconUser } from '@tabler/icons-react';
+
+import { cn } from '@/lib/utils';
 
 interface Props {
   position: '主管' | '人事' | '经理' | '总经理';
@@ -32,7 +33,7 @@ export const Approver: React.FC<Props> = ({ position = '主管', className }) =>
           'text-red-600': position === '总经理',
         })}
       >
-        主管
+        {position}
       </p>
       <div className="w-9 h-3 bg-white z-10 flex items-center justify-center absolute -right-7 top-1/2 -translate-y-1/2 rounded-full">
         <div
