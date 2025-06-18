@@ -6,16 +6,27 @@ import { useState } from 'react';
 import { DateTimePicker } from './datetime';
 
 interface Props {
+  id?: string;
   date?: Date;
   onSelected: (date?: Date) => void;
   placeholder?: string;
+  className?: string;
 }
 
-const DateTimeCustomPicker: React.FC<Props> = ({ date, onSelected, placeholder }) => {
+const DateTimeCustomPicker: React.FC<Props> = ({
+  id,
+  className,
+  date,
+  onSelected,
+  placeholder,
+}) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(date);
 
   return (
     <DateTimePicker
+      id={id}
+      className={className}
+      hourCycle={12}
       locale={zhTW}
       value={selectedDate || date}
       onChange={(date) => {

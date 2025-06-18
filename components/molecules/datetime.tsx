@@ -385,10 +385,14 @@ interface PeriodSelectorProps {
   onDateChange?: (date: Date | undefined) => void;
   onRightFocus?: () => void;
   onLeftFocus?: () => void;
+  shouldSmall?: boolean;
 }
 
 const TimePeriodSelect = forwardRef<HTMLButtonElement, PeriodSelectorProps>(
-  ({ period, setPeriod, date, onDateChange, onLeftFocus, onRightFocus }, ref) => {
+  (
+    { period, setPeriod, date, onDateChange, onLeftFocus, onRightFocus, shouldSmall = true },
+    ref,
+  ) => {
     const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
       if (e.key === 'ArrowRight') onRightFocus?.();
       if (e.key === 'ArrowLeft') onLeftFocus?.();
@@ -414,15 +418,20 @@ const TimePeriodSelect = forwardRef<HTMLButtonElement, PeriodSelectorProps>(
       <div className="flex h-10 items-center">
         <Select defaultValue={period} onValueChange={(value: Period) => handleValueChange(value)}>
           <SelectTrigger
+            size="sm"
             ref={ref}
-            className="focus:bg-accent focus:text-accent-foreground w-[65px]"
+            className="text-[11px] bg-white rounded-sm !h-7 border-none w-[62px]"
             onKeyDown={handleKeyDown}
           >
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="AM">AM</SelectItem>
-            <SelectItem value="PM">PM</SelectItem>
+            <SelectItem className={cn({ 'text-[11px]': shouldSmall })} value="AM">
+              AM
+            </SelectItem>
+            <SelectItem className={cn({ 'text-[11px]': shouldSmall })} value="PM">
+              PM
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -523,7 +532,7 @@ const TimePickerInput = forwardRef<HTMLInputElement, TimePickerInputProps>(
         id={id || picker}
         name={name || picker}
         className={cn(
-          'focus:bg-white/90 focus:text-primary h-7 w-11 text-center font-mono tabular-nums rounded-sm caret-transparent [&::-webkit-inner-spin-button]:appearance-none text-sm text-dark border-0 shadow-none bg-white',
+          'focus:bg-white/90 focus:text-primary h-7 w-9 p-0 text-center font-mono tabular-nums rounded-sm caret-transparent [&::-webkit-inner-spin-button]:appearance-none text-[11px] font-bold text-dark border-0 shadow-none bg-white',
           className,
         )}
         value={value || calculatedValue}
@@ -583,7 +592,7 @@ const TimePicker = forwardRef<TimePickerRef, TimePickerProps>(
     return (
       <div className="flex items-center justify-center gap-2">
         <label htmlFor="datetime-picker-hour-input" className="cursor-pointer">
-          <Clock className="text-primary mr-2 size-5" />
+          <Clock className="text-primary mr-1 size-4" />
         </label>
         <TimePickerInput
           picker={hourCycle === 24 ? 'hours' : '12hours'}
@@ -648,6 +657,7 @@ TimePicker.displayName = 'TimePicker';
 type Granularity = 'day' | 'hour' | 'minute' | 'second';
 
 type DateTimePickerProps = {
+  id?: string;
   value?: Date;
   onChange?: (date: Date | undefined) => void;
   onMonthChange?: (date: Date | undefined) => void;
@@ -700,6 +710,7 @@ const DateTimePicker = forwardRef<Partial<DateTimePickerRef>, DateTimePickerProp
       placeholder = 'Pick a date',
       type = 'datetime',
       className,
+      id,
       ...props
     },
     ref,
@@ -792,8 +803,9 @@ const DateTimePicker = forwardRef<Partial<DateTimePickerRef>, DateTimePickerProp
 
     return (
       <Popover>
-        <PopoverTrigger asChild disabled={disabled}>
+        <PopoverTrigger id={id} asChild disabled={disabled}>
           <Button
+            type="button"
             variant="outline"
             className={cn(
               'w-full justify-start text-left font-normal rounded-sm',

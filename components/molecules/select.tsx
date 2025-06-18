@@ -8,18 +8,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { cn } from '@/lib/utils';
 
 interface Props {
   defaultValue?: string;
   placeholder: string;
+  className?: string;
   items: { lable: string; value: string }[];
   onChange: (value: string) => void;
 }
 
-export const CustomSelect: React.FC<Props> = ({ defaultValue, placeholder, items, onChange }) => {
+export const CustomSelect: React.FC<Props> = ({
+  defaultValue,
+  placeholder,
+  className,
+  items,
+  onChange,
+}) => {
   return (
     <Select defaultValue={defaultValue} onValueChange={onChange}>
-      <SelectTrigger className="flex !h-9 !rounded-sm w-full items-center space-x-1">
+      <SelectTrigger className={cn('flex h-9 rounded-sm w-full items-center space-x-1', className)}>
         <SelectValue className="text-dark" placeholder={placeholder} />
       </SelectTrigger>
 

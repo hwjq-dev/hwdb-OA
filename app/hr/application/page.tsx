@@ -11,7 +11,11 @@ const Page: NextPage<PageProps> = async ({ searchParams }) => {
   const type = (await searchParams).type;
 
   return (
-    <ScreenContainer headerLabel={type} containerClassName="h-[90dvh]" showBack>
+    <ScreenContainer
+      headerLabel={type}
+      containerClassName="h-[90dvh] overflow-y-auto scrollbar-none"
+      showBack
+    >
       <HrApplicationBlocksManager type={type} />
     </ScreenContainer>
   );
