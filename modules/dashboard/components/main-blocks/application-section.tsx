@@ -2,13 +2,11 @@
 
 import { ROUTES } from '@/config/route';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
-import RequestChangePosition from '@/public/images/request-change-position.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
 import RequestLate from '@/public/images/request-late.png';
 import RequestOvertime from '@/public/images/request-overtime.png';
-import RequestPassProbation from '@/public/images/request-pass-probation.png';
 import RequestPermission from '@/public/images/request-permission.png';
-import RequestResign from '@/public/images/request-resign.png';
+import RequestPunishment from '@/public/images/request-punishment.png';
 import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
 
 import { FeatureItemsList } from './feature-item-list';
@@ -32,8 +30,8 @@ const application = [
     id: 3,
     alt: 'RequestChangeShift.png',
     icon: RequestChangeShift,
-    label: '申请排班',
-    link: ROUTES.$HR_APPLICATION('申请排班'),
+    label: '申请调班',
+    link: ROUTES.$HR_APPLICATION('申请调班'),
   },
   {
     id: 4,
@@ -56,26 +54,33 @@ const application = [
     label: '申请补打卡',
     link: ROUTES.$HR_APPLICATION('申请补打卡'),
   },
+  // {
+  //   id: 7,
+  //   alt: 'RequestPassProbation.png',
+  //   icon: RequestPassProbation,
+  //   label: '申请转正',
+  //   link: ROUTES.$HR_APPLICATION('申请转正'),
+  // },
+  // {
+  //   id: 8,
+  //   alt: 'RequestChangePosition.png',
+  //   icon: RequestChangePosition,
+  //   label: '申请转岗',
+  //   link: ROUTES.$HR_APPLICATION('申请转刚'),
+  // },
+  // {
+  //   id: 9,
+  //   alt: 'RequestResign.png',
+  //   icon: RequestResign,
+  //   label: '申请离职',
+  //   link: ROUTES.$HR_APPLICATION('申请离职'),
+  // },
   {
-    id: 7,
-    alt: 'RequestPassProbation.png',
-    icon: RequestPassProbation,
-    label: '申请转正',
-    link: ROUTES.$HR_APPLICATION('申请转正'),
-  },
-  {
-    id: 8,
-    alt: 'RequestChangePosition.png',
-    icon: RequestChangePosition,
-    label: '申请转岗',
-    link: ROUTES.$HR_APPLICATION('申请转刚'),
-  },
-  {
-    id: 9,
-    alt: 'RequestResign.png',
-    icon: RequestResign,
-    label: '申请离职',
-    link: ROUTES.$HR_APPLICATION('申请离职'),
+    id: 10,
+    alt: 'RequestPunishment.png',
+    icon: RequestPunishment,
+    label: '申请处罚',
+    link: ROUTES.$HR_APPLICATION('申请处罚'),
   },
 ];
 

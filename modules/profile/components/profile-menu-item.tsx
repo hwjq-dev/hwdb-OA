@@ -8,9 +8,7 @@ import { redirect, RedirectType } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/config/route';
 import { useAccountDetect } from '@/hooks/use-account-detect';
-import AttendanceLogo from '@/public/images/attendance-logo.png';
 import ProfileSettingLogo from '@/public/images/profile-setting-logo.png';
-import PunishmentLogo from '@/public/images/punishment-logo.png';
 
 const data = [
   {
@@ -20,20 +18,20 @@ const data = [
     label: '账号设置',
     link: ROUTES.PROFILE_ACCOUNTS,
   },
-  {
-    id: 2,
-    alt: 'attendance-logo.png',
-    icon: AttendanceLogo,
-    label: '我的考勤',
-    link: ROUTES.PROFILE_ATTENDENCES,
-  },
-  {
-    id: 3,
-    alt: 'punishment-log.png',
-    icon: PunishmentLogo,
-    label: '我的罚单',
-    link: ROUTES.PROFILE_PUNISHMENTS,
-  },
+  // {
+  //   id: 2,
+  //   alt: 'attendance-logo.png',
+  //   icon: AttendanceLogo,
+  //   label: '我的考勤',
+  //   link: ROUTES.PROFILE_ATTENDENCES,
+  // },
+  // {
+  //   id: 3,
+  //   alt: 'punishment-log.png',
+  //   icon: PunishmentLogo,
+  //   label: '我的罚单',
+  //   link: ROUTES.PROFILE_PUNISHMENTS,
+  // },
 ];
 
 export const ProfileMenuItem = () => {

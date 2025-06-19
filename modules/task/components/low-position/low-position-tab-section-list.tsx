@@ -5,7 +5,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { usePreserveTab } from '../../store/use-preserve-tab';
 import {
   TabApproveTaskListSection,
-  TabCompleteTaskListSection,
   TabOverdueTaskListSection,
   TabProgressTaskListSection,
   TabWaitApproveTaskListSection,
@@ -13,7 +12,7 @@ import {
 
 const tabs = [
   { label: '执行中', value: '执行中', content: TabProgressTaskListSection },
-  { label: '已完成', value: '已完成', content: TabCompleteTaskListSection },
+  // { label: '已完成', value: '已完成', content: TabCompleteTaskListSection },
   { label: '审批中', value: '审批中', content: TabWaitApproveTaskListSection },
   { label: '已审批', value: '已审批', content: TabApproveTaskListSection },
   { label: '已超时', value: '已超时', content: TabOverdueTaskListSection },

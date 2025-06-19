@@ -3,7 +3,7 @@ import { IconUser } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
 interface Props {
-  position: '主管' | '人事' | '经理' | '总经理';
+  position: '主管' | '人事' | '经理' | '总经理' | '行政部';
   className?: string;
 }
 
@@ -16,6 +16,7 @@ export const Approver: React.FC<Props> = ({ position = '主管', className }) =>
           'bg-green-500/10': position === '人事',
           'bg-orange-500/10': position === '经理',
           'bg-red-500/10': position === '总经理',
+          'bg-purple-500/10': position === '行政部',
         },
       )}
     >
@@ -24,6 +25,7 @@ export const Approver: React.FC<Props> = ({ position = '主管', className }) =>
           'text-green-600': position === '人事',
           'text-orange-500': position === '经理',
           'text-red-500': position === '总经理',
+          'text-purple-500': position === '行政部',
         })}
       />
       <p
@@ -31,6 +33,7 @@ export const Approver: React.FC<Props> = ({ position = '主管', className }) =>
           'text-green-600': position === '人事',
           'text-orange-600': position === '经理',
           'text-red-600': position === '总经理',
+          'text-purple-600': position === '行政部',
         })}
       >
         {position}

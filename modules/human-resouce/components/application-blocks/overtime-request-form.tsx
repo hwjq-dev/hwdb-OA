@@ -6,34 +6,18 @@ import { useMemo, useState } from 'react';
 import { toast } from 'sonner';
 
 import DateTimeCustomPicker from '@/components/molecules/day-picker';
-import { OfficialBadge } from '@/components/molecules/official-badge';
 import { CustomSelect } from '@/components/molecules/select';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { getDiff } from '@/lib/dayjs';
 
-import { ApprovalProcessWrapper } from './base/approval-process-wrapper';
-import { Approver } from './base/approver';
 import { FormFieldWrapper } from './base/form-field-wrapper';
 
 export const OvertimeRequestForm = () => {
   return (
     <div className="space-y-4">
-      <ApprovalProcess />
       <Form />
     </div>
-  );
-};
-
-const ApprovalProcess = () => {
-  return (
-    <ApprovalProcessWrapper label="加班审批流程" legend="有效加班申请需要通过三位审批者过程中">
-      <div className="grid grid-cols-3 gap-6 mt-4">
-        <Approver position="主管" />
-        <Approver position="人事" />
-        <Approver position="经理" />
-      </div>
-    </ApprovalProcessWrapper>
   );
 };
 
@@ -52,9 +36,8 @@ const Form = () => {
 
   return (
     <div className="relative mt-4 p-4 bg-radial from-primary-200 to-primary-200/30 rounded-3xl">
-      <OfficialBadge label="好旺担保" color="green" />
       <p className="text-lg text-center py-1 text-white mb-7 w-fit px-8 rounded-tl-xl rounded-br-xl font-bold bg-gradient-to-r from-primary to-primary-500/90">
-        加班条
+        加班单
       </p>
       <form
         className="flex flex-col space-y-4"

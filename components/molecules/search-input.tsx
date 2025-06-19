@@ -1,11 +1,15 @@
 'use client';
 
 import { LoaderCircleIcon, SearchIcon } from 'lucide-react';
-import { useEffect, useId, useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 
 import { Input } from '@/components/ui/input';
 
-export const SearchInput = () => {
+interface Props {
+  placeholder?: string;
+}
+
+export const SearchInput: React.FC<Props> = ({ placeholder = '搜素任务标题或编号...' }) => {
   const id = useId();
 
   const [inputValue, setInputValue] = useState('');
@@ -28,7 +32,7 @@ export const SearchInput = () => {
         <Input
           id={id}
           className="peer ps-8 pe-8 h-10 text-sm font-medium text-dark bg-white rounded-lg"
-          placeholder="搜素任务标题或编号..."
+          placeholder={placeholder}
           type="search"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}

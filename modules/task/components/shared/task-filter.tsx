@@ -12,66 +12,73 @@ export const TaskFilter = () => {
 
   return (
     <div className="flex space-x-1.5 items-center pt-2">
-      <SearchInput />
-      <SheetContainer open={isOpen} onCancle={close} onOpenChange={toggle}>
-        <div className="grid grid-cols-2 gap-2">
-          <div className="space-y-2">
-            <Label htmlFor="select" className="text-dark">
-              任务下发人
-            </Label>
-            <CustomSelect
-              onChange={(v) => null}
-              placeholder="下发人"
-              items={[
-                { lable: '总经理', value: '总经理' },
-                { lable: '经理', value: '经理' },
-                { lable: '主管', value: '主管' },
-                { lable: '组长', value: '组长' },
-              ]}
-            />
-          </div>
+      <div className="pt-2 grow">
+        <SearchInput />
+      </div>
+      <SheetContainer open={isOpen} onCancle={close} onOpenChange={toggle} onConfirm={toggle}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <div className="grid grid-cols-2 gap-2">
+            <div className="space-y-2">
+              <Label htmlFor="select" className="text-dark">
+                任务下发人
+              </Label>
+              <CustomSelect
+                onChange={(v) => null}
+                placeholder="下发人"
+                items={[
+                  { lable: '总经理', value: '总经理' },
+                  { lable: '经理', value: '经理' },
+                  { lable: '主管', value: '主管' },
+                  { lable: '组长', value: '组长' },
+                ]}
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="select" className="text-dark">
-              任务日期
-            </Label>
-            <DatePicker />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="select" className="text-dark">
+                任务日期
+              </Label>
+              <DatePicker />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="select" className="text-dark">
-              任务优先
-            </Label>
-            <CustomSelect
-              placeholder="选择优先"
-              items={[
-                { lable: '高优先', value: '高优先' },
-                { lable: '中优先', value: '中优先' },
-                { lable: '低优先', value: '低优先' },
-              ]}
-              onChange={(value) => null}
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="select" className="text-dark">
+                任务优先
+              </Label>
+              <CustomSelect
+                placeholder="选择优先"
+                items={[
+                  { lable: '高优先', value: '高优先' },
+                  { lable: '中优先', value: '中优先' },
+                  { lable: '低优先', value: '低优先' },
+                ]}
+                onChange={(value) => null}
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="select" className="text-dark">
-              任务状态
-            </Label>
-            <CustomSelect
-              placeholder="选择状态"
-              items={[
-                { lable: '执行中', value: '执行中' },
-                { lable: '已完成', value: '已完成' },
-                { lable: '审批中', value: '审批中' },
-                { lable: '已审批', value: '已审批' },
-                { lable: '已超时', value: '已超时' },
-              ]}
-              onChange={(value) => null}
-            />
+            <div className="space-y-2">
+              <Label htmlFor="select" className="text-dark">
+                任务状态
+              </Label>
+              <CustomSelect
+                placeholder="选择状态"
+                items={[
+                  { lable: '执行中', value: '执行中' },
+                  { lable: '已完成', value: '已完成' },
+                  { lable: '审批中', value: '审批中' },
+                  { lable: '已审批', value: '已审批' },
+                  { lable: '已超时', value: '已超时' },
+                ]}
+                onChange={(value) => null}
+              />
+            </div>
           </div>
-        </div>
-
-        <div className="border-t border-t-gray-500/30 border-dashed my-5" />
+          <div className="border-t border-t-gray-500/30 border-dashed my-5" />
+        </form>
       </SheetContainer>
     </div>
   );

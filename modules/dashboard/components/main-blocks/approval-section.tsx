@@ -3,13 +3,11 @@
 import { ROUTES } from '@/config/route';
 import { useAccountDetect } from '@/hooks/use-account-detect';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
-import RequestChangePosition from '@/public/images/request-change-position.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
 import RequestLate from '@/public/images/request-late.png';
 import RequestOvertime from '@/public/images/request-overtime.png';
-import RequestPassProbation from '@/public/images/request-pass-probation.png';
 import RequestPermission from '@/public/images/request-permission.png';
-import RequestResign from '@/public/images/request-resign.png';
+import RequestPunishment from '@/public/images/request-punishment.png';
 import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
 
 import { FeatureItemsList } from './feature-item-list';
@@ -57,26 +55,33 @@ const approval = [
     label: '审批补打卡',
     link: ROUTES.$HR_APPROVAL('审批补打卡'),
   },
+  // {
+  //   id: 7,
+  //   alt: 'RequestPassProbation.png',
+  //   icon: RequestPassProbation,
+  //   label: '审批转正',
+  //   link: ROUTES.$HR_APPROVAL('审批转正'),
+  // },
+  // {
+  //   id: 8,
+  //   alt: 'RequestChangePosition.png',
+  //   icon: RequestChangePosition,
+  //   label: '审批转岗',
+  //   link: ROUTES.$HR_APPROVAL('审批转刚'),
+  // },
+  // {
+  //   id: 9,
+  //   alt: 'RequestResign.png',
+  //   icon: RequestResign,
+  //   label: '审批离职',
+  //   link: ROUTES.$HR_APPROVAL('审批离职'),
+  // },
   {
-    id: 7,
-    alt: 'RequestPassProbation.png',
-    icon: RequestPassProbation,
-    label: '审批转正',
-    link: ROUTES.$HR_APPROVAL('审批转正'),
-  },
-  {
-    id: 8,
-    alt: 'RequestChangePosition.png',
-    icon: RequestChangePosition,
-    label: '审批转岗',
-    link: ROUTES.$HR_APPROVAL('审批转刚'),
-  },
-  {
-    id: 9,
-    alt: 'RequestResign.png',
-    icon: RequestResign,
-    label: '审批离职',
-    link: ROUTES.$HR_APPROVAL('审批离职'),
+    id: 10,
+    alt: 'RequestPunishment.png',
+    icon: RequestPunishment,
+    label: '审批处罚',
+    link: ROUTES.$HR_APPROVAL('审批处罚'),
   },
 ];
 

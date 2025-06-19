@@ -23,11 +23,11 @@ export function getFormatHumanReadable(date: Date, flag?: boolean) {
 }
 
 // not being used , but incase for other situation
-export function getDiffDate(startAt: Date, endAt: Date) {
-  extend(relativeTime);
-  const relative = dayjs(startAt).locale('zh-cn').from(endAt, true);
-  return relative;
-}
+// export function getDiffDate(startAt: Date, endAt: Date) {
+//   extend(relativeTime);
+//   const relative = dayjs(startAt).locale('zh-cn').from(endAt, true);
+//   return relative;
+// }
 
 export function getDiff(startAt: Date, endAt: Date) {
   extend(duration);

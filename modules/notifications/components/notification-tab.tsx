@@ -33,12 +33,12 @@ export const NotificationTab = () => {
           >
             审批通知
           </TabsTrigger>
-          {/* <TabsTrigger
+          <TabsTrigger
             value="tab-3"
             className="px-5 py-1.5 text-base font-medium data-[state=inactive]:text-primary"
           >
             任务通知
-          </TabsTrigger> */}
+          </TabsTrigger>
         </TabsList>
       </div>
 
@@ -55,11 +55,11 @@ export const NotificationTab = () => {
           <EmptyState title="未审批通知" subtitle="当前没有通知推送" type="notification" />
         </div>
       </TabsContent>
-      {/* <TabsContent value="tab-3" className="h-[75dvh] flex flex-col justify-center">
+      <TabsContent value="tab-3" className="h-[75dvh] flex flex-col justify-center">
         <div className="text-muted-foreground p-4 text-center text-sm">
           <EmptyState title="未任务通知" subtitle="当前没有通知推送" type="notification" />
         </div>
-      </TabsContent> */}
+      </TabsContent>
     </Tabs>
   );
 };

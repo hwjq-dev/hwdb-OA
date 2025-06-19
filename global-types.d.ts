@@ -25,6 +25,7 @@ type ApplicationType =
   | '申请补打卡'
   | '申请转正'
   | '申请转刚'
+  | '申请处罚'
   | '申请离职';
 
 type ApprovalType =
@@ -37,4 +38,5 @@ type ApprovalType =
   | '审批补打卡'
   | '审批转正'
   | '审批转刚'
+  | '审批处罚'
   | '审批离职';

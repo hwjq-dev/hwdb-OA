@@ -3,12 +3,12 @@
 import { ChevronsUpDown } from 'lucide-react';
 import { PropsWithChildren, ReactNode } from 'react';
 
-import { SearchInput } from '@/components/molecules/search-input';
 import { Button } from '@/components/ui/button';
 import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerFooter,
   DrawerTitle,
   DrawerTrigger,
@@ -23,6 +23,7 @@ interface Props extends PropsWithChildren {
   triggerBtnLabel?: string;
   onCancle: () => void;
   onOpenChange: (open: boolean) => void;
+  onConfirm: () => void;
 }
 
 export const SheetContainer: React.FC<Props> = (props) => {
@@ -36,14 +37,18 @@ export const SheetContainer: React.FC<Props> = (props) => {
     children,
     onCancle,
     onOpenChange,
+    onConfirm,
   } = props;
 
   return (
     <div className="flex space-x-1.5 items-center pt-2">
-      <SearchInput />
-      <Drawer open={open} onOpenChange={onOpenChange}>
+      <Drawer open={open} onOpenChange={(open) => onOpenChange(open)}>
         <DrawerTrigger asChild>
-          {triggerComponent ? triggerComponent : <TriggerButton label={triggerBtnLabel} />}
+          {triggerComponent ? (
+            triggerComponent
+          ) : (
+            <TriggerButton label={triggerBtnLabel} onClick={() => onOpenChange(true)} />
+          )}
         </DrawerTrigger>
 
         <DrawerContent
@@ -51,6 +56,7 @@ export const SheetContainer: React.FC<Props> = (props) => {
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
+          <DrawerDescription></DrawerDescription>
           <DrawerTitle className="pb-5 pt-3">{title ? title : '选择过滤选项'}</DrawerTitle>
           {children}
           <DrawerFooter className="grid grid-cols-2 gap-x-2 p-0 pb-2">
@@ -64,7 +70,7 @@ export const SheetContainer: React.FC<Props> = (props) => {
                 {btnCancelLable ? btnCancelLable : '取消'}
               </Button>
             </DrawerClose>
-            <Button type="submit" className="rounded-sm font-semibold">
+            <Button type="submit" onClick={onConfirm} className="rounded-sm font-semibold">
               {btnConfirmLabel ? btnConfirmLabel : '过滤'}
             </Button>
           </DrawerFooter>
@@ -74,8 +80,11 @@ export const SheetContainer: React.FC<Props> = (props) => {
   );
 };
 
-const TriggerButton: React.FC<{ label?: string }> = ({ label = '' }) => (
-  <Button variant="outline" className="h-10">
+const TriggerButton: React.FC<{ label?: string; onClick: () => void }> = ({
+  label = '',
+  onClick,
+}) => (
+  <Button variant="outline" className="h-10" onClick={onClick}>
     <span className="text-dark">{label ? label : '过滤任务'}</span>
     <span>
       <ChevronsUpDown className="text-primary" />
