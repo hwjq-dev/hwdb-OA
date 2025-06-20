@@ -42,9 +42,12 @@ export const ProfileMenuItem = () => {
       {data.map((x, i) => (
         <Item key={i} {...x} />
       ))}
-      <div className="flex justify-center mt-2 !rounded-full">
+
+      <div className="absolute bottom-6 right-0 left-0 flex justify-center">
         <Button
+          size="lg"
           variant="default"
+          className="w-5/6 rounded-2xl bg-gradient-to-r from-primary to-primary-500 shadow-[0px_0px_25px_-3px_#b8b8b8]"
           onClick={(e) => {
             e.preventDefault();
             setLevel('');

@@ -52,6 +52,38 @@ const sampleTasks: TaskProps[] = [
     status: 'in-progress',
     priority: '低优先',
   },
+  {
+    id: 14,
+    tgId: '100013',
+    title: '编写员工手册',
+    subtitle: '更新2025年公司规章制度',
+    assignedAt: '2025-06-07T15:00:00+07:00',
+    tgUsername: 'yuanyuan_hr',
+    nickName: '圆圆',
+    assigner: '行政部',
+    assignee: '月圆',
+    startAt: '2025-06-08T09:00:00+07:00',
+    endAt: '2025-06-11T17:00:00+07:00',
+    department: '人事部门',
+    status: 'in-progress',
+    priority: '低优先',
+  },
+  {
+    id: 15,
+    tgId: '100013',
+    title: '编写员工手册',
+    subtitle: '更新2025年公司规章制度',
+    assignedAt: '2025-06-07T15:00:00+07:00',
+    tgUsername: 'yuanyuan_hr',
+    nickName: '圆圆',
+    assigner: '行政部',
+    assignee: '月圆',
+    startAt: '2025-06-08T09:00:00+07:00',
+    endAt: '2025-06-11T17:00:00+07:00',
+    department: '人事部门',
+    status: 'in-progress',
+    priority: '低优先',
+  },
 ];
 
 export const TabProgressTaskListSection = () => {
@@ -59,6 +91,7 @@ export const TabProgressTaskListSection = () => {
     <FilterListWrapper>
       <TaskList
         items={sampleTasks}
+        className="h-[57vh]"
         emptyState={{
           title: '未执行中记录',
           subtitle: '尝试查看其他类型',

@@ -13,7 +13,7 @@ import {
 
 interface Props {
   icon?: ReactNode;
-  btnLabel: string;
+  btnLabel?: string;
   title: string;
   description: string;
   open: boolean;

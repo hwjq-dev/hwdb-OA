@@ -51,12 +51,12 @@ const Form = () => {
           />
         </FormFieldWrapper>
 
-        {/*--- 调休原时间 ---*/}
-        <FormFieldWrapper label="调休原时间">
+        {/*--- 调班原时间 ---*/}
+        <FormFieldWrapper label="调班原时间">
           <CustomSelect
             className="rounded-lg !h-10 mb-0 !text-sm bg-white border-none"
             onChange={(v) => null}
-            placeholder="调休原时间"
+            placeholder="调班原时间"
             items={[
               { lable: '8:00 AM - 4:00 PM', value: '8:00 AM - 4:00 PM' },
               { lable: '8:00 AM - 5:00 PM', value: '8:00 AM - 5:00 PM' },
@@ -68,12 +68,12 @@ const Form = () => {
           />
         </FormFieldWrapper>
 
-        {/*--- 调休后时间 ---*/}
-        <FormFieldWrapper label="调休后时间">
+        {/*--- 调班后时间 ---*/}
+        <FormFieldWrapper label="调班后时间">
           <CustomSelect
             className="rounded-lg !h-10 mb-0 !text-sm bg-white border-none"
             onChange={(v) => null}
-            placeholder="调休后时间"
+            placeholder="调班后时间"
             items={[
               { lable: '8:00 AM - 4:00 PM', value: '8:00 AM - 4:00 PM' },
               { lable: '8:00 AM - 5:00 PM', value: '8:00 AM - 5:00 PM' },

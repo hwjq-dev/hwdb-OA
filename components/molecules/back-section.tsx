@@ -8,11 +8,12 @@ export const BackSection: React.FC<{ label: string }> = ({ label }) => {
 
   return (
     <div className="tornado-pattern relative px-2 py-3.5 bg-primary flex justify-center items-center">
-      <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center space-x-1.5">
-        <button
-          onClick={() => router.back()}
-          className="cursor-pointer p-1.5 bg-gray-400/30 backdrop-blur-2xl rounded-full "
-        >
+      <div
+        role="button"
+        onClick={() => router.back()}
+        className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center space-x-1.5"
+      >
+        <button className="cursor-pointer p-1.5 bg-gray-400/30 backdrop-blur-2xl rounded-full ">
           <ChevronLeft className="stroke-3 size-5 text-white" />
         </button>
         <span className="text-white font-medium text-sm">返回</span>

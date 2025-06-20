@@ -39,10 +39,10 @@ export const HighPositionFilter = () => {
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
-          <DrawerTitle className="pb-5 pt-3"> 选择过滤选项</DrawerTitle>
-          <div className="grid grid-cols-2 gap-2">
+          <DrawerTitle className="pb-5 pt-3">选择过滤选项</DrawerTitle>
+          <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="select" className="text-dark">
+              <Label htmlFor="select" className="text-dark text-sm">
                 任务状态
               </Label>
               <CustomSelect
@@ -59,14 +59,14 @@ export const HighPositionFilter = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="select" className="text-dark">
+              <Label htmlFor="select" className="text-dark text-sm">
                 任务日期
               </Label>
               <DatePicker />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="select" className="text-dark">
+              <Label htmlFor="select" className="text-dark text-sm">
                 任务优先
               </Label>
               <CustomSelect
@@ -81,7 +81,7 @@ export const HighPositionFilter = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="select" className="text-dark">
+              <Label htmlFor="select" className="text-dark text-sm">
                 任务负责任
               </Label>
               <SearchSelect

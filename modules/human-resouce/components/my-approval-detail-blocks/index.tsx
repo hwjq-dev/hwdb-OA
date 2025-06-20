@@ -3,7 +3,14 @@
  */
 
 import { EmptyState } from '@/components/molecules/empty-state';
+
+import { ChangeDayoffRequestDetail } from './change-day-off-request-detail';
+import { ChangeShiftRequestDetail } from './change-shift-request-detail';
+import { LateRequestDetail } from './late-request-detail';
 import { LeaveRequestDetail } from './leave-request-detail';
+import { OvertimeRequestDetail } from './overtime-request-detail';
+import { PunishmentRequestDetail } from './punishment-request-detail';
+import { ReclockRequestDetail } from './reclock-request-detail';
 
 export function MyApprovalDetailBlocksManager(props: { type: ApprovalType }) {
   switch (props.type) {
@@ -14,19 +21,22 @@ export function MyApprovalDetailBlocksManager(props: { type: ApprovalType }) {
       return <LeaveRequestDetail />;
 
     case '审批加班':
-      return <EmptyList />;
+      return <OvertimeRequestDetail />;
 
     case '审批调休':
-      return <EmptyList />;
+      return <ChangeDayoffRequestDetail />;
 
-    case '审批排班':
-      return <EmptyList />;
+    case '审批调班':
+      return <ChangeShiftRequestDetail />;
 
     case '审批免迟到':
-      return <EmptyList />;
+      return <LateRequestDetail />;
 
     case '审批补打卡':
-      return <EmptyList />;
+      return <ReclockRequestDetail />;
+
+    case '审批处罚':
+      return <PunishmentRequestDetail />;
 
     case '审批转正':
       return <EmptyList />;

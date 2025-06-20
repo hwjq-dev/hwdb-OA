@@ -27,11 +27,12 @@ export const ScreenContainer: React.FC<Props> = ({
   return (
     <div className={cn('relative z-10', className)}>
       {showBack && (
-        <div className="absolute left-4 top-11 -translate-y-1/2 flex space-x-1.5 items-center">
-          <button
-            onClick={() => router.back()}
-            className="cursor-pointer p-1.5 z-20 bg-gray-400/30 backdrop-blur-2xl rounded-full "
-          >
+        <div
+          role="button"
+          onClick={() => router.back()}
+          className="absolute left-4 top-11 -translate-y-1/2 flex space-x-1.5 items-center"
+        >
+          <button className="cursor-pointer p-1.5 z-20 bg-gray-400/30 backdrop-blur-2xl rounded-full ">
             <ChevronLeft className="stroke-3 size-5 text-white" />
           </button>
           <span className="text-white font-medium text-sm">返回</span>

@@ -27,25 +27,25 @@ export const TaskReportHeaderSection = () => {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-2 gap-4">
-          <p className="text-sm bg-primary py-2 px-3 font-medium text-white rounded-xs">
+          <p className="text-xs bg-primary py-2 px-3 font-medium text-white rounded-md">
             已分配人员 ：
             <span className="ml-3 font-bold">
               5 <span className="text-xs">个人</span>
             </span>
           </p>
-          <p className="text-sm font-medium bg-primary py-2 px-3 text-white rounded-xs">
+          <p className="text-xs font-medium bg-primary py-2 px-3 text-white rounded-md">
             按时已完成 ：
             <span className="ml-3 font-bold">
               3 <span className="text-xs">个任务</span>
             </span>
           </p>
-          <p className="text-sm font-medium bg-primary py-2 px-3 text-white rounded-xs">
+          <p className="text-xs font-medium bg-primary py-2 px-3 text-white rounded-md">
             已超时总数 ：
             <span className="ml-3 font-bold">
               1 <span className="text-xs">个任务</span>
             </span>
           </p>
-          <p className="text-sm font-medium bg-primary py-2 px-3 text-white rounded-xs">
+          <p className="text-xs font-medium bg-primary py-2 px-3 text-white rounded-md">
             自助分配人员 ：<span className="ml-3 font-bold">没有</span>
           </p>
         </div>

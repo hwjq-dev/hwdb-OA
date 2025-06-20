@@ -13,7 +13,7 @@ const items = [
   },
   {
     id: '202506192',
-    status: '审批中',
+    status: '已通过',
     name: '明华',
     applicationType: '加班',
     department: '产品',
@@ -22,7 +22,7 @@ const items = [
   },
   {
     id: '202506193',
-    status: '已通过',
+    status: '审批中',
     name: '明华',
     applicationType: '调班',
     department: '产品',
@@ -31,7 +31,7 @@ const items = [
   },
   {
     id: '202506194',
-    status: '已通过',
+    status: '审批中',
     name: '明华',
     applicationType: '调休',
     department: '产品',
@@ -40,7 +40,7 @@ const items = [
   },
   {
     id: '202506195',
-    status: '已通过',
+    status: '审批中',
     name: '明华',
     applicationType: '免迟到',
     department: '产品',

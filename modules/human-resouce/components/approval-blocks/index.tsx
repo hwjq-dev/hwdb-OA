@@ -3,27 +3,39 @@
  */
 
 import { EmptyState } from '@/components/molecules/empty-state';
+import { ApproveChangeDayoffRequest } from './approve-change-dayoff-request';
+import { ApproveChangeShiftRequest } from './approve-change-shift-request';
+import { ApproveLateRequest } from './approve-late-request';
+import { ApproveLeaveRequest } from './approve-leave-request';
+import { ApproveOvertimeRequest } from './approve-overtime-request';
+import { ApprovePunishmentRequest } from './approve-punishment-request';
+import { ApproveReclockRequest } from './approve-reclock-request';
 
 export function HrApprovalBlocksManager(props: { type: ApprovalType }) {
   switch (props.type) {
     default:
-    case '审批请假':
       return <EmptyList />;
+
+    case '审批请假':
+      return <ApproveLeaveRequest />;
 
     case '审批加班':
-      return <EmptyList />;
+      return <ApproveOvertimeRequest />;
 
     case '审批调休':
-      return <EmptyList />;
+      return <ApproveChangeDayoffRequest />;
 
-    case '审批排班':
-      return <EmptyList />;
+    case '审批调班':
+      return <ApproveChangeShiftRequest />;
 
     case '审批免迟到':
-      return <EmptyList />;
+      return <ApproveLateRequest />;
 
     case '审批补打卡':
-      return <EmptyList />;
+      return <ApproveReclockRequest />;
+
+    case '审批处罚':
+      return <ApprovePunishmentRequest />;
 
     case '审批转正':
       return <EmptyList />;

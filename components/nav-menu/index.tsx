@@ -11,8 +11,8 @@ export const NavMenu = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex flex-col justify-center absolute bg-white !bottom-0 right-0 left-0 !z-40 w-full px-3.5 h-16 shadow-[0px_-4px_25px_-13px_#a3b0b8]">
-      <div className="grid grid-cols-4 gap-4">
+    <div className="flex flex-col justify-center absolute bg-white !bottom-2 right-2 left-2 !z-40 px-3.5 h-16 shadow-[0px_-4px_25px_-13px_#a3b0b8] rounded-3xl">
+      <div className="grid grid-cols-3 gap-4">
         <Menu
           icon="check"
           label="工作台"
@@ -25,12 +25,12 @@ export const NavMenu = () => {
           active={pathname.startsWith(ROUTES.NOTIFICATION)}
           link={ROUTES.NOTIFICATION}
         />
-        <Menu
+        {/* <Menu
           icon="list"
           label="任务"
           active={pathname.startsWith(ROUTES.TASK)}
           link={ROUTES.TASK}
-        />
+        /> */}
         <Menu
           icon="profile"
           label="我的"
@@ -56,9 +56,11 @@ const Menu: React.FC<MenuProps> = ({ active, icon, label, link }) => {
 
   return (
     <Link href={link || '#'}>
-      <div className="flex flex-col items-center justify-center">
-        <Icon className={cn('text-dark/90 size-7', { 'text-primary': active })} />
-        <span className={cn('font-medium text-dark', { 'text-primary': active })}>{label}</span>
+      <div className="flex flex-col space-y-1 items-center justify-center">
+        <Icon
+          className={cn('text-gray-500/80 stroke-[1.5px] size-6', { 'text-primary': active })}
+        />
+        <span className={cn('text-sm text-gray-500/80', { 'text-primary': active })}>{label}</span>
       </div>
     </Link>
   );

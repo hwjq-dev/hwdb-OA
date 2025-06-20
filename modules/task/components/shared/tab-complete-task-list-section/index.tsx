@@ -59,6 +59,7 @@ export const TabCompleteTaskListSection = () => {
     <FilterListWrapper>
       <TaskList
         items={sampleTasks}
+        className="h-[57vh]"
         emptyState={{
           title: '未已完成记录',
           subtitle: '尝试查看其他类型',

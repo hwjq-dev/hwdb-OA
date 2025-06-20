@@ -35,8 +35,10 @@ export const TestLogin = () => {
               <SelectValue placeholder={<span className="!text-white">选择级别</span>} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="下级">下级</SelectItem>
-              <SelectItem value="上级">上级</SelectItem>
+              <SelectItem value="员工">员工</SelectItem>
+              <SelectItem value="主管">主管</SelectItem>
+              <SelectItem value="经理">经理</SelectItem>
+              <SelectItem value="总经理">总经理</SelectItem>
             </SelectContent>
           </Select>
         </div>

@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { Toaster } from '@/components/ui/sonner';
 import { TanstackProvider } from '@/lib/tanstack-provider';
 
-import { pingFang, ubuntu } from './fonts';
+import { notoSans } from './fonts';
 
 import './globals.css';
 
@@ -16,7 +16,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang="zh">
       <body
-        className={`relative h-[100dvh] overflow-hidden ${ubuntu.className} ${pingFang.className} antialiased`}
+        className={`relative h-[100dvh] overflow-hidden ${notoSans.className}antialiased`}
         suppressHydrationWarning
       >
         <TanstackProvider>{children}</TanstackProvider>

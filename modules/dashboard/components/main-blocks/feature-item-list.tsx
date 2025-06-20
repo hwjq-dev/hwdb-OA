@@ -27,9 +27,12 @@ interface ItemProps {
   icon: StaticImageData;
   label: string;
   link: string;
+  isHide: boolean;
 }
 
-const Item: React.FC<ItemProps> = ({ alt, icon, label, link }) => {
+const Item: React.FC<ItemProps> = ({ alt, icon, label, link, isHide = false }) => {
+  if (isHide) return null;
+
   return (
     <Link href={link || '#'}>
       <div className="flex flex-col bg-gray-100/70 px-1 py-2 rounded-xl items-center justify-center space-y-1.5">

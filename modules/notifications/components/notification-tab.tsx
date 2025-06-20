@@ -44,18 +44,18 @@ export const NotificationTab = () => {
 
       <TabsContent
         value="tab-1"
-        className="h-[75dvh] overflow-y-auto pb-2 scrollbar scrollbar-none"
+        className="h-[74dvh] overflow-y-auto pb-2 scrollbar scrollbar-none"
       >
         <div className="text-muted-foreground p-4 text-center text-sm">
           <NotificationList />
         </div>
       </TabsContent>
-      <TabsContent value="tab-2" className="h-[75dvh] flex flex-col justify-center">
+      <TabsContent value="tab-2" className="h-[74dvh] flex flex-col justify-center">
         <div className="text-muted-foreground p-4 text-center text-sm">
           <EmptyState title="未审批通知" subtitle="当前没有通知推送" type="notification" />
         </div>
       </TabsContent>
-      <TabsContent value="tab-3" className="h-[75dvh] flex flex-col justify-center">
+      <TabsContent value="tab-3" className="h-[74dvh] flex flex-col justify-center">
         <div className="text-muted-foreground p-4 text-center text-sm">
           <EmptyState title="未任务通知" subtitle="当前没有通知推送" type="notification" />
         </div>

@@ -46,8 +46,11 @@ export const ROUTES = {
   $HR_APPROVAL: function (params: ApprovalType) {
     return `${this.HR_APPROVAL}?type=${params}`;
   },
+  $HR_APPROVAL_DETAIL: function (id: string | number, params: string) {
+    return `${this.HR_APPROVAL}/${id}/?type=${params}`;
+  },
   $HR_DETAIL: function (id: string | number, params: string) {
-    return `${this.HR}/${id}?type=${params}`;
+    return `${this.HR}/${id}/?type=${params}`;
   },
 
   //-- Profile-Routing

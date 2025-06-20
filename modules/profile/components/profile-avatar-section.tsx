@@ -9,11 +9,11 @@ export const ProfileAvatarSection = () => {
         <AvatarFallback className="bg-white text-gray-500 font-medium">HW</AvatarFallback>
       </Avatar>
       <div>
-        <p className="font-semibold text-white">小猫</p>
+        <p className="font-semibold text-white">明华</p>
         <div className="flex space-x-3">
-          <span className="text-white">运维 - 员工</span>
+          <span className="text-white">产品 - 员工</span>
           <div className="border-r w-0.5 border-dashed h-4 my-auto" />
-          <span className="text-white">JQ99</span>
+          <span className="text-white">CP23</span>
         </div>
       </div>
       <Badge variant="secondary" className="size-fit absolute -right-2 top-3 px-2 py-1">

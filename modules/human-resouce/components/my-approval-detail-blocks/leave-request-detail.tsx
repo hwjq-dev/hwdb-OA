@@ -1,15 +1,16 @@
+import { Step } from '@/components/molecules/step';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { getDiff, getFormatDatetime } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
-import { IconUser } from '@tabler/icons-react';
-import { CircleCheckBig } from 'lucide-react';
 
 const data = {
   id: '202506191',
   name: '明华',
   status: '审批中',
   requestType: '请假',
+  title: '事假',
+  cardNumber: 'CP-23',
   department: '产品',
   position: '员工',
   createdAt: '2025-06-17T10:02:00+07:00',
@@ -21,7 +22,7 @@ const data = {
 export const LeaveRequestDetail = () => {
   return (
     <div className="space-y-3">
-      <div className="relative bg-gray-50 rounded-2xl p-2">
+      <div className="relative rounded-2xl p-2 shadow-[0px_0px_23px_0px_rgba(0,_0,_0,_0.1)]">
         <div className="bg-white p-2 rounded-xl">
           <div className="flex space-x-3 items-center mt-1">
             <div className="p-1 bg-white rounded-full">
@@ -38,7 +39,13 @@ export const LeaveRequestDetail = () => {
             </div>
             <div>
               <p className="font-bold">{data.name}</p>
-              <p className="text-xs text-yellow-500">{data.status}</p>
+              <p
+                className={cn('text-xs text-yellow-500', {
+                  'text-green-500': data.status === '已通过',
+                })}
+              >
+                {data.status}
+              </p>
             </div>
           </div>
 
@@ -46,154 +53,111 @@ export const LeaveRequestDetail = () => {
             className="absolute top-5 right-5 bg-white text-primary border-primary-200"
             variant="outline"
           >
-            {data.requestType}
+            工号： {data.cardNumber}
           </Badge>
 
-          <div className="w-5/6 mt-4 mx-auto border-gray-200 h-0.5 border-t border-dashed" />
+          <div className="w-[95%] mt-4 mx-auto border-gray-200 h-0.5 border-t border-dashed" />
 
-          <div className="px-3 [&>*]:pl-2 space-y-1.5 pt-4">
-            <p>
-              <span className="font-bold">审批编号</span> : {data.id}
-            </p>
-            <p>
-              <span className="font-bold">申请者</span> : {data.name}
+          <div className="[&>*]:pl-2 space-y-2 pt-5 pb-2">
+            <p className="grid grid-cols-3">
+              <span className="font-bold text-sm col-span-1">审批编号</span>
+              <span className="col-span-2 text-sm ml-1">{data.id}</span>
             </p>
 
-            <p>
-              <span className="font-bold">申请时间</span> :
-              <span className="text-sm ml-1">{getFormatDatetime(new Date(data.createdAt))}</span>
+            <p className="grid grid-cols-3">
+              <span className="font-bold col-span-1 text-sm">申请者</span>
+              <span className="col-span-2 ml-1">
+                {data.name} - {data.position}
+              </span>
             </p>
-            <p>
-              <span className="font-bold">开始时间</span> :
-              <span className="text-sm ml-1">{getFormatDatetime(new Date(data.startAt))}</span>
+
+            <p className="grid grid-cols-3 items-center">
+              <span className="font-bold col-span-1 text-sm">审批类型</span>
+              <span className="col-span-2 ml-1">
+                {data.requestType} - {data.title}
+              </span>
             </p>
-            <p>
-              <span className="font-bold">截止时间</span> :
-              <span className="text-sm ml-1">{getFormatDatetime(new Date(data.endAt))}</span>
+
+            <p className="grid grid-cols-3">
+              <span className="font-bold col-span-1 text-sm">申请时间</span>
+              <span className="text-sm ml-1 col-span-2">
+                {getFormatDatetime(new Date(data.createdAt))}
+              </span>
             </p>
-            <p>
-              <span className="font-bold">合计时长</span> :
-              <span className="text-sm ml-1">
+
+            <p className="grid grid-cols-3">
+              <span className="font-bold col-span-1 text-sm">开始时间</span>
+              <span className="text-sm ml-1 col-span-2">
+                {getFormatDatetime(new Date(data.startAt))}
+              </span>
+            </p>
+
+            <p className="grid grid-cols-3">
+              <span className="font-bold col-span-1 text-sm">截止时间</span>
+              <span className="text-sm ml-1 col-span-2">
+                {getFormatDatetime(new Date(data.endAt))}
+              </span>
+            </p>
+
+            <p className="grid grid-cols-3">
+              <span className="font-bold col-span-1 text-sm">请假时长</span>
+              <span className="text-sm ml-1 col-span-2">
                 {getDiff(new Date(data.startAt), new Date(data.endAt))}
               </span>
             </p>
-            <p>
-              <span className="font-bold">请假原因</span> :
-              <span className="text-sm ml-1">{data.reason}</span>
+
+            <p className="grid grid-cols-3">
+              <span className="font-bold col-span-1 text-sm">请假原因</span>
+              <span className="text-sm ml-1 col-span-2">{data.reason}</span>
             </p>
           </div>
         </div>
       </div>
 
-      <div className="relative bg-gray-50 rounded-2xl p-2">
-        <div className="bg-white p-3 rounded-xl flex flex-col space-y-8">
-          {/*-- step1 --*/}
-          <div className="relative flex items-start space-x-3">
-            <div className="bg-orange-50 rounded-full p-3 w-fit">
-              <IconUser className="size-6 text-orange" />
-            </div>
-            <div>
-              <p className="text-sm font-bold flex items-center space-x-2">
-                <span>发起申请</span>
-                {/* <span>
-                  <CircleCheckBig className="size-4 text-green-500" />
-                </span> */}
-              </p>
-              <p className="text-[10px] mt-1">{getFormatDatetime(new Date(data.createdAt))}</p>
-              <p className="text-xs font-medium">
-                {data.name} - {data.department}
-                {data.position}
-              </p>
-            </div>
-            <div className="absolute top-1/2 right-4 -translate-y-1/2 flex space-x-2 items-center">
-              <span>
-                <CircleCheckBig className="size-5 text-green-500" />
-              </span>
-              <span className="text-sm text-dark">发起人</span>
-            </div>
-            <div className="h-12 w-0.5 bg-gray-100 absolute -bottom-10 left-6" />
-          </div>
+      <Steppers />
+    </div>
+  );
+};
 
-          {/*-- step2 --*/}
-          <div className="relative flex items-start space-x-3">
-            <div className="bg-orange-50 rounded-full p-3 w-fit">
-              <IconUser className="size-6 text-orange" />
-            </div>
-            <div>
-              <p className="text-sm font-bold flex items-center space-x-2">
-                <span>发起申请</span>
-                {/* <span>
-                  <CircleCheckBig className="size-4 text-green-500" />
-                </span> */}
-              </p>
-              <p className="text-[10px] mt-1">{getFormatDatetime(new Date(data.createdAt))}</p>
-              <p className="text-xs font-medium">
-                {data.name} - {data.department}
-                {data.position}
-              </p>
-            </div>
-            <div className="absolute top-1/2 right-4 -translate-y-1/2 flex space-x-2 items-center">
-              <span>
-                <CircleCheckBig className="size-5 text-green-500" />
-              </span>
-              <span className="text-sm text-dark">发起人</span>
-            </div>
-            <div className="h-12 w-0.5 bg-gray-100 absolute -bottom-10 left-6" />
-          </div>
+const Steppers = () => {
+  return (
+    <div className="relative rounded-2xl p-2 shadow-[0px_0px_23px_0px_rgba(0,_0,_0,_0.1)]">
+      <div className="bg-white p-3 rounded-xl flex flex-col space-y-8">
+        {/*-- step1 --*/}
+        <Step
+          type="default"
+          title="发起申请"
+          subtitle={`${data.name} - ${data.department}${data.position}`}
+          date="2025-06-20"
+          label="发起"
+          isApproved
+        />
 
-          {/*-- step3 --*/}
-          <div className="relative flex items-start space-x-3">
-            <div className="bg-orange-50 rounded-full p-3 w-fit">
-              <IconUser className="size-6 text-orange" />
-            </div>
-            <div>
-              <p className="text-sm font-bold flex items-center space-x-2">
-                <span>发起申请</span>
-                {/* <span>
-                  <CircleCheckBig className="size-4 text-green-500" />
-                </span> */}
-              </p>
-              <p className="text-[10px] mt-1">{getFormatDatetime(new Date(data.createdAt))}</p>
-              <p className="text-xs font-medium">
-                {data.name} - {data.department}
-                {data.position}
-              </p>
-            </div>
-            <div className="absolute top-1/2 right-4 -translate-y-1/2 flex space-x-2 items-center">
-              <span>
-                <CircleCheckBig className="size-5 text-green-500" />
-              </span>
-              <span className="text-sm text-dark">发起人</span>
-            </div>
-            <div className="h-12 w-0.5 bg-gray-100 absolute -bottom-10 left-6" />
-          </div>
+        {/*-- step2 --*/}
+        <Step
+          type="主管"
+          title="部门主管"
+          subtitle={`利税 - 产品主管`}
+          date="2025-06-20"
+          label="通过"
+          isApproved
+        />
 
-          {/*-- step4 --*/}
-          <div className="relative flex items-start space-x-3">
-            <div className="bg-orange-50 rounded-full p-3 w-fit">
-              <IconUser className="size-6 text-orange" />
-            </div>
-            <div>
-              <p className="text-sm font-bold flex items-center space-x-2">
-                <span>发起申请</span>
-                {/* <span>
-                  <CircleCheckBig className="size-4 text-green-500" />
-                </span> */}
-              </p>
-              <p className="text-[10px] mt-1">{getFormatDatetime(new Date(data.createdAt))}</p>
-              <p className="text-xs font-medium">
-                {data.name} - {data.department}
-                {data.position}
-              </p>
-            </div>
-            <div className="absolute top-1/2 right-4 -translate-y-1/2 flex space-x-2 items-center">
-              <span>
-                <CircleCheckBig className="size-5 text-green-500" />
-              </span>
-              <span className="text-sm text-dark">发起人</span>
-            </div>
-          </div>
-        </div>
+        {/*-- step3 --*/}
+        <Step type="人事" title="人事经理" subtitle="" label="待定" isApproved={false} />
+
+        {/*-- step4 --*/}
+        <Step
+          type="经理"
+          title="部门经理"
+          subtitle="李敏 - 产品经理"
+          date="2025-06-19"
+          label="待定"
+          isApproved={true}
+        />
+
+        {/*-- step5 --*/}
+        <Step type="总经理" title="总经理" subtitle="" label="待定" isApproved={false} />
       </div>
     </div>
   );
