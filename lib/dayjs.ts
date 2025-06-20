@@ -29,6 +29,18 @@ export function getFormatHumanReadable(date: Date, flag?: boolean) {
 //   return relative;
 // }
 
+export function getChineseGreeting() {
+  const hour = dayjs().hour();
+
+  if (hour >= 5 && hour < 12) {
+    return '早上好';
+  } else if (hour >= 12 && hour < 18) {
+    return '下午好';
+  } else {
+    return '晚上好';
+  }
+}
+
 export function getDiff(startAt: Date, endAt: Date) {
   extend(duration);
   const diffMinute = dayjs(endAt).diff(startAt, 'minute');
