@@ -15,7 +15,7 @@ const data = [
     id: 1,
     alt: 'profile-setting.png',
     icon: ProfileSettingLogo,
-    label: '账号设置',
+    label: '个人资料',
     link: ROUTES.PROFILE_ACCOUNTS,
   },
   // {
