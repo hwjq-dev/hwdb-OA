@@ -26,7 +26,7 @@ export const TaskList: React.FC<Props> = ({
       {items.length ? (
         <div
           className={cn(
-            'h-[55dvh] overflow-y-auto mb-16 scroll-smooth relative !scrollbar-none !scrollbar-thin',
+            'h-[48dvh] overflow-y-auto pb-2 scroll-smooth relative !scrollbar-none !scrollbar-thin',
             className,
           )}
         >

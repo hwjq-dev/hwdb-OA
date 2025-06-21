@@ -91,7 +91,7 @@ export const TabProgressTaskListSection = () => {
     <FilterListWrapper>
       <TaskList
         items={sampleTasks}
-        className="h-[57vh]"
+        className="h-[52dvh]"
         emptyState={{
           title: '未执行中记录',
           subtitle: '尝试查看其他类型',
