@@ -37,7 +37,7 @@ const Item: React.FC<ItemProps> = ({ alt, icon, label, link, isHide = false }) =
     <Link href={link || '#'}>
       <div className="flex flex-col bg-gray-100/70 px-1 py-2 rounded-xl items-center justify-center space-y-1.5">
         <Image width={32} height={32} src={icon} className="object-cover" alt={alt} priority />
-        <span className="text-[13px] font-medium text-dark">{label}</span>
+        <span className="text-xs font-medium text-dark">{label}</span>
       </div>
     </Link>
   );

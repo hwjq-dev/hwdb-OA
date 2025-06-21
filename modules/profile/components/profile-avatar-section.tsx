@@ -1,7 +1,12 @@
+'use client';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { useAccountDetect } from '@/hooks/use-account-detect';
 
 export const ProfileAvatarSection = () => {
+  const { level } = useAccountDetect();
+
   return (
     <div className="bg-gradient-to-r overflow-hidden from-primary/90 to-primary/60 relative flex space-x-5 shadow-[0px_0px_38px_0px_rgba(0,_0,_0,_0.1)] mx-1 mt-2 rounded-3xl py-7 px-4">
       <Avatar className="size-14">
@@ -11,7 +16,7 @@ export const ProfileAvatarSection = () => {
       <div>
         <p className="font-semibold text-white">明华</p>
         <div className="flex space-x-3">
-          <span className="text-white">产品 - 员工</span>
+          <span className="text-white">产品 - {level}</span>
           <div className="border-r w-0.5 border-dashed h-4 my-auto" />
           <span className="text-white">CP23</span>
         </div>

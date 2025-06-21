@@ -104,7 +104,7 @@ const Item: React.FC<ItemProps> = ({
           className,
         )}
       >
-        <span className={cn('text-sm text-primary font-medium', textClassName)}>{label}</span>
+        <span className={cn('text-xs text-primary font-medium', textClassName)}>{label}</span>
         <span className="p-1 bg-white rounded-full shadow-xs">{Icon}</span>
       </div>
     </Link>
