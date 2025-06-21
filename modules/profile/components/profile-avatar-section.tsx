@@ -6,11 +6,13 @@ import { useAccountDetect } from '@/hooks/use-account-detect';
 
 export const ProfileAvatarSection = () => {
   const { level } = useAccountDetect();
-
   return (
     <div className="bg-gradient-to-r overflow-hidden from-primary/90 to-primary/60 relative flex space-x-5 shadow-[0px_0px_38px_0px_rgba(0,_0,_0,_0.1)] mx-1 mt-2 rounded-3xl py-7 px-4">
       <Avatar className="size-14">
-        <AvatarImage src="#" />
+        <AvatarImage
+          className="object-cover"
+          src="https://res.cloudinary.com/dwz2dln92/image/upload/v1750042027/p-1_qecyoq.avif"
+        />
         <AvatarFallback className="bg-white text-gray-500 font-medium">HW</AvatarFallback>
       </Avatar>
       <div>
