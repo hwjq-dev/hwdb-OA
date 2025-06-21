@@ -1,5 +1,6 @@
-import { Label } from '@/components/ui/label';
 import { PropsWithChildren } from 'react';
+
+import { Label } from '@/components/ui/label';
 
 export const FormFieldWrapper: React.FC<{ label: string } & PropsWithChildren> = ({
   label,

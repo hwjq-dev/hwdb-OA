@@ -1,4 +1,5 @@
 import { ROUTES } from '@/config/route';
+
 import { MyApprovalCard, type Props as MyApprovalCardProps } from '../base/my-approval-card';
 
 export const WaitApprovalList: React.FC<{ items: MyApprovalCardProps[] }> = ({ items }) => {

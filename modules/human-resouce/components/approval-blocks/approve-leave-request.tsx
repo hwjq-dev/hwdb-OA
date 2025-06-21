@@ -32,7 +32,7 @@ const items = [
   {
     id: '202506194',
     status: '审批中',
-    name: '',
+    name: '扇面',
     applicationType: '请假',
     department: '产品',
     position: '员工',
@@ -56,7 +56,7 @@ export const ApproveLeaveRequest = () => {
         <ApprovalFilter />
       </div>
 
-      <div className="h-[80dvh] overflow-y-auto px-1 scrollbar-none">
+      <div className="h-[78dvh] pb-4 overflow-y-auto px-1 scrollbar-none">
         <ApprovalList items={items as never} />
       </div>
     </div>

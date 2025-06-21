@@ -30,16 +30,16 @@ export const ApprovalFilter = () => {
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
               <Label htmlFor="select" className="text-dark">
-                审批类型
+                申请者
               </Label>
               <CustomSelect
                 onChange={(v) => null}
-                placeholder="选择审批类型"
+                placeholder="选择申请者"
                 items={[
-                  { lable: '请假', value: '请假' },
-                  { lable: '加班', value: '加班' },
-                  { lable: '调休', value: '调休' },
-                  { lable: '调班', value: '调班' },
+                  { lable: '明华', value: '明华' },
+                  { lable: '深泽', value: '深泽' },
+                  { lable: '蓝米', value: '蓝米' },
+                  { lable: '龙米', value: '龙米' },
                 ]}
               />
             </div>

@@ -40,6 +40,9 @@ export const MyApprovalFilter = () => {
                   { lable: '加班', value: '加班' },
                   { lable: '调休', value: '调休' },
                   { lable: '调班', value: '调班' },
+                  { lable: '免迟到', value: '免迟到' },
+                  { lable: '补打卡', value: '补打卡' },
+                  { lable: '处罚', value: '处罚' },
                 ]}
               />
             </div>

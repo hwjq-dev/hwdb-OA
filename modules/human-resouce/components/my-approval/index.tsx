@@ -55,7 +55,7 @@ export const MyApproval = () => (
       <MyApprovalFilter />
     </div>
 
-    <div className="h-[80dvh] overflow-y-auto px-1 scrollbar-none">
+    <div className="h-[78dvh] pb-4 overflow-y-auto px-1 scrollbar-none">
       <MyApprovalList items={items as never} />
     </div>
   </div>

@@ -43,7 +43,7 @@ export const ProfileMenuItem = () => {
         <Item key={i} {...x} />
       ))}
 
-      <div className="absolute bottom-6 right-0 left-0 flex justify-center">
+      <div className="absolute bottom-[8%] right-0 left-0 flex justify-center">
         <Button
           size="lg"
           variant="default"
