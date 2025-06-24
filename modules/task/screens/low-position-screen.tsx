@@ -2,9 +2,9 @@
 
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+
 import { LowPositionStats } from '../components/low-position/low-position-stats';
 import { LowPositionTabSectionList } from '../components/low-position/low-position-tab-section-list';
-import { CreateTaskForm } from '../components/shared/create-task-from';
 
 export const LowPositionScreen = () => {
   const router = useRouter();
@@ -21,11 +21,15 @@ export const LowPositionScreen = () => {
         <span className="text-white font-medium text-sm">返回</span>
       </div>
 
-      <LowPositionStats />
-      <div className="mt-10 mx-2">
-        <CreateTaskForm />
+      <div className="min-h-[184px]">
+        <LowPositionStats />
       </div>
-      <LowPositionTabSectionList />
+      {/* <div className="mt-10 mx-2">
+        <CreateTaskForm />
+      </div> */}
+      <div className="relative">
+        <LowPositionTabSectionList />
+      </div>
     </div>
   );
 };

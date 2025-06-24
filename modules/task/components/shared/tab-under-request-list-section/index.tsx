@@ -17,7 +17,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-09T14:00:00+07:00',
     endAt: '2025-06-11T18:00:00+07:00',
     department: '技术部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '中优先',
   },
   {
@@ -33,7 +33,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-08T10:00:00+07:00',
     endAt: '2025-06-10T18:30:00+07:00',
     department: '技术部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '高优先',
   },
   {
@@ -49,7 +49,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-08T09:00:00+07:00',
     endAt: '2025-06-11T17:00:00+07:00',
     department: '人事部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '低优先',
   },
   {
@@ -65,7 +65,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-08T09:00:00+07:00',
     endAt: '2025-06-11T17:00:00+07:00',
     department: '人事部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '低优先',
   },
   {
@@ -81,19 +81,19 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-08T09:00:00+07:00',
     endAt: '2025-06-11T17:00:00+07:00',
     department: '人事部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '低优先',
   },
 ];
 
-export const TabProgressTaskListSection = () => {
+export const TabUnderRequestTaskListSection = () => {
   return (
     <FilterListWrapper>
       <TaskList
         items={sampleTasks}
         className="h-[calc(100dvh-338px)]"
         emptyState={{
-          title: '未执行中记录',
+          title: '未申请中记录',
           subtitle: '尝试查看其他类型',
         }}
       />

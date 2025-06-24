@@ -89,6 +89,7 @@ export const HighPositionList = () => {
       <TaskList
         showAssignee
         type="request-approve"
+        className="!h-[calc(100dvh-410px)]"
         items={sampleTasks}
         emptyState={{
           title: '未记录',

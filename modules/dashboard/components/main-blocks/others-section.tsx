@@ -8,6 +8,8 @@ import { ReactNode } from 'react';
 import { ROUTES } from '@/config/route';
 import { useAccountDetect } from '@/hooks/use-account-detect';
 import { cn } from '@/lib/utils';
+import { TaskAssignForm } from '@/modules/task/components/high-position/task-assignment';
+import { CreateFormModal } from '@/modules/task/components/shared/create-task-from';
 
 export const OthersSection = () => {
   const { level } = useAccountDetect();
@@ -19,7 +21,23 @@ export const OthersSection = () => {
       className: 'bg-purple-200/60',
       textClassName: 'text-purple-500',
       link: ROUTES.TASK,
-      isHide: false,
+      isHide: level === '总经理' ? true : false,
+    },
+    {
+      icon: <IconChecklist className="size-4 text-lime-400" />,
+      label: '审核任务',
+      className: 'bg-lime-200/40',
+      textClassName: 'text-lime-500',
+      link: ROUTES.TASK_REQUEST_APPROVAL,
+      isHide: level === '总经理' ? false : true,
+    },
+    {
+      icon: <IconChecklist className="size-4 text-sky-400" />,
+      label: '发布任务',
+      className: 'bg-sky-200/40',
+      textClassName: 'text-sky-500',
+      link: '', // if it is not link, leave it blank
+      isHide: level === '总经理' ? true : false,
     },
     {
       icon: <Megaphone className="size-4 text-primary" />,
@@ -30,12 +48,28 @@ export const OthersSection = () => {
       isHide: level === '员工',
     },
     {
+      icon: <TaskAssignForm icon={<IconChecklist className="size-4 text-emerald-400" />} />,
+      label: '分配任务',
+      className: 'bg-emerald-200/40',
+      textClassName: 'text-emerald-500',
+      link: '',
+      isHide: level === '总经理' ? false : true,
+    },
+    {
       icon: <IconSitemap className="size-4 text-yellow-400" />,
       label: '组织架构',
       className: 'bg-yellow-100/60',
       textClassName: 'text-yellow-500',
       link: ROUTES.ORGANIZATIONAL_STRUCTURE,
       isHide: level === '经理' || level === '主管' || level === '员工',
+    },
+    {
+      icon: <IconSitemap className="size-4 text-pink-400" />,
+      label: '考勤记录',
+      className: 'bg-pink-100/60',
+      textClassName: 'text-pink-500',
+      link: ROUTES.HR_ATTENDENCE,
+      isHide: false,
     },
     // {
     //   icon: <IconUser className="size-4 text-green-500" />,
@@ -68,10 +102,27 @@ export const OthersSection = () => {
         </span>
         <p className="font-bold">常用功能</p>
       </div>
+
+      {/*-- 常用功能: 只能总经理显示 --*/}
+      {level === '总经理' && <GridList items={items.filter((x) => !x.isHide)} />}
+
+      {/*-- 常用功能: 别的角色使用这种UI展示 --*/}
       <div className="grid grid-cols-3 gap-3 mt-3.5">
-        {items.map((x, i) => (
-          <Item key={i} {...x} />
-        ))}
+        {level !== '总经理' &&
+          items.map((x, i) =>
+            x.label == '发布任务' ? (
+              <CreateFormModal
+                key={i}
+                icon={
+                  <div>
+                    <Item {...x} />
+                  </div>
+                }
+              />
+            ) : (
+              <Item key={i} {...x} />
+            ),
+          )}
       </div>
     </div>
   );
@@ -96,6 +147,19 @@ const Item: React.FC<ItemProps> = ({
 }) => {
   if (isHide) return null;
 
+  if (!link)
+    return (
+      <div
+        className={cn(
+          'bg-primary-100 rounded-md px-2.5 py-1.5 flex items-center justify-between',
+          className,
+        )}
+      >
+        <span className={cn('text-xs text-primary font-medium', textClassName)}>{label}</span>
+        <span className="p-1 bg-white rounded-full shadow-xs">{Icon}</span>
+      </div>
+    );
+
   return (
     <Link href={link || '#'}>
       <div
@@ -108,5 +172,53 @@ const Item: React.FC<ItemProps> = ({
         <span className="p-1 bg-white rounded-full shadow-xs">{Icon}</span>
       </div>
     </Link>
+  );
+};
+
+// 总经理 UI
+
+const GridList: React.FC<{ items: ItemProps[] }> = ({ items }) => {
+  return (
+    <div className="relative grid grid-cols-3 gap-4 mt-3.5">
+      {items?.length >= 4 && (
+        <div className="h-full translate-x-2 w-[1px] absolute left-[calc((100%/3)-0.7rem)] top-0 bg-gradient-to-t from-transparent via-primary/30 to-transparent" />
+      )}
+
+      {items?.length > 3 && (
+        <div className="h-full translate-x-2 w-[1px] absolute left-[calc((100%/3*2)-0.4rem)] top-0 bg-gradient-to-t from-transparent via-primary/30 to-transparent" />
+      )}
+
+      {items?.length > 3 && (
+        <div className="h-[1px] w-full absolute left-0 right-0 top-[6rem] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      )}
+
+      {items?.length > 6 && (
+        <div className="h-[1px] w-full absolute left-0 right-0 top-[12.5rem] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+      )}
+
+      {/*-- Content --*/}
+      {items?.map((x, i) =>
+        !x.link ? (
+          <div
+            key={i}
+            className="flex justify-center cursor-pointer items-center space-y-2 rounded-lg py-3 flex-col"
+          >
+            <span className={cn('[&>*]:size-6 rounded-full p-2', x.className)}>{x.icon}</span>
+            <p className="text-xs">{x.label}</p>
+          </div>
+        ) : (
+          <Link
+            href={x.link}
+            key={i}
+            className={cn(
+              'flex justify-center cursor-pointer items-center rounded-lg space-y-2 py-3 flex-col',
+            )}
+          >
+            <span className={cn('[&>*]:size-6 rounded-full p-2', x.className)}>{x.icon}</span>
+            <p className="text-xs">{x.label}</p>
+          </Link>
+        ),
+      )}
+    </div>
   );
 };

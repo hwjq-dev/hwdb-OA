@@ -7,6 +7,7 @@ import { ROUTES } from '@/config/route';
 import { useDiscloser } from '@/hooks/use-discloser';
 import { getFormatDatetime } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
+import { IconCircleDashedX } from '@tabler/icons-react';
 import { CircleCheckBig } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
@@ -91,6 +92,14 @@ const ApprovalButton: React.FC<ApprovalButtonProps> = ({ id }) => {
         toast(`申请 ${id} 已审批成功.`, {
           className: '!w-3/4 !ml-auto !mr-6',
           icon: <CircleCheckBig className="text-green-500" />,
+          position: 'top-center',
+        });
+      }}
+      onDeny={() => {
+        close();
+        toast(`申请 ${id} 已拒绝.`, {
+          className: '!w-3/4 !ml-auto !mr-6',
+          icon: <IconCircleDashedX className="text-red-500" />,
           position: 'top-center',
         });
       }}

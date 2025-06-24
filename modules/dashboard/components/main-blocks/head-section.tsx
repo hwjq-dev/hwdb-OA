@@ -31,7 +31,7 @@ export const HrHeaderSection = () => {
       </div>
 
       <div className="absolute z-50 left-1 top-3 rounded-xl pl-3 pr-6 py-1.5 bg-primary/10 backdrop-blur-2xl">
-        <p className="text-white text-xl font-bold z-50">欢迎来到好旺OA</p>
+        <p className="text-white text-xl font-bold z-50">OA系统</p>
         <p className="text-gray-200 text-xs font-medium">提供现代办公的专业操作</p>
       </div>
 

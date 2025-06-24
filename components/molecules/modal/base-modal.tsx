@@ -16,7 +16,7 @@ interface Props {
   icon?: ReactNode;
   open: boolean;
   title: string;
-  description: string;
+  description?: string;
   onClose: () => void;
   onOpenChange?: (open: boolean) => void;
 }
@@ -43,8 +43,6 @@ export const BaseModal: React.FC<Props & React.PropsWithChildren> = ({
           <FormHeader label={title} description={description} onClick={onClose} />
         </DialogHeader>
 
-        {/*--- Indicator ---*/}
-        <div className="bg-gradient-to-r my-2 from-gray-400/10 via-60% via-primary to-gray-400/10 w-full h-[1px] rounded-full" />
         {children}
       </DialogContent>
     </Dialog>
@@ -53,7 +51,7 @@ export const BaseModal: React.FC<Props & React.PropsWithChildren> = ({
 
 interface FormHeaderProps {
   label: string;
-  description: string;
+  description?: string;
   onClick: () => void;
 }
 const FormHeader: React.FC<FormHeaderProps> = (props) => {
@@ -65,7 +63,7 @@ const FormHeader: React.FC<FormHeaderProps> = (props) => {
           <X className="text-primary size-5" />
         </span>
       </div>
-      <DialogDescription className="text-start">{props.description}</DialogDescription>
+      <DialogDescription className="text-start"></DialogDescription>
     </>
   );
 };

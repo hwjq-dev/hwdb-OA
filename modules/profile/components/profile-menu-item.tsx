@@ -6,42 +6,40 @@ import Link from 'next/link';
 import { redirect, RedirectType } from 'next/navigation';
 
 import { Button } from '@/components/ui/button';
-import { ROUTES } from '@/config/route';
 import { useAccountDetect } from '@/hooks/use-account-detect';
-import ProfileSettingLogo from '@/public/images/profile-setting-logo.png';
 
-const data = [
-  {
-    id: 1,
-    alt: 'profile-setting.png',
-    icon: ProfileSettingLogo,
-    label: '个人资料',
-    link: ROUTES.PROFILE_ACCOUNTS,
-  },
-  // {
-  //   id: 2,
-  //   alt: 'attendance-logo.png',
-  //   icon: AttendanceLogo,
-  //   label: '我的考勤',
-  //   link: ROUTES.PROFILE_ATTENDENCES,
-  // },
-  // {
-  //   id: 3,
-  //   alt: 'punishment-log.png',
-  //   icon: PunishmentLogo,
-  //   label: '我的罚单',
-  //   link: ROUTES.PROFILE_PUNISHMENTS,
-  // },
-];
+// const data = [
+//   {
+//     id: 1,
+//     alt: 'profile-setting.png',
+//     icon: ProfileSettingLogo,
+//     label: '个人资料',
+//     link: ROUTES.PROFILE_ACCOUNTS,
+//   },
+//   // {
+//   //   id: 2,
+//   //   alt: 'attendance-logo.png',
+//   //   icon: AttendanceLogo,
+//   //   label: '我的考勤',
+//   //   link: ROUTES.PROFILE_ATTENDENCES,
+//   // },
+//   // {
+//   //   id: 3,
+//   //   alt: 'punishment-log.png',
+//   //   icon: PunishmentLogo,
+//   //   label: '我的罚单',
+//   //   link: ROUTES.PROFILE_PUNISHMENTS,
+//   // },
+// ];
 
 export const ProfileMenuItem = () => {
   const { setLevel } = useAccountDetect();
 
   return (
     <div className="mt-6 flex flex-col space-y-2.5">
-      {data.map((x, i) => (
+      {/* {data.map((x, i) => (
         <Item key={i} {...x} />
-      ))}
+      ))} */}
 
       <div className="absolute bottom-[8%] right-0 left-0 flex justify-center">
         <Button

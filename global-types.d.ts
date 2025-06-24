@@ -11,7 +11,7 @@ interface TaskProps {
   startAt?: string;
   endAt?: string;
   department?: string;
-  status: 'in-progress' | 'done' | 'wait-approval' | 'approved' | 'overdue';
+  status: 'in-progress' | 'done' | 'wait-approval' | 'approved' | 'overdue' | 'under-request';
   priority: '高优先' | '中优先' | '低优先';
 }
 

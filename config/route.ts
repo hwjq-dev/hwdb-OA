@@ -39,6 +39,7 @@ export const ROUTES = {
   HR_APPROVED: '/hr/approved',
   HR_WAIT_APPROVAL: '/hr/wait-approval',
   HR_SUBMISSION: '/hr/submission',
+  HR_ATTENDENCE: '/hr/attendence',
   $HR_APPLICATION: function (params: ApplicationType) {
     return `${this.HR_APPLICATION}?type=${params}`;
   },

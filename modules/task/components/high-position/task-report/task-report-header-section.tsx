@@ -9,7 +9,7 @@ export const TaskReportHeaderSection = () => {
     <Card className="relative !pt-2 flex flex-col border-gray-200/60 shadow-[0px_0px_38px_-17px_#a6a6a6]">
       <CardHeader className="px-0">
         <div className="flex items-center py-0">
-          <CircularProgressBar value={60} showLabel={false} color="primary" />
+          <CircularProgressBar value={60} showLabel={false} color="green" />
           <div className="grid gap-2">
             <div className="flex items-center justify-between">
               <CardTitle>日常总生产力</CardTitle>

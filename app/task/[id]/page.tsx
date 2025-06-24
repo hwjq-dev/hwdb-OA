@@ -6,7 +6,7 @@ import { TaskDetailScreen } from '@/modules/task/screens/task-detail-screen';
 const Page: NextPage = () => {
   return (
     <section className="overflow-x-hidden overflow-y-auto h-[100dvh]">
-      <BackSection label="查看进度" />
+      <BackSection label="查看详情" />
       <TaskDetailScreen type="normal" />
     </section>
   );

@@ -1,5 +1,7 @@
 'use client';
 
+import { IconAdjustments } from '@tabler/icons-react';
+
 import { DatePicker } from '@/components/molecules/date';
 import { SearchInput } from '@/components/molecules/search-input';
 import { CustomSelect } from '@/components/molecules/select';
@@ -7,7 +9,9 @@ import { SheetContainer } from '@/components/molecules/sheet-container';
 import { Label } from '@/components/ui/label';
 import { useDiscloser } from '@/hooks/use-discloser';
 
-export const TaskFilter = () => {
+export const TaskFilter: React.FC<{ showStatusFilter?: boolean }> = ({
+  showStatusFilter = false,
+}) => {
   const { isOpen, close, toggle } = useDiscloser();
 
   return (
@@ -15,7 +19,17 @@ export const TaskFilter = () => {
       <div className="pt-2 grow">
         <SearchInput />
       </div>
-      <SheetContainer open={isOpen} onCancle={close} onOpenChange={toggle} onConfirm={toggle}>
+      <SheetContainer
+        triggerComponent={
+          <button className="bg-primary w-12 h-9 flex justify-center items-center rounded-sm">
+            <IconAdjustments className="text-white" />
+          </button>
+        }
+        open={isOpen}
+        onCancle={close}
+        onOpenChange={toggle}
+        onConfirm={toggle}
+      >
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -60,22 +74,23 @@ export const TaskFilter = () => {
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="select" className="text-dark">
-                任务状态
-              </Label>
-              <CustomSelect
-                placeholder="选择状态"
-                items={[
-                  { lable: '执行中', value: '执行中' },
-                  { lable: '已完成', value: '已完成' },
-                  { lable: '审批中', value: '审批中' },
-                  { lable: '已审批', value: '已审批' },
-                  { lable: '已超时', value: '已超时' },
-                ]}
-                onChange={(value) => null}
-              />
-            </div>
+            {showStatusFilter && (
+              <div className="space-y-2">
+                <Label htmlFor="select" className="text-dark">
+                  任务状态
+                </Label>
+                <CustomSelect
+                  placeholder="选择状态"
+                  items={[
+                    { lable: '执行中', value: '执行中' },
+                    { lable: '中', value: '审批中' },
+                    { lable: '已审批', value: '已审批' },
+                    { lable: '已超时', value: '已超时' },
+                  ]}
+                  onChange={(value) => null}
+                />
+              </div>
+            )}
           </div>
           <div className="border-t border-t-gray-500/30 border-dashed my-5" />
         </form>

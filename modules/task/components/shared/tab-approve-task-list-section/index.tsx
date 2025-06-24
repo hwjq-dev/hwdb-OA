@@ -58,7 +58,7 @@ export const TabApproveTaskListSection = () => {
   return (
     <FilterListWrapper>
       <TaskList
-        className="h-[52dvh]"
+        className="h-[calc(100dvh-338px)]"
         items={sampleTasks}
         emptyState={{
           title: '未审批记录',

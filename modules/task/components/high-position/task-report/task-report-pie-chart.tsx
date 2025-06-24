@@ -12,7 +12,6 @@ import * as React from 'react';
 import { Label, Pie, PieChart, Sector } from 'recharts';
 import { PieSectorDataItem } from 'recharts/types/polar/Pie';
 
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   ChartConfig,
@@ -24,7 +23,6 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart';
 import { getFormatDatetime } from '@/lib/dayjs';
-import { cn } from '@/lib/utils';
 
 const baseData = [
   { status: '执行中', value: 2, fill: '#309898', icon: CircleEllipsis },
@@ -117,7 +115,7 @@ export const TaskReportPieChar = () => {
         </Select> */}
       </CardHeader>
       <CardContent className="flex flex-1 !px-0 pb-0">
-        <ChartContainer id={id} config={chartConfig} className="w-3/5 h-72 max-w-[250px]">
+        <ChartContainer id={id} config={chartConfig} className="w-3/5 h-72 mx-auto max-w-[250px]">
           <PieChart>
             <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
             <Pie
@@ -174,7 +172,7 @@ export const TaskReportPieChar = () => {
             />
           </PieChart>
         </ChartContainer>
-        <div className="w-2/5 pl-10 pr-4">
+        {/* <div className="w-2/5 pl-10 pr-4">
           <div className="flex flex-col space-y-2.5">
             {baseData.map((x) => (
               <Button
@@ -194,7 +192,7 @@ export const TaskReportPieChar = () => {
               </Button>
             ))}
           </div>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );

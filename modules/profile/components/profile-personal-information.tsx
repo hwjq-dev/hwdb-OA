@@ -6,10 +6,13 @@ import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useAccountDetect } from '@/hooks/use-account-detect';
 
 const inputClassName = 'rounded-md text-sm border-none shadow-none bg-gray-100';
 
-export const ProfilePersonalInformation: React.FC = () => {
+export const ProfilePersonalInformation = () => {
+  const { level } = useAccountDetect();
+
   return (
     <div className="p-4 h-[84dvh] overflow-auto pb-6 scrollbar-none">
       <form className="space-y-4">
@@ -90,7 +93,7 @@ export const ProfilePersonalInformation: React.FC = () => {
 
             <div className="flex flex-col space-y-2">
               <label className="text-sm font-medium">职位</label>
-              <Input placeholder="" defaultValue="员工" className={inputClassName} disabled />
+              <Input placeholder="" defaultValue={level} className={inputClassName} disabled />
             </div>
 
             <div className="flex flex-col space-y-2">

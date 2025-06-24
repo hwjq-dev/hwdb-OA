@@ -1,22 +1,26 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { IconUser } from '@tabler/icons-react';
+
 import { Badge } from '@/components/ui/badge';
 import { useAccountDetect } from '@/hooks/use-account-detect';
+import { useTgUserDateStore } from '@/store/use-tg-user-data-store';
 
 export const ProfileAvatarSection = () => {
   const { level } = useAccountDetect();
+  const { data } = useTgUserDateStore();
+
   return (
     <div className="bg-gradient-to-r overflow-hidden from-primary/90 to-primary/60 relative flex space-x-5 shadow-[0px_0px_38px_0px_rgba(0,_0,_0,_0.1)] mx-1 mt-2 rounded-3xl py-7 px-4">
-      <Avatar className="size-14">
-        <AvatarImage
-          className="object-cover"
-          src="https://res.cloudinary.com/dwz2dln92/image/upload/v1750042027/p-1_qecyoq.avif"
-        />
+      {/* <Avatar className="size-14">
+        <AvatarImage className="object-cover" src="#" />
         <AvatarFallback className="bg-white text-gray-500 font-medium">HW</AvatarFallback>
-      </Avatar>
+      </Avatar> */}
+      <div className="size-14 bg-white rounded-full flex justify-center items-center">
+        <IconUser className="size-7 text-orange" />
+      </div>
       <div>
-        <p className="font-semibold text-white">明华</p>
+        <p className="font-semibold text-white">{data.username || '明华'}</p>
         <div className="flex space-x-3">
           <span className="text-white">产品 - {level}</span>
           <div className="border-r w-0.5 border-dashed h-4 my-auto" />

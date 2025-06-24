@@ -53,8 +53,8 @@ export const Card: React.FC<TaskProps & { showAssignee?: boolean }> = (props) =>
             <p className="text-sm line-clamp-1 text-dark">{subtitle}</p>
           </div>
           <div className="col-span-3 my-auto ml-auto">
-            <Button size="sm" className="rounded-full !text-[13px] px-2">
-              查看进度
+            <Button size="sm" className="rounded-full !text-[12px] px-2">
+              查看详情
               <span className="bg-white p-1 rounded-full">
                 <ArrowRight className="size-3 text-orange" />
               </span>

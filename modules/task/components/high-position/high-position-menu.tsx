@@ -6,7 +6,7 @@ import { ROUTES } from '@/config/route';
 const data = [
   { id: 1, label: '分配任务', link: ROUTES.TASK_ASSIGNMENT, value: 0 },
   { id: 2, label: '待审批任务', link: ROUTES.TASK_REQUEST_APPROVAL, value: 5 },
-  { id: 3, label: '自助申请', link: ROUTES.TASK_PERSONAL_TASK },
+  { id: 3, label: '个人任务', link: ROUTES.TASK_PERSONAL_TASK },
   { id: 4, label: '分析与报告', link: ROUTES.TASK_REPORT },
 ];
 

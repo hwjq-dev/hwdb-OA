@@ -11,10 +11,11 @@ import { cn } from '@/lib/utils';
 import { TaskStatusType } from './interface';
 
 export const TaskStatusData: Record<TaskStatusType, string> = {
+  'under-request': '申请中',
   'in-progress': '执行中',
   done: '已完成',
-  'wait-approval': '审批中',
-  approved: '已审批',
+  'wait-approval': '审核中',
+  approved: '已审核',
   overdue: '已超时',
 };
 
@@ -34,7 +35,7 @@ export const TaskStatus: React.FC<{ type: TaskStatusType }> = ({ type }) => {
         )}
       >
         <Icon className="size-4" />
-        <span className="text-sm font-medium">{label}</span>
+        <span className="text-[13px] font-medium">{label}</span>
       </div>
     </div>
   );

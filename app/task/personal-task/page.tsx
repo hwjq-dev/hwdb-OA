@@ -13,7 +13,7 @@ const Page: NextPage = () => {
       <BackSection label="个人任务" />
       <div className="px-2">
         <PersonalTaskCreate />
-        <TaskFilter />
+        <TaskFilter showStatusFilter />
         <PersonalTaskList />
       </div>
     </section>

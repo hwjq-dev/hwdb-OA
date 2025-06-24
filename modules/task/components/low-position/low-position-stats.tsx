@@ -29,11 +29,12 @@ export const LowPositionStats = () => {
       </div>
 
       <p className="text-white text-xl font-bold text-center">任务</p>
-      <div className="absolute bottom-0 translate-y-1/4 right-0 left-0 w-5/6 rounded-2xl bg-white h-20 mx-auto shadow-[0px_2px_28px_-5px_#78cbff] z-30">
-        <div className="grid h-full grid-cols-3">
-          <Item type="current" label="现有任务" value="2" />
-          <Item type="wait-approval" label="审批中任务" value="1" />
-          <Item type="overdue" label="已超时任务" value="5" />
+
+      <div className="absolute bottom-0 translate-y-1/4 right-0 left-0 w-5/6 rounded-2xl h-20 mx-auto z-30">
+        <div className="grid h-full grid-cols-3 gap-x-4">
+          <Item type="current" label="现有任务" value="2" color="green" />
+          <Item type="wait-approval" label="审核中任务" value="1" color="orange" />
+          <Item type="overdue" label="已超时任务" value="5" color="red" />
         </div>
       </div>
     </div>
@@ -44,32 +45,38 @@ interface ItemProps {
   label: string;
   value: string;
   type: 'current' | 'wait-approval' | 'overdue';
+  color?: 'red' | 'green' | 'orange';
 }
 
-const Item: React.FC<ItemProps> = ({ label, value, type = 'current' }) => {
+const Item: React.FC<ItemProps> = ({ label, value, type = 'current', color }) => {
   return (
-    <div className="stats-border flex items-center justify-center">
+    <div
+      className={cn(
+        'relative overflow-hidden flex items-center justify-center shadow-[0px_2px_28px_-5px_#78cbff] rounded-md',
+        {
+          'bg-gradient-to-br from-red-600 to-red-500': color == 'red',
+          'bg-gradient-to-br from-green-600 to-green-500': color == 'green',
+          'bg-gradient-to-br from-orange-600 to-orange-500': color == 'orange',
+        },
+      )}
+    >
       <div className="flex flex-col justify-center items-center w-fit space-y-1">
-        <p className="text-sm font-medium text-dark">{label}</p>
-        <div
-          className={cn('rounded-full  border-[0.5px]  size-8 flex justify-center items-center', {
-            'bg-green/5 border-green-400/50': type === 'current',
-            'bg-orange/5 border-orange/50': type === 'wait-approval',
-            'bg-red-700/5 border-red-600/50': type === 'overdue',
-          })}
-        >
+        <p className="text-sm font-medium text-white">{label}</p>
+        <div className={cn('h-7 w-9 flex justify-center items-center bg-white rounded-sm')}>
           <span
             className={cn(
-              'text-sm font-bold',
-              { 'text-green-400': type === 'current' },
-              { 'text-orange-300': type === 'wait-approval' },
-              { 'text-red': type === 'overdue' },
+              'text-lg font-bold',
+              { 'text-green-500': type === 'current' },
+              { 'text-orange-500': type === 'wait-approval' },
+              { 'text-red-500': type === 'overdue' },
             )}
           >
             {value}
           </span>
         </div>
       </div>
+      <div className="absolute size-10 bg-white/20 rounded-full bottom-0 -right-6" />
+      <div className="absolute size-10 bg-white/20 rounded-full -bottom-5 -right-2" />
     </div>
   );
 };

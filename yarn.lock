@@ -780,7 +780,7 @@
   dependencies:
     tslib "^2.8.0"
 
-"@tabler/icons-react@^3.34.0":
+"@tabler/icons-react@3.34.0":
   version "3.34.0"
   resolved "https://registry.yarnpkg.com/@tabler/icons-react/-/icons-react-3.34.0.tgz#8503c25ba9e50ff02a49a1f9c62ceecfd27fa3ab"
   integrity sha512-OpEIR2iZsIXECtAIMbn1zfKfQ3zKJjXyIZlkgOGUL9UkMCFycEiF2Y8AVfEQsyre/3FnBdlWJvGr0NU47n2TbQ==
@@ -927,6 +927,18 @@
   integrity sha512-DjC4JIYZnYzxaTzbg3osOU63VNLP67dOrWet2cZvXgmgwAXNxfS52AMq86M5++ILuzW+BqTUEVMTjhrZ7/XBuA==
   dependencies:
     "@tanstack/query-core" "5.79.0"
+
+"@twa-dev/sdk@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@twa-dev/sdk/-/sdk-8.0.2.tgz#72efd41b5b5878b5e9cd8896673b8708a045d2f5"
+  integrity sha512-Pp5GxnxP2blboVZFiM9aWjs4cb8IpW3x2jP3kLOMvIqy0jzNUTuFHkwHtx+zEvh/UcF2F+wmS8G6ebIA0XPXcg==
+  dependencies:
+    "@twa-dev/types" "^8.0.1"
+
+"@twa-dev/types@^8.0.1":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@twa-dev/types/-/types-8.0.2.tgz#118620c1ff8724de82063b1318a8749bd40b0d8b"
+  integrity sha512-ICQ6n4NaUPPzV3/GzflVQS6Nnu5QX2vr9OlOG8ZkFf3rSJXzRKazrLAbZlVhCPPWkIW3MMuELPsE6tByrA49qA==
 
 "@tybys/wasm-util@^0.9.0":
   version "0.9.0"

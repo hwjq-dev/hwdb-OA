@@ -1,11 +1,11 @@
 'use client';
 
 import { CircleCheck, Plus } from 'lucide-react';
+import React, { ReactNode } from 'react';
 import { toast } from 'sonner';
 
 import DateTimeCustomPicker from '@/components/molecules/day-picker';
 import { BaseModal } from '@/components/molecules/modal/base-modal';
-import { SearchSelect } from '@/components/molecules/search-select';
 import { CustomSelect } from '@/components/molecules/select';
 import { TextInput } from '@/components/molecules/text-input';
 import { Button } from '@/components/ui/button';
@@ -14,26 +14,36 @@ import { useDiscloser } from '@/hooks/use-discloser';
 
 export const CreateTaskForm = () => {
   return (
-    <div className="space-y-2">
+    <div className="space-y-1 flex items-center justify-between">
+      <p className="font-bold text-xl text-gray-800">任务例表</p>
       <div
-        className="bg-white flex items-center justify-between border border-gray-1200 px-3 w-full h-12 rounded-md shadow-[0px_2px_56px_-13px_#a3b0b8]
+        className="bg-white flex items-center space-x-2 border border-gray-1200 px-3 h-10 rounded-lg shadow-[0px_2px_56px_-13px_#a3b0b8]
 "
       >
-        <span className="text-sm text-dark font-medium">申请任务</span>
-        <FormModal />
+        <span className="text-sm text-dark font-medium">发布任务</span>
+        <CreateFormModal />
       </div>
     </div>
   );
 };
 
-const FormModal = () => {
+export const CreateFormModal: React.FC<{ icon?: ReactNode }> = ({ icon }) => {
   const { isOpen, toggle, close } = useDiscloser();
+
   return (
     <BaseModal
       open={isOpen}
-      title="自助申请任务"
+      title="个人发布任务"
       description="请输入以下申请表单"
-      icon={<Plus className="size-4 text-primary" />}
+      icon={
+        icon ? (
+          icon
+        ) : (
+          <div className="bg-primary-200/60 p-1.5 rounded-full">
+            <Plus className="size-4 text-primary" />
+          </div>
+        )
+      }
       onClose={close}
       onOpenChange={toggle}
     >
@@ -42,7 +52,7 @@ const FormModal = () => {
         onSubmit={(e) => {
           e.preventDefault();
           close();
-          toast('记录已创建成功.', {
+          toast('任务已发布成功.', {
             icon: <CircleCheck className="text-green-500" />,
             position: 'top-right',
           });
@@ -51,21 +61,21 @@ const FormModal = () => {
         {/*--- Title ---*/}
         <TextInput label="请输入任务标题" onChange={(v) => null} />
 
-        <div className="grid grid-cols-2 gap-2">
-          <SearchSelect
+        {/* <div className="grid grid-cols-1">
+           <CustomSelect
             placeholder="选择部门"
             items={[
-              { label: '运维部门', value: '运维部门' },
-              { label: '产品部门', value: '产品部门' },
-              { label: '技术部门', value: '技术部门' },
-              { label: '人事部门', value: '人事部门' },
-              { label: '交易员部门', value: '交易员部门' },
+              { lable: '运维部门', value: '运维部门' },
+              { lable: '产品部门', value: '产品部门' },
+              { lable: '技术部门', value: '技术部门' },
+              { lable: '人事部门', value: '人事部门' },
+              { lable: '交易员部门', value: '交易员部门' },
             ]}
             onChange={(value) => null}
-          />
+          /> 
 
-          {/*--- Select approver ---*/}
-          <CustomSelect
+
+           <CustomSelect
             placeholder="选择审批者"
             items={[
               { lable: '总经理', value: '总经理' },
@@ -74,8 +84,8 @@ const FormModal = () => {
               { lable: '组长', value: '组长' },
             ]}
             onChange={(value) => null}
-          />
-        </div>
+          /> 
+        </div> */}
 
         {/*--- Start date ---*/}
         <DateTimeCustomPicker placeholder="开始时间" onSelected={(date) => null} />
@@ -95,10 +105,10 @@ const FormModal = () => {
         />
 
         {/*--- Description ---*/}
-        <Textarea placeholder="请输入任务描述 ..." onChange={(e) => null} />
+        <Textarea placeholder="请输入任务内容 ..." className="h-28" onChange={(e) => null} />
 
         <Button type="submit" className="hover:!bg-primary/50">
-          提交申请
+          发布任务
         </Button>
       </form>
     </BaseModal>

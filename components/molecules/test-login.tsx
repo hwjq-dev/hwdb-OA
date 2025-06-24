@@ -2,28 +2,29 @@
 
 import { CircleX } from 'lucide-react';
 import { redirect, RedirectType } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'sonner';
 
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { ROUTES } from '@/config/route';
 import { useAccountDetect } from '@/hooks/use-account-detect';
+// import { useTelegramUserData } from '@/hooks/use-telegram-user-data';
+import { useTgUserDateStore } from '@/store/use-tg-user-data-store';
 
 import { Button } from '../ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 export const TestLogin = () => {
+  const [a, setA] = useState(true);
+  // const { isLoading } = useTelegramUserData();
   const { level, setLevel } = useAccountDetect();
+  const { data } = useTgUserDateStore();
 
   useEffect(() => {
     setLevel('');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setA(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   return (
     <div className="size-full bg-primary flex items-center justify-center">

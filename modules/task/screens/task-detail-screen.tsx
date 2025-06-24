@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { ApproveModal } from '@/components/molecules/modal/approve-modal';
 import { useDiscloser } from '@/hooks/use-discloser';
 
+import { IconCircleDashedX } from '@tabler/icons-react';
 import { ApproveList } from '../components/high-position/approve-list-section';
 import { CreateTaskProgressForm } from '../components/shared';
 import { TaskDetailHeader } from '../components/shared/task-detail/task-detail-header';
@@ -92,10 +93,10 @@ const ApproveDetailScreen = () => {
       />
       <ApproveList />
       <SubmitTaskButton
-        label="立即审批"
-        title="审批任务"
-        description="您确定需要审批这个任务"
-        toastTitle="任务已审批成功"
+        label="立即审核"
+        title="审核任务"
+        description="您确定需要审核这个任务"
+        toastTitle="任务已审核成功"
       />
     </div>
   );
@@ -118,6 +119,13 @@ const SubmitTaskButton: React.FC<SubmitProps> = ({ label, title, description, to
       open={isOpen}
       onCancle={close}
       onOpenChange={toggle}
+      onDeny={() => {
+        close();
+        toast('任务已驳回', {
+          icon: <IconCircleDashedX className="text-red-500" />,
+          position: 'top-right',
+        });
+      }}
       onApprove={() => {
         close();
         toast(toastTitle, {

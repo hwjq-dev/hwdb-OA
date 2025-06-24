@@ -57,7 +57,7 @@ export const SheetContainer: React.FC<Props> = (props) => {
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
           <DrawerDescription></DrawerDescription>
-          <DrawerTitle className="pb-5 pt-3">{title ? title : '选择过滤选项'}</DrawerTitle>
+          <DrawerTitle className="pb-5 pt-3">{title ? title : '过滤选项'}</DrawerTitle>
           {children}
           <DrawerFooter className="grid grid-cols-2 gap-x-2 p-0 pb-2">
             <DrawerClose asChild>

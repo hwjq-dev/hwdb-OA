@@ -7,10 +7,15 @@ const TemplateTask = () => {
   const { level } = useAccountDetect();
 
   switch (level) {
+    default:
+      return null;
+
     case '员工':
       return <LowPositionScreen />;
 
-    default:
+    case '主管':
+    case '经理':
+    case '总经理':
       return <HighPositionScreen />;
   }
 };

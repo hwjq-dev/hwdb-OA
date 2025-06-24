@@ -92,6 +92,14 @@ export const HrApprovalSection = () => {
       link: ROUTES.$HR_APPROVAL('审批处罚'),
       isHide: level === '员工' || level === '主管',
     },
+    // {
+    //   id: 11,
+    //   alt: 'RequestTask.png',
+    //   icon: RequestTask,
+    //   label: '审批任务',
+    //   link: ROUTES.TASK_REQUEST_APPROVAL,
+    //   isHide: level === '员工',
+    // },
   ];
 
   if (level == '员工') return null;

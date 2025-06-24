@@ -1,5 +1,8 @@
 'use client';
 
+import { CircleCheckBig } from 'lucide-react';
+import { toast } from 'sonner';
+
 import { ApproveModal } from '@/components/molecules/modal/approve-modal';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
@@ -7,8 +10,7 @@ import { Button } from '@/components/ui/button';
 import { useDiscloser } from '@/hooks/use-discloser';
 import { getFormatDatetime } from '@/lib/dayjs';
 import { cn } from '@/lib/utils';
-import { CircleCheckBig } from 'lucide-react';
-import { toast } from 'sonner';
+import { IconCircleDashedX } from '@tabler/icons-react';
 
 const data = {
   id: '202506192',
@@ -134,6 +136,14 @@ const ApprovalButton: React.FC<{ id: string }> = ({ id }) => {
         toast(`申请 ${id} 已审批成功.`, {
           className: '!w-3/4 !ml-auto !mr-6',
           icon: <CircleCheckBig className="text-green-500" />,
+          position: 'top-center',
+        });
+      }}
+      onDeny={() => {
+        close();
+        toast(`申请 ${id} 已拒绝.`, {
+          className: '!w-3/4 !ml-auto !mr-6',
+          icon: <IconCircleDashedX className="text-red-500" />,
           position: 'top-center',
         });
       }}

@@ -1,6 +1,5 @@
 'use client';
 
-import { ChevronsUpDown } from 'lucide-react';
 import { useState } from 'react';
 
 import { DatePicker } from '@/components/molecules/date';
@@ -16,6 +15,7 @@ import {
   DrawerTrigger,
 } from '@/components/ui/drawer';
 import { Label } from '@/components/ui/label';
+import { IconAdjustments } from '@tabler/icons-react';
 
 export const ApprovalRequestFilter = () => {
   const [open, setOpen] = useState(false);
@@ -25,12 +25,9 @@ export const ApprovalRequestFilter = () => {
       <SearchInput />
       <Drawer open={open} onOpenChange={(p) => setOpen(p)}>
         <DrawerTrigger asChild>
-          <Button variant="outline" className="h-10">
-            <span className="text-dark">过滤任务</span>
-            <span>
-              <ChevronsUpDown className="text-primary" />
-            </span>
-          </Button>
+          <button className="bg-primary w-12 h-9 flex justify-center items-center rounded-sm">
+            <IconAdjustments className="text-white" />
+          </button>
         </DrawerTrigger>
 
         <DrawerContent
@@ -38,7 +35,7 @@ export const ApprovalRequestFilter = () => {
           onInteractOutside={(e) => e.preventDefault()}
           onEscapeKeyDown={(e) => e.preventDefault()}
         >
-          <DrawerTitle className="pb-5 pt-3">选择过滤选项</DrawerTitle>
+          <DrawerTitle className="pb-5 pt-3">过滤选项</DrawerTitle>
           <div className="grid grid-cols-2 gap-2">
             <div className="space-y-2">
               <Label htmlFor="select" className="text-dark">

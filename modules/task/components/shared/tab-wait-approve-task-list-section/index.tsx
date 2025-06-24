@@ -58,7 +58,7 @@ export const TabWaitApproveTaskListSection = () => {
     <FilterListWrapper>
       <TaskList
         items={sampleTasks}
-        className="h-[52dvh]"
+        className="h-[calc(100dvh-338px)]"
         emptyState={{
           title: '未审批中记录',
           subtitle: '尝试查看其他类型',

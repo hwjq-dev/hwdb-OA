@@ -7,14 +7,16 @@ import {
   TabApproveTaskListSection,
   TabOverdueTaskListSection,
   TabProgressTaskListSection,
+  TabUnderRequestTaskListSection,
   TabWaitApproveTaskListSection,
 } from '../shared';
 
 const tabs = [
+  { label: '申请中', value: '申请中', content: TabUnderRequestTaskListSection },
   { label: '执行中', value: '执行中', content: TabProgressTaskListSection },
+  { label: '审核中', value: '审批中', content: TabWaitApproveTaskListSection },
   // { label: '已完成', value: '已完成', content: TabCompleteTaskListSection },
-  { label: '审批中', value: '审批中', content: TabWaitApproveTaskListSection },
-  { label: '已审批', value: '已审批', content: TabApproveTaskListSection },
+  { label: '已审核', value: '已审批', content: TabApproveTaskListSection },
   { label: '已超时', value: '已超时', content: TabOverdueTaskListSection },
 ];
 

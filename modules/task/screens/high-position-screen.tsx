@@ -2,6 +2,7 @@
 
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+
 import {
   HighPositionFilter,
   HighPositionList,
@@ -27,8 +28,9 @@ export const HighPositionScreen = () => {
 
       <HighPositionStats />
       <HighPositionMenu />
+
       <div className="border-l-4 rounded-xs border-primary/90 pl-2 mx-2 mt-2">
-        <p className="font-medium text-gray-800">所有任务</p>
+        <p className="font-medium text-gray-800">所有审核下级任务</p>
       </div>
       <HighPositionFilter />
       <HighPositionList />

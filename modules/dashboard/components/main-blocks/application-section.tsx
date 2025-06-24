@@ -1,6 +1,7 @@
 'use client';
 
 import { ROUTES } from '@/config/route';
+import { useAccountDetect } from '@/hooks/use-account-detect';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
 import RequestLate from '@/public/images/request-late.png';
@@ -9,7 +10,6 @@ import RequestPermission from '@/public/images/request-permission.png';
 import RequestPunishment from '@/public/images/request-punishment.png';
 import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
 
-import { useAccountDetect } from '@/hooks/use-account-detect';
 import { FeatureItemsList } from './feature-item-list';
 
 export const HrApplicationSection = () => {
@@ -94,5 +94,8 @@ export const HrApplicationSection = () => {
       isHide: level === '员工',
     },
   ];
+
+  if (level == '总经理') return null;
+
   return <FeatureItemsList label="申请管理" items={application} />;
 };

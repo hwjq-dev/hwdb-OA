@@ -9,7 +9,7 @@ import {
 const Page: NextPage = () => {
   return (
     <section className="overflow-x-hidden overflow-y-auto h-[100dvh]">
-      <BackSection label="审批中请求" />
+      <BackSection label="待审核任务" />
       <div>
         <ApprovalRequestFilter />
         <ApprovalRequestList />
