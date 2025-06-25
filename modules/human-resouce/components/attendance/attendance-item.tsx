@@ -1,6 +1,9 @@
+import { IconCalendarTime, IconCalendarUser } from '@tabler/icons-react';
+
+import { CollapseWrapper } from '@/components/molecules/callapse-wrapper';
 import { Badge } from '@/components/ui/badge';
 import { getFormatDate, getFormatDatetime } from '@/lib/dayjs';
-import { IconCalendarTime, IconCalendarUser } from '@tabler/icons-react';
+import { cn } from '@/lib/utils';
 
 interface AttendanceItemProps {
   id: string | number;
@@ -16,6 +19,9 @@ interface AttendanceItemProps {
   workEndAt: string;
   isLate: boolean;
   isLeaveEarly: boolean;
+  leaveEarlyAt?: string;
+  lateAt?: string;
+  absentAt?: string;
   isOverTime: boolean;
   isDayOff: boolean;
   overtimeStartAt?: string;
@@ -51,27 +57,47 @@ export const AttendanceItem: React.FC<AttendanceItemProps> = (props) => {
       <Item label="原定下班时间" value={getFormatDatetime(new Date(props.defautlWorkEndAt))} />
       <Item label="上班时间" value={getFormatDatetime(new Date(props.workStartAt))} />
       <Item label="下班时间" value={getFormatDatetime(new Date(props.workEndAt))} />
-      <Item label="是否迟到" value={props.isLate ? '是' : '否'} />
-      <Item label="是否早退" value={props.isLeaveEarly ? '是' : '否'} />
-      <Item label="是否加班" value={props.isOverTime ? '是' : '否'} />
-      <Item label="是否休假" value={props.isDayOff ? '是' : '否'} />
       <Item
-        label="加班开始时间"
-        value={props.overtimeStartAt ? getFormatDatetime(new Date(props.overtimeStartAt)) : '没有'}
+        label="迟到时间"
+        value={!props.absentAt ? '没有' : getFormatDatetime(new Date(props.absentAt))}
       />
       <Item
-        label="加班结束时间"
-        value={props.overtimeEndAt ? getFormatDatetime(new Date(props.overtimeEndAt)) : '没有'}
+        label="早退时间"
+        value={!props.leaveEarlyAt ? '没有' : getFormatDatetime(new Date(props.leaveEarlyAt))}
       />
+      <CollapseWrapper>
+        <Item
+          label="缺勤时间"
+          value={!props.absentAt ? '没有' : getFormatDatetime(new Date(props.absentAt))}
+        />
+        <Item label="是否迟到" value={props.isLate ? '是' : '否'} />
+        <Item label="是否早退" value={props.isLeaveEarly ? '是' : '否'} />
+        <Item label="是否加班" value={props.isOverTime ? '是' : '否'} />
+        <Item label="是否休假" value={props.isDayOff ? '是' : '否'} />
+        <Item
+          label="加班开始时间"
+          value={
+            props.overtimeStartAt ? getFormatDatetime(new Date(props.overtimeStartAt)) : '没有'
+          }
+        />
+        <Item
+          label="加班结束时间"
+          value={props.overtimeEndAt ? getFormatDatetime(new Date(props.overtimeEndAt)) : '没有'}
+        />
+      </CollapseWrapper>
 
-      <div className="py-2 bg-gray-100 col-span-2" />
+      <div className="py-4 bg-gray-100 col-span-2" />
     </div>
   );
 };
 
-const Item: React.FC<{ label: string; value: string }> = ({ label, value }) => (
-  <div className="col-span-1 p-2 text-xs border flex flex-col space-y-1">
-    <span className="font-semibold">{label}</span>
-    <span className="text-center text-[11px]">{value}</span>
+const Item: React.FC<{ label: string; value: string; className?: string }> = ({
+  label,
+  value,
+  className,
+}) => (
+  <div className={cn('col-span-1 p-2 text-xs border flex flex-col space-y-1', className)}>
+    <span className="font-bold">{label}</span>
+    <span className="text-center text-[11px] text-dark">{value}</span>
   </div>
 );

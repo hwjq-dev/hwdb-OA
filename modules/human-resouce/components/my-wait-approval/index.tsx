@@ -1,3 +1,7 @@
+'use client';
+
+import { IconLoader3 } from '@tabler/icons-react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { MyApprovalFilter } from '../base/my-approval-filter';
 import { WaitApprovalList } from './wait-approval-list';
 
@@ -67,14 +71,32 @@ const items = [
   },
 ];
 
-export const MyWaitApproval = () => (
-  <div className="p-1">
-    <div className="bg-primary-100 pb-2 px-2 rounded-2xl">
-      <MyApprovalFilter />
-    </div>
+export const MyWaitApproval = () => {
+  return (
+    <div className="p-1">
+      <div className="bg-primary-100 pb-2 px-2 rounded-2xl">
+        <MyApprovalFilter />
+      </div>
 
-    <div className="h-[78dvh] pb-4 overflow-y-auto px-1 scrollbar-none">
-      <WaitApprovalList items={items as never} />
+      <div
+        id="waiting-approval-scroll-container"
+        className="h-[78dvh] mb-2 overflow-y-auto px-1 !scrollbar-none"
+      >
+        <InfiniteScroll
+          dataLength={items.length}
+          next={() => console.log('fetch data ...')}
+          hasMore={true}
+          scrollableTarget="waiting-approval-scroll-container"
+          className="contents"
+          loader={
+            <div className="flex justify-center py-1.5 items-center">
+              <IconLoader3 className="animate-spin text-primary" />
+            </div>
+          }
+        >
+          <WaitApprovalList items={items as never} />
+        </InfiniteScroll>
+      </div>
     </div>
-  </div>
-);
+  );
+};

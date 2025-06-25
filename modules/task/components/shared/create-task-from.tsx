@@ -27,13 +27,16 @@ export const CreateTaskForm = () => {
   );
 };
 
-export const CreateFormModal: React.FC<{ icon?: ReactNode }> = ({ icon }) => {
+export const CreateFormModal: React.FC<{ icon?: ReactNode; title?: string }> = ({
+  icon,
+  title = '个人发布任务',
+}) => {
   const { isOpen, toggle, close } = useDiscloser();
 
   return (
     <BaseModal
       open={isOpen}
-      title="个人发布任务"
+      title={title}
       description="请输入以下申请表单"
       icon={
         icon ? (

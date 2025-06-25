@@ -1,7 +1,7 @@
 'use client';
 
-import { ReactNode } from 'react';
 import { X } from 'lucide-react';
+import { ReactNode } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -64,7 +64,7 @@ export const ApproveModal: React.FC<Props> = ({
           <DialogTitle className="text-center font-bold">{title}</DialogTitle>
           <DialogDescription className="text-center -mt-1">{description}</DialogDescription>
           <div>
-            <Input placeholder="请填写审核意见" className="text-sm" />
+            <Input placeholder="请填写意见" className="text-sm" />
           </div>
           <div className="grid grid-cols-2 gap-4 mt-3">
             <Button onClick={onDeny} variant="destructive">

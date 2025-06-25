@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 import { CircularProgressBar } from '@/components/molecules/circular-progress-bar';
 import { Button } from '@/components/ui/button';
+import { ROUTES } from '@/config/route';
 import { cn } from '@/lib/utils';
 import lottieAnimateRotate from '@/public/lotties/lottie-2.json';
 
@@ -38,10 +39,10 @@ export const HighPositionStats = () => {
             <div className="space-y-2">
               <p className="font-semibold text-sm">提交完成任务</p>
               <Button size="sm" className="rounded-md !h-7 bg-green-500" asChild>
-                <Link href="#">详情查看</Link>
+                <Link href={ROUTES.TASK_REPORT}>详情查看</Link>
               </Button>
             </div>
-            <CircularProgressBar size={90} showLabel={false} value={(4 / 5) * 100} small />
+            <CircularProgressBar size={90} showLabel={false} value={(2 / 5) * 100} small />
           </div>
           <div className="absolute left-1/2 h-3/5 top-1/2 -translate-y-1/2 border-r-[1px] border-dashed border-r-gray-300" />
           <div className="p-4 m-auto">

@@ -33,13 +33,17 @@ export const TestLogin = () => {
         <div>
           <Select onValueChange={(value) => setLevel(value)}>
             <SelectTrigger className="w-[180px] !text-white">
-              <SelectValue placeholder={<span className="!text-white">选择级别</span>} />
+              <SelectValue placeholder={<span className="!text-white">选择职级</span>} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="员工">员工</SelectItem>
-              <SelectItem value="主管">主管</SelectItem>
-              <SelectItem value="经理">经理</SelectItem>
+              {/*-- 上级 --*/}
               <SelectItem value="总经理">总经理</SelectItem>
+              <SelectItem value="部门经理">部门经理</SelectItem>
+              <SelectItem value="部门主管">部门主管</SelectItem>
+
+              {/*-- 下级 --*/}
+              <SelectItem value="组长">组长</SelectItem>
+              <SelectItem value="组员">组员</SelectItem>
             </SelectContent>
           </Select>
         </div>

@@ -10,11 +10,14 @@ const TemplateTask = () => {
     default:
       return null;
 
-    case '员工':
+    //-- 下级类型
+    case '组长':
+    case '组员':
       return <LowPositionScreen />;
 
-    case '主管':
-    case '经理':
+    //-- 上级类型
+    case '部门主管':
+    case '部门经理':
     case '总经理':
       return <HighPositionScreen />;
   }

@@ -14,6 +14,7 @@ import { FeatureItemsList } from './feature-item-list';
 
 export const HrApprovalSection = () => {
   const { level } = useAccountDetect();
+
   const approval = [
     {
       id: 1,
@@ -90,7 +91,7 @@ export const HrApprovalSection = () => {
       icon: RequestPunishment,
       label: '审批处罚',
       link: ROUTES.$HR_APPROVAL('审批处罚'),
-      isHide: level === '员工' || level === '主管',
+      isHide: level === '组长' || level === '组员' || level === '部门主管',
     },
     // {
     //   id: 11,
@@ -102,6 +103,6 @@ export const HrApprovalSection = () => {
     // },
   ];
 
-  if (level == '员工') return null;
-  if (level != '员工') return <FeatureItemsList label="审批管理" items={approval} />;
+  if (level === '组长' || level === '组员') return null;
+  return <FeatureItemsList label="审批管理" items={approval} />;
 };

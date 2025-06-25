@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { getDiff } from '@/lib/dayjs';
 
+import { FileUpload } from '@/components/file-upload';
 import { FormFieldWrapper } from './base/form-field-wrapper';
 
 export const LeaveRequestForm = () => {
@@ -109,6 +110,11 @@ const Form = () => {
             placeholder="填写您请假事由 ..."
             className="h-42 rounded-lg bg-white border-none"
           />
+        </FormFieldWrapper>
+
+        {/*--- 附件 ---*/}
+        <FormFieldWrapper label="附件 (可选)">
+          <FileUpload />
         </FormFieldWrapper>
 
         <div>

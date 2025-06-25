@@ -91,7 +91,7 @@ export const HrApplicationSection = () => {
       icon: RequestPunishment,
       label: '申请处罚',
       link: ROUTES.$HR_APPLICATION('申请处罚'),
-      isHide: level === '员工',
+      isHide: false,
     },
   ];
 

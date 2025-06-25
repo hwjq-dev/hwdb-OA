@@ -4,7 +4,7 @@ import { IconExclamationCircle } from '@tabler/icons-react';
 import { CircleCheckBig } from 'lucide-react';
 import { toast } from 'sonner';
 
-import DateTimeCustomPicker from '@/components/molecules/day-picker';
+import { DatePicker } from '@/components/molecules/date';
 import { CustomSelect } from '@/components/molecules/select';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
@@ -65,6 +65,21 @@ const Form = () => {
           />
         </FormFieldWrapper>
 
+        {/*--- 所属部门 ---*/}
+        <FormFieldWrapper label="所属部门">
+          <CustomSelect
+            className="rounded-lg !h-10 mb-0 !text-sm bg-white border-none"
+            onChange={(v) => null}
+            placeholder="选择部门"
+            items={[
+              { lable: '产品部', value: '产品部' },
+              { lable: '运维部', value: '运维部' },
+              { lable: '技术部', value: '技术部' },
+              { lable: '运营部', value: '运营部' },
+            ]}
+          />
+        </FormFieldWrapper>
+
         {/*--- 处罚类型 ---*/}
         <FormFieldWrapper label="处罚类型">
           <CustomSelect
@@ -85,9 +100,13 @@ const Form = () => {
 
         {/*--- 生效日期 ---*/}
         <FormFieldWrapper label="生效日期">
-          <DateTimeCustomPicker
+          {/* <DateTimeCustomPicker
             className="rounded-lg h-10 bg-white border-none"
             placeholder="选择生效日期"
+            onSelected={(date) => null}
+          /> */}
+          <DatePicker
+            className="rounded-lg h-10 bg-white border-none"
             onSelected={(date) => null}
           />
         </FormFieldWrapper>

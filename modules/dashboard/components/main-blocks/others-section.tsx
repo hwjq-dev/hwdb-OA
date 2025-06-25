@@ -21,7 +21,7 @@ export const OthersSection = () => {
       className: 'bg-purple-200/60',
       textClassName: 'text-purple-500',
       link: ROUTES.TASK,
-      isHide: level === '总经理' ? true : false,
+      isHide: level === '总经理',
     },
     {
       icon: <IconChecklist className="size-4 text-lime-400" />,
@@ -29,15 +29,15 @@ export const OthersSection = () => {
       className: 'bg-lime-200/40',
       textClassName: 'text-lime-500',
       link: ROUTES.TASK_REQUEST_APPROVAL,
-      isHide: level === '总经理' ? false : true,
+      isHide: !(level === '总经理'),
     },
     {
       icon: <IconChecklist className="size-4 text-sky-400" />,
-      label: '发布任务',
+      label: level === '组长' || level === '组员' ? '申请任务' : '发布任务',
       className: 'bg-sky-200/40',
       textClassName: 'text-sky-500',
       link: '', // if it is not link, leave it blank
-      isHide: level === '总经理' ? true : false,
+      isHide: level === '总经理',
     },
     {
       icon: <Megaphone className="size-4 text-primary" />,
@@ -45,7 +45,7 @@ export const OthersSection = () => {
       className: 'bg-primary-200/60',
       textClassName: 'text-primary',
       link: ROUTES.ANNOUCEMENT,
-      isHide: level === '员工',
+      isHide: level === '组员' || level === '组长',
     },
     {
       icon: <TaskAssignForm icon={<IconChecklist className="size-4 text-emerald-400" />} />,
@@ -53,7 +53,7 @@ export const OthersSection = () => {
       className: 'bg-emerald-200/40',
       textClassName: 'text-emerald-500',
       link: '',
-      isHide: level === '总经理' ? false : true,
+      isHide: !(level === '总经理'),
     },
     {
       icon: <IconSitemap className="size-4 text-yellow-400" />,
@@ -61,7 +61,7 @@ export const OthersSection = () => {
       className: 'bg-yellow-100/60',
       textClassName: 'text-yellow-500',
       link: ROUTES.ORGANIZATIONAL_STRUCTURE,
-      isHide: level === '经理' || level === '主管' || level === '员工',
+      isHide: !(level === '总经理'),
     },
     {
       icon: <IconSitemap className="size-4 text-pink-400" />,
@@ -110,8 +110,9 @@ export const OthersSection = () => {
       <div className="grid grid-cols-3 gap-3 mt-3.5">
         {level !== '总经理' &&
           items.map((x, i) =>
-            x.label == '发布任务' ? (
+            x.label == '发布任务' || x.label == '申请任务' ? (
               <CreateFormModal
+                title={level === '组长' || level === '组员' ? '个人申请任务' : '个人发布任务'}
                 key={i}
                 icon={
                   <div>
@@ -176,7 +177,6 @@ const Item: React.FC<ItemProps> = ({
 };
 
 // 总经理 UI
-
 const GridList: React.FC<{ items: ItemProps[] }> = ({ items }) => {
   return (
     <div className="relative grid grid-cols-3 gap-4 mt-3.5">

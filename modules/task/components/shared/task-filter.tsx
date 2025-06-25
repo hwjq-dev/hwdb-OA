@@ -81,9 +81,11 @@ export const TaskFilter: React.FC<{ showStatusFilter?: boolean }> = ({
                 </Label>
                 <CustomSelect
                   placeholder="选择状态"
+                  defaultValue="申请中"
                   items={[
+                    { lable: '申请中', value: '申请中' },
                     { lable: '执行中', value: '执行中' },
-                    { lable: '中', value: '审批中' },
+                    { lable: '审批中', value: '审批中' },
                     { lable: '已审批', value: '已审批' },
                     { lable: '已超时', value: '已超时' },
                   ]}

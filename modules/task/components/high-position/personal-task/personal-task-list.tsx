@@ -14,7 +14,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-10T09:30:00+07:00',
     endAt: '2025-06-12T18:00:00+07:00',
     department: '运维部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '高优先',
   },
   {
@@ -30,7 +30,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-09T10:00:00+07:00',
     endAt: '2025-06-11T17:30:00+07:00',
     department: '产品部门',
-    status: 'wait-approval',
+    status: 'under-request',
     priority: '中优先',
   },
   {
@@ -46,7 +46,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-08T09:00:00+07:00',
     endAt: '2025-06-10T18:00:00+07:00',
     department: '人事部门',
-    status: 'done',
+    status: 'under-request',
     priority: '高优先',
   },
   {
@@ -62,7 +62,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-07T08:00:00+07:00',
     endAt: '2025-06-09T17:00:00+07:00',
     department: '交易员部门',
-    status: 'approved',
+    status: 'under-request',
     priority: '低优先',
   },
   {
@@ -78,7 +78,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-06T10:00:00+07:00',
     endAt: '2025-06-08T17:00:00+07:00',
     department: '技术部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '中优先',
   },
   {
@@ -94,7 +94,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-09T09:00:00+07:00',
     endAt: '2025-06-10T18:00:00+07:00',
     department: '产品部门',
-    status: 'wait-approval',
+    status: 'under-request',
     priority: '高优先',
   },
   {
@@ -110,7 +110,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-08T09:30:00+07:00',
     endAt: '2025-06-11T19:00:00+07:00',
     department: '技术部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '高优先',
   },
   {
@@ -126,7 +126,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-07T08:30:00+07:00',
     endAt: '2025-06-08T18:00:00+07:00',
     department: '运维部门',
-    status: 'done',
+    status: 'under-request',
     priority: '低优先',
   },
   {
@@ -142,7 +142,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-06T09:00:00+07:00',
     endAt: '2025-06-07T17:00:00+07:00',
     department: '人事部门',
-    status: 'approved',
+    status: 'under-request',
     priority: '中优先',
   },
   {
@@ -158,7 +158,7 @@ const sampleTasks: TaskProps[] = [
     startAt: '2025-06-09T10:00:00+07:00',
     endAt: '2025-06-11T17:30:00+07:00',
     department: '运维部门',
-    status: 'in-progress',
+    status: 'under-request',
     priority: '高优先',
   },
 ];
