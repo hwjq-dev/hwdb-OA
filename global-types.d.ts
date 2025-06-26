@@ -1,3 +1,38 @@
+//-- Official integration type
+interface UserDataType {
+  id: number;
+  nickname: string;
+  job_number: string;
+  job_title: string;
+  department_id: number;
+  position_level: number;
+  department_text: string;
+  position_level_text: string;
+  expires_in: number;
+  access_token: string;
+  refresh_token: string;
+}
+
+interface UserRealData {
+  avatar: string;
+  nickname: string;
+  department_id: number;
+  position_level: number;
+  job_number: string;
+  job_title: string;
+  department_text: string;
+  position_level_text: string;
+  lang_text: string;
+  address: string;
+  gender: string;
+  check_in_date: string;
+  phone: string;
+  email: string;
+  birthday: string;
+  tg_id: string | number;
+}
+
+//-- Temperay type
 interface TaskProps {
   id?: string | number;
   tgId: string;

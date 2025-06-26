@@ -1,14 +1,12 @@
-// import { LoginScreen } from '@/components/auth';
 import { NextPage } from 'next';
 
-import { TestLogin } from '@/components/molecules/test-login';
-// import { LoginScreen } from '@/components/auth';
+import { TgLogin } from '@/components/molecules/tg-login';
 
+/**
+ * First request will come to this
+ */
 const Page: NextPage = () => {
-  // return <LoginScreen />;
-  return <TestLogin />;
-  // return <LoginScreen />;
-  // return redirect(ROUTES.REQUEST, RedirectType.replace);
+  return <TgLogin />;
 };
 
 export default Page;

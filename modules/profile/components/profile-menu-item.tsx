@@ -1,11 +1,9 @@
 'use client';
 
-import { ChevronRight, LogOut } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
-import { redirect, RedirectType } from 'next/navigation';
 
-import { Button } from '@/components/ui/button';
 import { useAccountDetect } from '@/hooks/use-account-detect';
 
 // const data = [
@@ -40,24 +38,6 @@ export const ProfileMenuItem = () => {
       {/* {data.map((x, i) => (
         <Item key={i} {...x} />
       ))} */}
-
-      <div className="absolute bottom-[8%] right-0 left-0 flex justify-center">
-        <Button
-          size="lg"
-          variant="default"
-          className="w-5/6 rounded-2xl bg-gradient-to-r from-primary to-primary-500 shadow-[0px_0px_25px_-3px_#b8b8b8]"
-          onClick={(e) => {
-            e.preventDefault();
-            setLevel('');
-            return redirect('/', RedirectType.replace);
-          }}
-        >
-          <span>
-            <LogOut />
-          </span>
-          注销
-        </Button>
-      </div>
     </div>
   );
 };
