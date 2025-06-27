@@ -1,7 +1,8 @@
 'use client';
 
+import { ROLE_CONFIG } from '@/config/role';
 import { ROUTES } from '@/config/route';
-import { useAccountDetect } from '@/hooks/use-account-detect';
+import { useAuthStore } from '@/hooks/use-auth';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
 import RequestLate from '@/public/images/request-late.png';
@@ -13,7 +14,8 @@ import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
 import { FeatureItemsList } from './feature-item-list';
 
 export const HrApprovalSection = () => {
-  const { level } = useAccountDetect();
+  const { data } = useAuthStore();
+  const position = data?.position_level;
 
   const approval = [
     {
@@ -91,7 +93,9 @@ export const HrApprovalSection = () => {
       icon: RequestPunishment,
       label: '审批处罚',
       link: ROUTES.$HR_APPROVAL('审批处罚'),
-      isHide: level === '组长' || level === '组员' || level === '部门主管',
+      isHide: [ROLE_CONFIG.组员.id, ROLE_CONFIG.组长.id, ROLE_CONFIG.部门主管.id].includes(
+        position as never,
+      ),
     },
     // {
     //   id: 11,
@@ -103,6 +107,6 @@ export const HrApprovalSection = () => {
     // },
   ];
 
-  if (level === '组长' || level === '组员') return null;
+  if ([ROLE_CONFIG.组员.id, ROLE_CONFIG.组长.id].includes(position as never)) return null;
   return <FeatureItemsList label="审批管理" items={approval} />;
 };

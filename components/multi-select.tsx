@@ -1,5 +1,6 @@
-import MultipleSelector from '@/components/ui/multiselect';
 import React from 'react';
+
+import MultipleSelector from '@/components/ui/multiselect';
 
 type Options = Array<{ label: string; value: string }>;
 

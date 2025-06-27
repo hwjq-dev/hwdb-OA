@@ -1,7 +1,8 @@
 'use client';
 
+import { ROLE_CONFIG } from '@/config/role';
 import { ROUTES } from '@/config/route';
-import { useAccountDetect } from '@/hooks/use-account-detect';
+import { useAuthStore } from '@/hooks/use-auth';
 import RequestAddionalScan from '@/public/images/request-additional-scan.png';
 import RequestChangeShift from '@/public/images/request-change-shift.png';
 import RequestLate from '@/public/images/request-late.png';
@@ -13,7 +14,8 @@ import RequestShiftDayOff from '@/public/images/request-shift-day-off.png';
 import { FeatureItemsList } from './feature-item-list';
 
 export const HrApplicationSection = () => {
-  const { level } = useAccountDetect();
+  const { data } = useAuthStore();
+  const position = data?.position_level;
 
   const application = [
     {
@@ -95,7 +97,6 @@ export const HrApplicationSection = () => {
     },
   ];
 
-  if (level == '总经理') return null;
-
+  if (position == ROLE_CONFIG.总经理.id) return null;
   return <FeatureItemsList label="申请管理" items={application} />;
 };

@@ -6,12 +6,13 @@ import { toast } from 'sonner';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useAccountDetect } from '@/hooks/use-account-detect';
+import { useAuthStore } from '@/hooks/use-auth';
 
 const inputClassName = 'rounded-md text-sm border-none shadow-none bg-gray-100';
 
 export const ProfilePersonalInformation = () => {
-  const { level } = useAccountDetect();
+  const { data } = useAuthStore();
+  const position = data?.position_level;
 
   return (
     <div className="p-4 h-[84dvh] overflow-auto pb-6 scrollbar-none">
@@ -93,7 +94,7 @@ export const ProfilePersonalInformation = () => {
 
             <div className="flex flex-col space-y-2">
               <label className="text-sm font-medium">职位</label>
-              <Input placeholder="" defaultValue={level} className={inputClassName} disabled />
+              <Input placeholder="" defaultValue={position} className={inputClassName} disabled />
             </div>
 
             <div className="flex flex-col space-y-2">

@@ -56,3 +56,8 @@ export function getDiff(startAt: Date, endAt: Date) {
 
   return `${formatDays} ${formatHours} ${formatMinutes}`;
 }
+
+export function formatToDateTimeString(date: Date | string | number): string {
+  extend(relativeTime);
+  return dayjs(date).format('YYYY-MM-DD HH:mm:ss');
+}

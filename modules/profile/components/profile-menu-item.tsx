@@ -4,8 +4,6 @@ import { ChevronRight } from 'lucide-react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 
-import { useAccountDetect } from '@/hooks/use-account-detect';
-
 // const data = [
 //   {
 //     id: 1,
@@ -31,8 +29,6 @@ import { useAccountDetect } from '@/hooks/use-account-detect';
 // ];
 
 export const ProfileMenuItem = () => {
-  const { setLevel } = useAccountDetect();
-
   return (
     <div className="mt-6 flex flex-col space-y-2.5">
       {/* {data.map((x, i) => (

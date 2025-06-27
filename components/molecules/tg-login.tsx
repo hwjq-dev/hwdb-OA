@@ -1,11 +1,19 @@
 'use client';
 
 import WebApp from '@twa-dev/sdk';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
+import { sleep } from 'radash';
 import { useEffect, useState } from 'react';
 
 import { ROUTES } from '@/config/route';
 import { useAuthStore } from '@/hooks/use-auth';
+import splash from '@/public/lotties/splash-screen-2.json';
+
+const LottiePlayer = dynamic(
+  () => import('@lottiefiles/react-lottie-player').then((mod) => mod.Player),
+  { ssr: false },
+);
 
 interface Data {
   id: number;
@@ -70,6 +78,7 @@ export const TgLogin = () => {
             setData(data);
 
             //-- Redirect to homepage
+            await sleep(3000);
             setIsLoading(false);
             router.replace(ROUTES.HR);
           } catch (error) {
@@ -87,8 +96,25 @@ export const TgLogin = () => {
 
   if (isLoading)
     return (
-      <div className="bg-primary animate-pulse !size-full flex justify-center items-center">
-        加载...
+      <div className="bg-radial from-primary-400 via-60 via-primary-500 to-primary !size-full flex justify-center items-center">
+        <div className="absolute top-1/4 right-1/2 w-28 h-auto z-10">
+          <LottiePlayer
+            autoplay
+            loop
+            className="flex justify-center size-56 items-center"
+            src={splash}
+            speed={1}
+          />
+        </div>
+        <div className="space-y-1 mt-8">
+          <p className="text-white text-center font-bold text-xl mt-28 animate-pulse">
+            OA 系统小程序
+          </p>
+          <p className="text-center text-xs text-gray-100 animate-pulse">优化办公运营</p>
+        </div>
+        <span className="absolute px-3 rounded-sm py-1 bg-black/10 w-fit mx-auto bottom-3 right-0 left-0 text-xs text-center text-white">
+          版本 <span className="text-gray-300">V1.0.1</span>
+        </span>
       </div>
     );
 

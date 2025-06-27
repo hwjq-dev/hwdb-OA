@@ -1,16 +1,25 @@
 'use client';
 
-import { CircleCheck, Plus } from 'lucide-react';
-import React, { ReactNode } from 'react';
+import { useMutation } from '@tanstack/react-query';
+import { CircleCheckBig, LoaderCircle, Plus } from 'lucide-react';
+import { ReactNode, useState } from 'react';
 import { toast } from 'sonner';
 
+import { createSelfTask, ISelfCreateTask } from '@/api';
+import { PriorityOptionsSelect } from '@/components/filter-options/priority-options-select';
+import { ErrorAlert } from '@/components/molecules/alert';
 import DateTimeCustomPicker from '@/components/molecules/day-picker';
 import { BaseModal } from '@/components/molecules/modal/base-modal';
-import { CustomSelect } from '@/components/molecules/select';
-import { TextInput } from '@/components/molecules/text-input';
 import { Button } from '@/components/ui/button';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useAuthStore } from '@/hooks/use-auth';
 import { useDiscloser } from '@/hooks/use-discloser';
+import { formatToDateTimeString } from '@/lib/dayjs';
+import { FormFieldWrapper } from '@/modules/human-resouce/components/application-blocks/base/form-field-wrapper';
+
+import { selfTaskCreateInput, useSelfTaskCreateForm } from '../../hooks/use-self-task-create-from';
 
 export const CreateTaskForm = () => {
   return (
@@ -27,14 +36,69 @@ export const CreateTaskForm = () => {
   );
 };
 
-export const CreateFormModal: React.FC<{ icon?: ReactNode; title?: string }> = ({
-  icon,
-  title = '个人发布任务',
-}) => {
+interface Props {
+  icon?: ReactNode;
+  title?: string;
+}
+
+export const CreateFormModal: React.FC<Props> = ({ icon, title = '个人发布任务' }) => {
+  const [loading, setLoading] = useState(false);
+  const [state, setState] = useState({ error: false, msg: '' });
   const { isOpen, toggle, close } = useDiscloser();
+  const { data: auth } = useAuthStore();
+  const form = useSelfTaskCreateForm();
+
+  const mutation = useMutation({
+    mutationFn: (data: ISelfCreateTask) => createSelfTask(data),
+  });
+
+  //-- Handle submit task
+  async function onSubmit(data: selfTaskCreateInput) {
+    setLoading(true);
+    mutation.mutate(
+      {
+        title: data.title,
+        content: data.content,
+        priority: +data.priority,
+        department_id: auth?.department_id as number,
+        position_level: auth?.position_level as number,
+        processor_id: auth?.id as number,
+        type: 1,
+        start_time: formatToDateTimeString(data.startDate),
+        complete_time: formatToDateTimeString(data.endDate),
+      },
+      {
+        onError: () => {
+          setLoading(false);
+          alert('Something went wrong');
+        },
+        onSuccess: (res) => {
+          if (res?.code == 10001 || res?.code === 10403) {
+            setLoading(false);
+            return setState({ error: true, msg: res.msg });
+          }
+
+          form.reset();
+          close();
+          setState({ error: false, msg: '' });
+          setLoading(false);
+          toast('您的任务已申请成功。', {
+            className: '!w-1/2 !ml-auto !mr-6',
+            icon: <CircleCheckBig className="text-green-500" />,
+            position: 'top-center',
+          });
+        },
+      },
+    );
+  }
+
+  const isPriorityError = form.formState.errors.priority?.message;
+  const isStartDateError = form.formState.errors.startDate?.message;
+  const isEndDateError = form.formState.errors.endDate?.message;
 
   return (
     <BaseModal
+      disable={loading}
       open={isOpen}
       title={title}
       description="请输入以下申请表单"
@@ -47,73 +111,139 @@ export const CreateFormModal: React.FC<{ icon?: ReactNode; title?: string }> = (
           </div>
         )
       }
-      onClose={close}
+      onClose={() => {
+        form.reset();
+        close();
+      }}
       onOpenChange={toggle}
     >
-      <form
-        className="flex flex-col space-y-3"
-        onSubmit={(e) => {
-          e.preventDefault();
-          close();
-          toast('任务已发布成功.', {
-            icon: <CircleCheck className="text-green-500" />,
-            position: 'top-right',
-          });
-        }}
-      >
-        {/*--- Title ---*/}
-        <TextInput label="请输入任务标题" onChange={(v) => null} />
+      <Form {...form}>
+        <form className="flex flex-col space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
+          {state.error && <ErrorAlert label="xxxxx" />}
+          {/*--- Title ---*/}
+          <FormFieldWrapper label="任务标题">
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="请输入任务标题"
+                      className="text-sm"
+                      {...field}
+                      autoFocus={false}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red text-xs" />
+                </FormItem>
+              )}
+            />
+          </FormFieldWrapper>
 
-        {/* <div className="grid grid-cols-1">
-           <CustomSelect
-            placeholder="选择部门"
-            items={[
-              { lable: '运维部门', value: '运维部门' },
-              { lable: '产品部门', value: '产品部门' },
-              { lable: '技术部门', value: '技术部门' },
-              { lable: '人事部门', value: '人事部门' },
-              { lable: '交易员部门', value: '交易员部门' },
-            ]}
-            onChange={(value) => null}
-          /> 
+          {/*--- Priority ---*/}
+          <FormFieldWrapper label="任务优先">
+            <FormField
+              control={form.control}
+              name="priority"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <PriorityOptionsSelect
+                      disable={loading}
+                      className={isPriorityError ? 'border border-red-600' : ''}
+                      placeholder="选择优先"
+                      onChange={(value) => field.onChange(value)}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red text-xs" />
+                </FormItem>
+              )}
+            />
+          </FormFieldWrapper>
 
+          {/*--- Description ---*/}
+          <FormFieldWrapper label="任务内容">
+            <FormField
+              control={form.control}
+              name="content"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Textarea
+                      disabled={loading}
+                      placeholder="请输入任务内容 ..."
+                      className="h-28"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red text-xs" />
+                </FormItem>
+              )}
+            />
+          </FormFieldWrapper>
 
-           <CustomSelect
-            placeholder="选择审批者"
-            items={[
-              { lable: '总经理', value: '总经理' },
-              { lable: '经理', value: '经理' },
-              { lable: '主管', value: '主管' },
-              { lable: '组长', value: '组长' },
-            ]}
-            onChange={(value) => null}
-          /> 
-        </div> */}
+          {/*--- Start date ---*/}
+          <FormFieldWrapper label="开始时间">
+            <FormField
+              control={form.control}
+              name="startDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <DateTimeCustomPicker
+                      disable={loading}
+                      className={isStartDateError ? 'border border-red-600' : ''}
+                      placeholder="选择时间"
+                      onSelected={(date) => field.onChange(date)}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red text-xs" />
+                </FormItem>
+              )}
+            />
+          </FormFieldWrapper>
 
-        {/*--- Start date ---*/}
-        <DateTimeCustomPicker placeholder="开始时间" onSelected={(date) => null} />
+          {/*--- Complete date ---*/}
+          <FormFieldWrapper label="截止时间">
+            <FormField
+              control={form.control}
+              name="endDate"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <DateTimeCustomPicker
+                      disable={loading}
+                      className={isEndDateError ? 'border border-red-600' : ''}
+                      placeholder="选择时间"
+                      onSelected={(date) => field.onChange(date)}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red text-xs" />
+                </FormItem>
+              )}
+            />
+          </FormFieldWrapper>
 
-        {/*--- Complete date ---*/}
-        <DateTimeCustomPicker placeholder="截止时间" onSelected={(date) => null} />
-
-        {/*--- Priority ---*/}
-        <CustomSelect
-          placeholder="选择优先"
-          items={[
-            { lable: '高优先', value: '高优先' },
-            { lable: '中优先', value: '中优先' },
-            { lable: '低优先', value: '低优先' },
-          ]}
-          onChange={(value) => null}
-        />
-
-        {/*--- Description ---*/}
-        <Textarea placeholder="请输入任务内容 ..." className="h-28" onChange={(e) => null} />
-
-        <Button type="submit" className="hover:!bg-primary/50">
-          发布任务
-        </Button>
-      </form>
+          <Button
+            disabled={loading}
+            type="submit"
+            className="hover:!bg-primary/80 mt-2 cursor-pointer"
+          >
+            {loading ? (
+              <div className="flex space-x-1.5 items-center">
+                <span>
+                  <LoaderCircle className="text-white animate-spin" />
+                </span>
+                <span className="text-sm">正在提交</span>
+              </div>
+            ) : (
+              '申请任务'
+            )}
+          </Button>
+        </form>
+      </Form>
     </BaseModal>
   );
 };

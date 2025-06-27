@@ -11,6 +11,7 @@ import {
 import { cn } from '@/lib/utils';
 
 interface Props {
+  disable?: boolean;
   defaultValue?: string;
   placeholder: string;
   className?: string;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 export const CustomSelect: React.FC<Props> = ({
+  disable,
   defaultValue,
   placeholder,
   className,
@@ -26,8 +28,11 @@ export const CustomSelect: React.FC<Props> = ({
   onChange,
 }) => {
   return (
-    <Select defaultValue={defaultValue} onValueChange={onChange}>
-      <SelectTrigger className={cn('flex h-9 rounded-sm w-full items-center space-x-1', className)}>
+    <Select disabled={disable} defaultValue={defaultValue} onValueChange={onChange}>
+      <SelectTrigger
+        disabled={disable}
+        className={cn('flex h-9 rounded-sm w-full items-center space-x-1', className)}
+      >
         <SelectValue className="text-dark" placeholder={placeholder} />
       </SelectTrigger>
 

@@ -1,7 +1,7 @@
 import { ArrowRight, Clock, User } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { getFormatDatetime, getFormatHumanReadable } from '@/lib/dayjs';
+import { getFormatDatetime } from '@/lib/dayjs';
 
 import { Priority } from './priority';
 import { TaskStatus } from './task-status';
@@ -9,7 +9,7 @@ import { TaskStatus } from './task-status';
 export const Card: React.FC<TaskProps & { showAssignee?: boolean }> = (props) => {
   const {
     title,
-    subtitle,
+    // subtitle,
     priority,
     status,
     tgId,
@@ -39,7 +39,7 @@ export const Card: React.FC<TaskProps & { showAssignee?: boolean }> = (props) =>
 
         <div className="flex items-center space-x-1.5">
           <Clock className="size-4 text-primary stroke-2" />
-          <span className="text-sm text-dark">{getFormatHumanReadable(new Date(assignedAt))}</span>
+          <span className="text-sm text-dark">{assignedAt}</span>
         </div>
       </div>
 
@@ -50,7 +50,7 @@ export const Card: React.FC<TaskProps & { showAssignee?: boolean }> = (props) =>
             <p className="font-bold line-clamp-2">
               {title} <span className="text-sm">#{tgId}</span>
             </p>
-            <p className="text-sm line-clamp-1 text-dark">{subtitle}</p>
+            {/* <p className="text-sm line-clamp-1 text-dark">{subtitle}</p> */}
           </div>
           <div className="col-span-3 my-auto ml-auto">
             <Button size="sm" className="rounded-full !text-[12px] px-2">

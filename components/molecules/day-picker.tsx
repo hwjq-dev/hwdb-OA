@@ -11,6 +11,7 @@ interface Props {
   onSelected: (date?: Date) => void;
   placeholder?: string;
   className?: string;
+  disable?: boolean;
 }
 
 const DateTimeCustomPicker: React.FC<Props> = ({
@@ -19,11 +20,13 @@ const DateTimeCustomPicker: React.FC<Props> = ({
   date,
   onSelected,
   placeholder,
+  disable,
 }) => {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(date);
 
   return (
     <DateTimePicker
+      disabled={disable}
       id={id}
       className={className}
       hourCycle={12}

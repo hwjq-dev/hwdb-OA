@@ -2,6 +2,7 @@
 
 import { IconAdjustments } from '@tabler/icons-react';
 
+import { PositionLevelOptionsSelect } from '@/components/filter-options/position-level-options-select';
 import { DatePicker } from '@/components/molecules/date';
 import { SearchInput } from '@/components/molecules/search-input';
 import { CustomSelect } from '@/components/molecules/select';
@@ -40,16 +41,7 @@ export const TaskFilter: React.FC<{ showStatusFilter?: boolean }> = ({
               <Label htmlFor="select" className="text-dark">
                 任务下发人
               </Label>
-              <CustomSelect
-                onChange={(v) => null}
-                placeholder="下发人"
-                items={[
-                  { lable: '总经理', value: '总经理' },
-                  { lable: '经理', value: '经理' },
-                  { lable: '主管', value: '主管' },
-                  { lable: '组长', value: '组长' },
-                ]}
-              />
+              <PositionLevelOptionsSelect placeholder="下发人" onChange={(v) => null} />
             </div>
 
             <div className="space-y-2">

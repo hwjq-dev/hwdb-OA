@@ -23,7 +23,7 @@ export const TaskList: React.FC<Props> = ({
 }) => {
   return (
     <>
-      {items.length ? (
+      {(items || []).length ? (
         <div
           className={cn(
             'h-[48dvh] overflow-y-auto pb-2 scroll-smooth relative !scrollbar-none !scrollbar-thin',

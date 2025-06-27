@@ -5,14 +5,16 @@ import { LayoutGrid, Megaphone } from 'lucide-react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { ROLE_CONFIG } from '@/config/role';
 import { ROUTES } from '@/config/route';
-import { useAccountDetect } from '@/hooks/use-account-detect';
+import { useAuthStore } from '@/hooks/use-auth';
 import { cn } from '@/lib/utils';
 import { TaskAssignForm } from '@/modules/task/components/high-position/task-assignment';
 import { CreateFormModal } from '@/modules/task/components/shared/create-task-from';
 
 export const OthersSection = () => {
-  const { level } = useAccountDetect();
+  const { data } = useAuthStore();
+  const position = data?.position_level;
 
   const items: ItemProps[] = [
     {
@@ -21,7 +23,7 @@ export const OthersSection = () => {
       className: 'bg-purple-200/60',
       textClassName: 'text-purple-500',
       link: ROUTES.TASK,
-      isHide: level === '总经理',
+      isHide: ROLE_CONFIG.总经理.id == position,
     },
     {
       icon: <IconChecklist className="size-4 text-lime-400" />,
@@ -29,15 +31,17 @@ export const OthersSection = () => {
       className: 'bg-lime-200/40',
       textClassName: 'text-lime-500',
       link: ROUTES.TASK_REQUEST_APPROVAL,
-      isHide: !(level === '总经理'),
+      isHide: !(ROLE_CONFIG.总经理.id == position),
     },
     {
       icon: <IconChecklist className="size-4 text-sky-400" />,
-      label: level === '组长' || level === '组员' ? '申请任务' : '发布任务',
+      label: [ROLE_CONFIG.组员.id, ROLE_CONFIG.组长.id].includes(position as never)
+        ? '申请任务'
+        : '发布任务',
       className: 'bg-sky-200/40',
       textClassName: 'text-sky-500',
       link: '', // if it is not link, leave it blank
-      isHide: level === '总经理',
+      isHide: ROLE_CONFIG.总经理.id == position,
     },
     {
       icon: <Megaphone className="size-4 text-primary" />,
@@ -45,7 +49,7 @@ export const OthersSection = () => {
       className: 'bg-primary-200/60',
       textClassName: 'text-primary',
       link: ROUTES.ANNOUCEMENT,
-      isHide: level === '组员' || level === '组长',
+      isHide: [ROLE_CONFIG.组员.id, ROLE_CONFIG.组长.id].includes(position as never),
     },
     {
       icon: <TaskAssignForm icon={<IconChecklist className="size-4 text-emerald-400" />} />,
@@ -53,7 +57,7 @@ export const OthersSection = () => {
       className: 'bg-emerald-200/40',
       textClassName: 'text-emerald-500',
       link: '',
-      isHide: !(level === '总经理'),
+      isHide: !(ROLE_CONFIG.总经理.id == position),
     },
     {
       icon: <IconSitemap className="size-4 text-yellow-400" />,
@@ -61,7 +65,7 @@ export const OthersSection = () => {
       className: 'bg-yellow-100/60',
       textClassName: 'text-yellow-500',
       link: ROUTES.ORGANIZATIONAL_STRUCTURE,
-      isHide: !(level === '总经理'),
+      isHide: !(ROLE_CONFIG.总经理.id == position),
     },
     {
       icon: <IconSitemap className="size-4 text-pink-400" />,
@@ -104,15 +108,19 @@ export const OthersSection = () => {
       </div>
 
       {/*-- 常用功能: 只能总经理显示 --*/}
-      {level === '总经理' && <GridList items={items.filter((x) => !x.isHide)} />}
+      {ROLE_CONFIG.总经理.id == position && <GridList items={items.filter((x) => !x.isHide)} />}
 
       {/*-- 常用功能: 别的角色使用这种UI展示 --*/}
       <div className="grid grid-cols-3 gap-3 mt-3.5">
-        {level !== '总经理' &&
+        {!(ROLE_CONFIG.总经理.id == position) &&
           items.map((x, i) =>
             x.label == '发布任务' || x.label == '申请任务' ? (
               <CreateFormModal
-                title={level === '组长' || level === '组员' ? '个人申请任务' : '个人发布任务'}
+                title={
+                  [ROLE_CONFIG.组员.id, ROLE_CONFIG.组长.id].includes(position as never)
+                    ? '个人申请任务'
+                    : '个人发布任务'
+                }
                 key={i}
                 icon={
                   <div>

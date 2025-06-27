@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dialog';
 
 interface Props {
+  disable?: boolean;
   icon?: ReactNode;
   open: boolean;
   title: string;
@@ -25,6 +26,7 @@ export const BaseModal: React.FC<Props & React.PropsWithChildren> = ({
   icon: Icon,
   open,
   title,
+  disable,
   description,
   onOpenChange,
   onClose,
@@ -40,7 +42,7 @@ export const BaseModal: React.FC<Props & React.PropsWithChildren> = ({
         onEscapeKeyDown={(e) => e.preventDefault()}
       >
         <DialogHeader>
-          <FormHeader label={title} description={description} onClick={onClose} />
+          <FormHeader disable={disable} label={title} description={description} onClick={onClose} />
         </DialogHeader>
 
         {children}
@@ -50,6 +52,7 @@ export const BaseModal: React.FC<Props & React.PropsWithChildren> = ({
 };
 
 interface FormHeaderProps {
+  disable?: boolean;
   label: string;
   description?: string;
   onClick: () => void;
@@ -59,9 +62,14 @@ const FormHeader: React.FC<FormHeaderProps> = (props) => {
     <>
       <div className="flex items-center justify-between">
         <DialogTitle className="text-start font-bold">{props.label}</DialogTitle>
-        <span className="p-1.5 bg-primary/10 rounded-full" role="button" onClick={props.onClick}>
+        <button
+          disabled={props.disable}
+          className="p-1.5 bg-primary/10 rounded-full outline-none"
+          role="button"
+          onClick={props.onClick}
+        >
           <X className="text-primary size-5" />
-        </span>
+        </button>
       </div>
       <DialogDescription className="text-start"></DialogDescription>
     </>

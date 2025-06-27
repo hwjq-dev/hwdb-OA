@@ -4,8 +4,9 @@ import { IconProgressCheck, IconRosetteDiscountCheck } from '@tabler/icons-react
 import Link from 'next/link';
 import { ReactNode } from 'react';
 
+import { ROLE_CONFIG } from '@/config/role';
 import { ROUTES } from '@/config/route';
-import { useAccountDetect } from '@/hooks/use-account-detect';
+import { useAuthStore } from '@/hooks/use-auth';
 
 const items: ItemProps[] = [
   {
@@ -26,9 +27,10 @@ const items: ItemProps[] = [
 ];
 
 export const HrViewSubmissionSection = () => {
-  const { level } = useAccountDetect();
+  const { data } = useAuthStore();
+  const position = data?.position_level;
 
-  if (level === '总经理')
+  if (position == ROLE_CONFIG.总经理.id)
     return (
       <div>
         <div className="bg-gradient-to-r from-primary-300 via-50% via-primary-500 to-primary-300 p-4 mt-2 mx-4 rounded-2xl shadow-[0px_4px_30px_0px_#bababa]">

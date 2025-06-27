@@ -149,7 +149,6 @@ const CommandEmpty = ({
   return (
     <div
       className={cn('px-2 py-4 text-center text-sm', className)}
-      cmdk-empty=""
       role="presentation"
       {...props}
     />

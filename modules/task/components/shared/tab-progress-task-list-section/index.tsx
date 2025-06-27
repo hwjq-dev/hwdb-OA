@@ -1,5 +1,7 @@
 'use client';
 
+import { useGetTaskList } from '@/modules/task/hooks/use-task-list';
+
 import { FilterListWrapper } from '../filter-list-wrapper';
 import { TaskList } from '../task';
 
@@ -87,10 +89,13 @@ const sampleTasks: TaskProps[] = [
 ];
 
 export const TabProgressTaskListSection = () => {
+  const { data } = useGetTaskList();
+  console.log(data);
+
   return (
     <FilterListWrapper>
       <TaskList
-        items={sampleTasks}
+        items={data?.data as never}
         className="h-[calc(100dvh-338px)]"
         emptyState={{
           title: '未执行中记录',
