@@ -2,8 +2,8 @@
 
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { motion, MotionConfig } from 'framer-motion';
-import { createContext, forwardRef, useContext } from 'react';
 import { usePathname } from 'next/navigation';
+import { createContext, forwardRef, useContext } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -89,13 +89,13 @@ const TabsTrigger = forwardRef<
         <motion.div
           layoutId={`active-tab-bg-${pathname}`}
           style={{ borderRadius: 8 }}
-          className="absolute inset-0 rounded-lg bg-primary shadow-[rgba(0,0,0,0.04)_0px_1px_6px] dark:bg-white dark:shadow-[rgba(0,0,0,0.2)_0px_1px_6px]"
+          className="absolute inset-0 !rounded-lg bg-primary shadow-[rgba(0,0,0,0.04)_0px_1px_6px] dark:bg-white dark:shadow-[rgba(0,0,0,0.2)_0px_1px_6px]"
         />
       )}
       <TabsPrimitive.Trigger
         ref={ref}
         className={cn(
-          'relative z-10 inline-flex items-center justify-center whitespace-nowrap rounded-lg bg-transparent px-3 py-1.5 text-sm font-medium text-white transition-none transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-black hover:data-[state=inactive]:opacity-70',
+          'relative z-10 inline-flex items-center justify-center whitespace-nowrap !rounded-lg bg-transparent px-3 py-1.5 text-sm font-medium text-white transition-none transition-opacity focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-black hover:data-[state=inactive]:opacity-70',
           className,
         )}
         {...props}

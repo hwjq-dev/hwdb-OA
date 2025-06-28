@@ -12,9 +12,9 @@ import {
 } from '../shared';
 
 const tabs = [
-  { label: '申请中', value: '申请中', content: TabUnderRequestTaskListSection },
+  { label: '审核中', value: '审核中', content: TabUnderRequestTaskListSection },
   { label: '执行中', value: '执行中', content: TabProgressTaskListSection },
-  { label: '审核中', value: '审批中', content: TabWaitApproveTaskListSection },
+  { label: '待审核', value: '待审核', content: TabWaitApproveTaskListSection },
   // { label: '已完成', value: '已完成', content: TabCompleteTaskListSection },
   { label: '已审核', value: '已审批', content: TabApproveTaskListSection },
   { label: '已超时', value: '已超时', content: TabOverdueTaskListSection },
@@ -27,7 +27,7 @@ export const LowPositionTabSectionList = () => {
     <div className="p-2 mt-2">
       <Tabs value={activeTab || tabs[0].value} onValueChange={setActiveTab}>
         <div className="w-fit mx-auto">
-          <TabsList className="bg-primary-200/50">
+          <TabsList className="rounded-xl bg-primary-200/50">
             {tabs.map((tab) => (
               <TabsTrigger
                 className="data-[state=active]:bg-primary max-sm:text-sm data-[state=inactive]:text-primary font-bold"

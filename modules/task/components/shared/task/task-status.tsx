@@ -1,62 +1,64 @@
-import {
-  CircleCheckBig,
-  CircleDotDashed,
-  CircleEllipsis,
-  ClockAlert,
-  FileCheck,
-} from 'lucide-react';
+import { IconProgressCheck } from '@tabler/icons-react';
+import { CircleDotDashed, CircleEllipsis, ClockAlert, FileCheck } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-import { TaskStatusType } from './interface';
-
-export const TaskStatusData: Record<TaskStatusType, string> = {
-  'under-request': '申请中',
-  'in-progress': '执行中',
-  done: '已完成',
-  'wait-approval': '审核中',
-  approved: '已审核',
-  overdue: '已超时',
+export const TaskStatusData: Record<StatusType, string> = {
+  审核中: '审核中',
+  执行中: '执行中',
+  '已完成,待审核': '待审核',
+  审核完成: '已审核',
+  超时: '已超时',
+  已关闭: '已关闭',
 };
 
-export const TaskStatus: React.FC<{ type: TaskStatusType }> = ({ type }) => {
+export const TaskStatus: React.FC<{ type: StatusType }> = ({ type }) => {
   const Icon = getIcon(type);
   const label = TaskStatusData[type];
+
   return (
-    <div className="flex justify-end pr-2">
+    <div
+      className={cn('flex py-1 px-3 border-dashed', {
+        'bg-yellow-500/5 border-t border-b border-r border-yellow-400': type === '审核中',
+        'bg-primary/5 border-t border-b border-r border-primary': type === '执行中',
+        'bg-orange-500/5 border-t border-b border-r border-orange-400': type === '已完成,待审核',
+        'bg-green-500/5 border-t border-b border-r border-green-500': type === '审核完成',
+        'bg-red-500/5 border-t border-b border-r border-red-500': type === '超时',
+      })}
+    >
       <div
         className={cn(
           'text-yellow-500 flex items-center space-x-1',
-          { 'text-primary': type === 'in-progress' },
-          { 'text-green-500': type === 'done' },
-          { 'text-orange-500': type === 'wait-approval' },
-          { 'text-gray-400': type === 'approved' },
-          { 'text-red-500': type === 'overdue' },
+          { 'text-primary': type === '执行中' },
+          { 'text-orange-500': type === '已完成,待审核' },
+          { 'text-yellow-500': type === '审核中' },
+          { 'text-green-500': type === '审核完成' },
+          { 'text-red-500': type === '超时' },
         )}
       >
         <Icon className="size-4" />
-        <span className="text-[13px] font-medium">{label}</span>
+        <span className="text-xs font-medium">{label}</span>
       </div>
     </div>
   );
 };
 
-export function getIcon(type: TaskStatusType) {
+export function getIcon(type: StatusType) {
   switch (type) {
     default:
-    case 'in-progress':
+    case '执行中':
       return CircleEllipsis;
 
-    case 'done':
-      return CircleCheckBig;
+    case '已完成,待审核':
+      return IconProgressCheck;
 
-    case 'wait-approval':
+    case '审核中':
       return CircleDotDashed;
 
-    case 'approved':
+    case '审核完成':
       return FileCheck;
 
-    case 'overdue':
+    case '超时':
       return ClockAlert;
   }
 }

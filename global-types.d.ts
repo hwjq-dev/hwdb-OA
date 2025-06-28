@@ -32,23 +32,40 @@ interface UserRealData {
   tg_id: string | number;
 }
 
-//-- Temperay type
-interface TaskProps {
-  id?: string | number;
-  tgId: string;
+type PriorityType = '高优先' | '中优先' | '低优先';
+type StatusType = '审核中' | '执行中' | '已完成,待审核' | '审核完成' | '已关闭' | '超时';
+
+interface TaskCardProps {
+  id: number;
+  taskNumber: string;
   title: string;
-  subtitle: string;
-  assignedAt: string;
-  tgUsername?: string;
-  nickName?: string;
-  assigner?: string;
-  assignee?: string;
-  startAt?: string;
-  endAt?: string;
-  department?: string;
-  status: 'in-progress' | 'done' | 'wait-approval' | 'approved' | 'overdue' | 'under-request';
-  priority: '高优先' | '中优先' | '低优先';
+  timeAgo: string;
+  assignee: string;
+  assigner: string;
+  startTime: string;
+  completeTime: string;
+  priority: PriorityType;
+  status: StatusType;
 }
+
+//-- Temperay type
+// TODO remove
+// interface TaskProps {
+//   id?: string | number;
+//   tgId: string;
+//   title: string;
+//   subtitle: string;
+//   assignedAt: string;
+//   tgUsername?: string;
+//   nickName?: string;
+//   assigner?: string;
+//   assignee?: string;
+//   startAt?: string;
+//   endAt?: string;
+//   department?: string;
+//   status: 'in-progress' | 'done' | 'wait-approval' | 'approved' | 'overdue' | 'under-request';
+//   priority: '高优先' | '中优先' | '低优先';
+// }
 
 type ApplicationType =
   | '申请请假'

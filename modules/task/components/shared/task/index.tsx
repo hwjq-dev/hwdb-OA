@@ -7,36 +7,26 @@ import { cn } from '@/lib/utils';
 import { Card } from './card';
 
 interface Props {
+  loading?: boolean;
+  variant?: '上级' | '下级';
   emptyState: { title: string; subtitle: string };
-  items: TaskProps[];
+  items: TaskCardProps[];
   className?: string;
-  type?: 'request-approve' | 'detail';
-  showAssignee?: boolean;
 }
 
-export const TaskList: React.FC<Props> = ({
-  items,
-  emptyState,
-  className,
-  type = 'detail',
-  showAssignee,
-}) => {
+export const TaskList: React.FC<Props> = (props) => {
+  const { variant = '下级', emptyState, items, className } = props;
   return (
     <>
-      {(items || []).length ? (
-        <div
-          className={cn(
-            'h-[48dvh] overflow-y-auto pb-2 scroll-smooth relative !scrollbar-none !scrollbar-thin',
-            className,
-          )}
-        >
+      {(items || [])?.length ? (
+        <div className={cn('relative', className)}>
           <div className="flex flex-col space-y-1.5">
             {items.map((t, i) => (
               <Link
                 key={i}
-                href={type === 'detail' ? ROUTES.$TASK(1) : ROUTES.$TASK_REQUEST_APPROVE(1)}
+                href={variant === '下级' ? ROUTES.$TASK(t.id) : ROUTES.$TASK_REQUEST_APPROVE(t.id)}
               >
-                <Card {...t} showAssignee={showAssignee} />
+                <Card variant={variant} {...t} />
               </Link>
             ))}
           </div>

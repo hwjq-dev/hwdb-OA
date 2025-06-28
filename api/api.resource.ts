@@ -47,10 +47,39 @@ export async function createSelfTask(data: I.ISelfCreateTask) {
 /**
  * Prompt : List Tasks
  */
-export async function getTasks() {
+export async function getTasks(options?: I.IFilterTaskOptions) {
   const response = await fetchApi<I.ITaskResponses>('/task/list', {
     method: 'POST',
+    body: {
+      page: options?.page || 2,
+      processor_id: options?.processor_id ? options?.processor_id : undefined,
+      priority: options?.priority ? options?.priority : undefined,
+      department_id: options?.department_id ? options?.department_id : undefined,
+      status: options?.status ? options.status : undefined,
+      query_date: options?.query_date ? options?.query_date : undefined,
+    },
   });
+
+  console.log('real : ', response);
+
   if (response?.code !== 200) return {};
-  return response.data || {};
+
+  return {
+    page: response.data.current_page,
+    limit: response.data.limit,
+    hasMore: response.data.has_more,
+    data:
+      response.data.list.map((x) => ({
+        id: x.id,
+        title: x.title,
+        taskNumber: x.task_number,
+        timeAgo: x.time_ago,
+        assignee: x.processor_text,
+        assigner: x.reviewer_text,
+        startTime: x.created_at,
+        completeTime: x.complete_time,
+        priority: x.priority_text as PriorityType,
+        status: x.status_text as StatusType,
+      })) || [],
+  };
 }

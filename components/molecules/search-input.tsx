@@ -31,7 +31,7 @@ export const SearchInput: React.FC<Props> = ({ placeholder = '搜素任务标题
       <div className="relative">
         <Input
           id={id}
-          className="peer ps-8 pe-8 h-10 text-sm font-medium text-dark bg-gray-200/40 border-none rounded-md shadow-none"
+          className="peer ps-8 pe-8 h-10 text-sm font-medium text-dark bg-white border border-gray-200/60 rounded-md shadow-none"
           placeholder={placeholder}
           type="search"
           value={inputValue}

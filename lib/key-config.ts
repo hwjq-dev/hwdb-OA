@@ -7,7 +7,5 @@ export const QUERY_KEY = {
   departments: 'department-list',
   personalInfo: 'personalInfo',
   positionLevel: 'positionLevel',
-  $taskList: function (key: string) {
-    return ['task-list', key];
-  },
+  taskList: 'task-list',
 };

@@ -1,6 +1,5 @@
 export * from './haft-progress-chart';
 export * from './tab-approve-task-list-section';
-export * from './tab-complete-task-list-section';
 export * from './tab-overdue-task-list-section';
 export * from './tab-progress-task-list-section';
 export * from './tab-under-request-list-section';

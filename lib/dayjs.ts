@@ -52,7 +52,7 @@ export function getDiff(startAt: Date, endAt: Date) {
 
   const formatDays = days > 0 ? `${days} 天` : '';
   const formatHours = hours > 0 ? `${hours} 小时` : '';
-  const formatMinutes = minutes > 0 ? `${minutes} 分钟` : '';
+  const formatMinutes = minutes > 0 ? `${minutes} 分` : '';
 
   return `${formatDays} ${formatHours} ${formatMinutes}`;
 }

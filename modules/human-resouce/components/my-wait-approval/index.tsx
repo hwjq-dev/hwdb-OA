@@ -2,6 +2,7 @@
 
 import { IconLoader3 } from '@tabler/icons-react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+
 import { MyApprovalFilter } from '../base/my-approval-filter';
 import { WaitApprovalList } from './wait-approval-list';
 

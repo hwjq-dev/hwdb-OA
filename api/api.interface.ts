@@ -65,6 +65,7 @@ export interface ISelfCreateTask {
 //-- TASK
 
 export interface IFilterTaskOptions {
+  page?: number;
   processor_id?: number;
   department_id?: number;
   priority?: number;
