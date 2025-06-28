@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import {
   HighPositionFilter,
-  HighPositionList,
+  // HighPositionList,
   HighPositionMenu,
   HighPositionStats,
 } from '../components/high-position';
@@ -33,7 +33,7 @@ export const HighPositionScreen = () => {
         <p className="font-medium text-gray-800">所有审核下级任务</p>
       </div>
       <HighPositionFilter />
-      <HighPositionList />
+      {/* <HighPositionList /> */}
     </div>
   );
 };

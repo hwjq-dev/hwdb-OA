@@ -1,10 +1,7 @@
 import { NextPage } from 'next';
 
 import { BackSection } from '@/components/molecules/back-section';
-import {
-  ApprovalRequestFilter,
-  ApprovalRequestList,
-} from '@/modules/task/components/high-position/approval-request';
+import { ApprovalRequestFilter } from '@/modules/task/components/high-position/approval-request';
 
 const Page: NextPage = () => {
   return (
@@ -12,7 +9,7 @@ const Page: NextPage = () => {
       <BackSection label="待审核任务" />
       <div>
         <ApprovalRequestFilter />
-        <ApprovalRequestList />
+        {/* <ApprovalRequestList /> */}
       </div>
     </section>
   );

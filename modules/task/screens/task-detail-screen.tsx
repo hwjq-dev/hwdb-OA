@@ -6,10 +6,10 @@ import { toast } from 'sonner';
 import { ApproveModal } from '@/components/molecules/modal/approve-modal';
 import { useDiscloser } from '@/hooks/use-discloser';
 
-import { IconCircleDashedX } from '@tabler/icons-react';
+// import { IconCircleDashedX } from '@tabler/icons-react';
 import { ApproveList } from '../components/high-position/approve-list-section';
 import { CreateTaskProgressForm } from '../components/shared';
-import { TaskDetailHeader } from '../components/shared/task-detail/task-detail-header';
+// import { TaskDetailHeader } from '../components/shared/task-detail/task-detail-header';
 import { DetailProgressList } from '../components/shared/task-progress/detail-progress-list';
 
 interface Props {
@@ -47,12 +47,12 @@ const normalDetail = {
 const NormalDetailScreen = () => {
   return (
     <div>
-      <TaskDetailHeader
+      {/* <TaskDetailHeader
         status={normalDetail.status as never}
         startAt={normalDetail.startAt}
         endAt={normalDetail.endAt}
         assigneeOrassigner={normalDetail.assigner}
-      />
+      /> */}
       <CreateTaskProgressForm />
       <DetailProgressList />
       <SubmitTaskButton
@@ -85,12 +85,12 @@ const approveDetail = {
 const ApproveDetailScreen = () => {
   return (
     <div>
-      <TaskDetailHeader
+      {/* <TaskDetailHeader
         status={approveDetail.status as never}
         startAt={approveDetail.startAt}
         endAt={approveDetail.endAt}
         assigneeOrassigner={approveDetail.assignee}
-      />
+      /> */}
       <ApproveList />
       <SubmitTaskButton
         label="立即审核"
@@ -121,10 +121,10 @@ const SubmitTaskButton: React.FC<SubmitProps> = ({ label, title, description, to
       onOpenChange={toggle}
       onDeny={() => {
         close();
-        toast('任务已驳回', {
-          icon: <IconCircleDashedX className="text-red-500" />,
-          position: 'top-right',
-        });
+        // toast('任务已驳回', {
+        //   icon: <IconCircleDashedX className="text-red-500" />,
+        //   position: 'top-right',
+        // });
       }}
       onApprove={() => {
         close();

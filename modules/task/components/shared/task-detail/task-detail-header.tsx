@@ -1,14 +1,12 @@
 import { Clock, User } from 'lucide-react';
 
 import { getFormatDatetime } from '@/lib/dayjs';
-import { cn } from '@/lib/utils';
 
 import { HaftProgressChart } from '../haft-progress-chart';
-import { TaskStatusType } from '../task/interface';
-import { getIcon, TaskStatusData } from '../task/task-status';
+// import { TaskStatusType } from '../task/interface';
 
 interface Props {
-  status: TaskStatusType;
+  // status: TaskStatusType;
   startAt: string;
   endAt: string;
   assigneeOrassigner: string;
@@ -20,7 +18,7 @@ export const TaskDetailHeader: React.FC<Props> = (props) => {
       <div className="flex justify-between items-center col-span-2">
         <div className="relative">
           <HaftProgressChart />
-          <Status status={props.status as never} />
+          {/* <Status status={props.status as never} /> */}
         </div>
       </div>
 
@@ -55,27 +53,27 @@ export const TaskDetailHeader: React.FC<Props> = (props) => {
   );
 };
 
-const Status: React.FC<{ status: TaskStatusType }> = ({ status }) => {
-  const Icon = getIcon(status);
-  const label = TaskStatusData[status];
+// const Status: React.FC<{ status: TaskStatusType }> = ({ status }) => {
+//   const Icon = getIcon(status);
+//   // const label = TaskStatusData[status];
 
-  return (
-    <div className="absolute top-4/6 left-6">
-      <p className="bg-gray-800 relative px-4.5 text-sm py-1.5 rounded-2xl text-white flex space-x-2 items-center">
-        <span className="p-1 bg-white rounded-full absolute left-1 top-1 shadow-md">
-          <Icon
-            className={cn(
-              'size-4',
-              { 'text-orange-500': status == 'approved' },
-              { 'text-green-500': status == 'done' },
-              { 'text-gray-500': status == 'wait-approval' },
-              { 'text-primary': status == 'in-progress' },
-              { 'text-red-500': status == 'overdue' },
-            )}
-          />
-        </span>
-        <span className="ml-4 font-medium">{label}</span>
-      </p>
-    </div>
-  );
-};
+//   return (
+//     <div className="absolute top-4/6 left-6">
+//       <p className="bg-gray-800 relative px-4.5 text-sm py-1.5 rounded-2xl text-white flex space-x-2 items-center">
+//         <span className="p-1 bg-white rounded-full absolute left-1 top-1 shadow-md">
+//           <Icon
+//             className={cn(
+//               'size-4',
+//               { 'text-orange-500': status == 'approved' },
+//               { 'text-green-500': status == 'done' },
+//               { 'text-gray-500': status == 'wait-approval' },
+//               { 'text-primary': status == 'in-progress' },
+//               { 'text-red-500': status == 'overdue' },
+//             )}
+//           />
+//         </span>
+//         <span className="ml-4 font-medium">{label}</span>
+//       </p>
+//     </div>
+//   );
+// };

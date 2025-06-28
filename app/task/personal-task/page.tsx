@@ -1,10 +1,7 @@
 import { NextPage } from 'next';
 
 import { BackSection } from '@/components/molecules/back-section';
-import {
-  PersonalTaskCreate,
-  PersonalTaskList,
-} from '@/modules/task/components/high-position/personal-task';
+import { PersonalTaskCreate } from '@/modules/task/components/high-position/personal-task';
 import { TaskFilter } from '@/modules/task/components/shared';
 
 const Page: NextPage = () => {
@@ -14,7 +11,7 @@ const Page: NextPage = () => {
       <div className="px-2">
         <PersonalTaskCreate />
         <TaskFilter showStatusFilter />
-        <PersonalTaskList />
+        {/* <PersonalTaskList /> */}
       </div>
     </section>
   );

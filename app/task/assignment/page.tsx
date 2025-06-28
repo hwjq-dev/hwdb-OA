@@ -4,7 +4,6 @@ import { BackSection } from '@/components/molecules/back-section';
 import {
   TaskAssignmentCreate,
   TaskAssignmentFilter,
-  TaskAssignmentList,
 } from '@/modules/task/components/high-position/task-assignment';
 
 const Page: NextPage = () => {
@@ -15,7 +14,7 @@ const Page: NextPage = () => {
       <div>
         <TaskAssignmentCreate />
         <TaskAssignmentFilter />
-        <TaskAssignmentList />
+        {/* <TaskAssignmentList /> */}
       </div>
     </section>
   );
