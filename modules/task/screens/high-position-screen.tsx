@@ -3,15 +3,24 @@
 import { ChevronLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+import { ROLE_CONFIG } from '@/config/role';
+import { useAuthStore } from '@/hooks/use-auth';
+
 import {
   HighPositionFilter,
-  // HighPositionList,
   HighPositionMenu,
   HighPositionStats,
 } from '../components/high-position';
+import { HighPositionList } from '../components/high-position/high-position-list';
 
 export const HighPositionScreen = () => {
+  const { data: auth } = useAuthStore();
   const router = useRouter();
+
+  const labelShow =
+    auth?.position_level !== ROLE_CONFIG.总经理.id
+      ? `所有${auth?.department_text}下级任务`
+      : '所有下级任务';
 
   return (
     <div className="relative size-full overflow-hidden">
@@ -30,10 +39,10 @@ export const HighPositionScreen = () => {
       <HighPositionMenu />
 
       <div className="border-l-4 rounded-xs border-primary/90 pl-2 mx-2 mt-2">
-        <p className="font-medium text-gray-800">所有审核下级任务</p>
+        <p className="font-medium text-gray-800">{labelShow}</p>
       </div>
       <HighPositionFilter />
-      {/* <HighPositionList /> */}
+      <HighPositionList />
     </div>
   );
 };

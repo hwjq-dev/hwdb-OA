@@ -1,101 +1,68 @@
-// import { TaskList } from '../shared';
+'use client';
 
-// const sampleTasks: TaskProps[] = [
-//   {
-//     id: 11,
-//     tgId: '100011',
-//     title: '搭建测试环境',
-//     subtitle: '为新项目部署临时服务器和数据库',
-//     assignedAt: '2025-06-09T10:30:00+07:00',
-//     tgUsername: 'zhangmin',
-//     nickName: '小张',
-//     assigner: '技术主管',
-//     assignee: '明华',
-//     startAt: '2025-06-09T14:00:00+07:00',
-//     endAt: '2025-06-11T18:00:00+07:00',
-//     department: '技术部门',
-//     status: 'in-progress',
-//     priority: '中优先',
-//   },
-//   {
-//     id: 12,
-//     tgId: '100012',
-//     title: '修复系统异常Bug',
-//     subtitle: '定位用户反馈的崩溃问题',
-//     assignedAt: '2025-06-08T09:00:00+07:00',
-//     tgUsername: 'lili_dev',
-//     nickName: '丽姐',
-//     assigner: '开发组长',
-//     assignee: '丽丽',
-//     startAt: '2025-06-08T10:00:00+07:00',
-//     endAt: '2025-06-10T18:30:00+07:00',
-//     department: '技术部门',
-//     status: 'in-progress',
-//     priority: '高优先',
-//   },
-//   {
-//     id: 13,
-//     tgId: '100013',
-//     title: '编写员工手册',
-//     subtitle: '更新2025年公司规章制度',
-//     assignedAt: '2025-06-07T15:00:00+07:00',
-//     tgUsername: 'yuanyuan_hr',
-//     nickName: '圆圆',
-//     assigner: '行政部',
-//     assignee: '月圆',
-//     startAt: '2025-06-08T09:00:00+07:00',
-//     endAt: '2025-06-11T17:00:00+07:00',
-//     department: '人事部门',
-//     status: 'in-progress',
-//     priority: '低优先',
-//   },
-//   {
-//     id: 14,
-//     tgId: '100014',
-//     title: '编写员工手册',
-//     subtitle: '更新2025年公司规章制度',
-//     assignedAt: '2025-06-07T15:00:00+07:00',
-//     tgUsername: 'yuanyuan_hr',
-//     nickName: '安徽',
-//     assigner: '行政部',
-//     assignee: '月圆',
-//     startAt: '2025-06-08T09:00:00+07:00',
-//     endAt: '2025-06-11T17:00:00+07:00',
-//     department: '人事部门',
-//     status: 'in-progress',
-//     priority: '低优先',
-//   },
-//   {
-//     id: 15,
-//     tgId: '100015',
-//     title: '编写员工手册',
-//     subtitle: '更新2025年公司规章制度',
-//     assignedAt: '2025-06-07T15:00:00+07:00',
-//     tgUsername: 'yuanyuan_hr',
-//     nickName: '懒啦',
-//     assigner: '行政部',
-//     assignee: '月圆',
-//     startAt: '2025-06-08T09:00:00+07:00',
-//     endAt: '2025-06-11T17:00:00+07:00',
-//     department: '人事部门',
-//     status: 'in-progress',
-//     priority: '中优先',
-//   },
-// ];
+import { IconLoader3 } from '@tabler/icons-react';
+import { useEffect, useId } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
-// export const HighPositionList = () => {
-//   return (
-//     <div className="mt-3 px-2 pb-4">
-//       <TaskList
-//         showAssignee
-//         type="request-approve"
-//         className="!h-[calc(100dvh-410px)]"
-//         items={sampleTasks}
-//         emptyState={{
-//           title: '未记录',
-//           subtitle: '尝试查看其他类型',
-//         }}
-//       />
-//     </div>
-//   );
-// };
+import { useAuthStore } from '@/hooks/use-auth';
+import { useQueryFilterStore } from '@/hooks/use-query-filter';
+
+import { useGetTaskList } from '../../hooks/use-task-list';
+import { TaskList } from '../shared';
+
+export const HighPositionList = () => {
+  const scrollContainerId = useId();
+  const { data } = useAuthStore();
+  const { data: filter, clearData } = useQueryFilterStore();
+
+  const {
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    data: taskList,
+  } = useGetTaskList({
+    status: filter?.status == -1 ? undefined : filter?.status,
+    department_id: data?.department_id,
+    keywords: filter?.keywords,
+    priority: filter?.priority == -1 ? undefined : filter?.priority,
+    query_date: filter?.query_date,
+    processor_id: filter?.processor_id == -1 ? undefined : filter?.processor_id,
+  });
+
+  useEffect(() => {
+    clearData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  if (isLoading || !taskList) return null;
+
+  return (
+    <div
+      id={scrollContainerId}
+      className="mt-3 px-2 pb-4 !h-[calc(100dvh-410px)] overflow-y-auto !scrollbar-none"
+    >
+      <InfiniteScroll
+        dataLength={taskList.length}
+        next={fetchNextPage}
+        hasMore={hasNextPage}
+        scrollableTarget={scrollContainerId}
+        className="contents"
+        loader={
+          <div className="flex justify-center pb-1 pt-4 items-center">
+            <IconLoader3 className="animate-spin text-orange" />
+          </div>
+        }
+      >
+        <TaskList
+          isApproval
+          variant="下级"
+          items={taskList as TaskCardProps[]}
+          emptyState={{
+            title: '未记录',
+            subtitle: '尝试查看其他类型',
+          }}
+        />
+      </InfiniteScroll>
+    </div>
+  );
+};

@@ -6,7 +6,11 @@ import { ClipboardList } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import lottieAnimateRotate from '@/public/lotties/lottie-2.json';
 
+import { useGetTaskStats } from '../../hooks/use-task-stats';
+
 export const LowPositionStats = () => {
+  const { data } = useGetTaskStats();
+
   return (
     <div className="tornado-pattern relative w-full h-44 bg-primary rounded-b-5xl p-5">
       <div className="absolute top-3 right-5 w-28 h-auto z-10">
@@ -33,9 +37,24 @@ export const LowPositionStats = () => {
 
       <div className="absolute bottom-10 translate-y-1/4 right-0 left-0 w-5/6 rounded-2xl h-20 mx-auto z-30">
         <div className="grid h-full grid-cols-3 gap-x-4">
-          <Item type="current" label="现有任务" value="2" color="green" />
-          <Item type="wait-approval" label="审核中任务" value="1" color="orange" />
-          <Item type="overdue" label="已超时任务" value="5" color="red" />
+          <Item
+            type="current"
+            label="进行中任务"
+            value={data?.department_total.executing_total.toString() || ''}
+            color="green"
+          />
+          <Item
+            type="wait-approval"
+            label="待审核任务"
+            value={data?.department_total.pending_approval_total.toString() || '0'}
+            color="orange"
+          />
+          <Item
+            type="overdue"
+            label="已超时任务"
+            value={data?.department_total.timeout_total.toString() || '0'}
+            color="red"
+          />
         </div>
       </div>
     </div>

@@ -77,6 +77,10 @@ export const TgLogin = () => {
             const data = userAuthenticatedData?.data || {};
             setData(data);
 
+            // if (data.position_level_text != '组员') {
+            //   alert(data.access_token);
+            // }
+
             //-- Redirect to homepage
             await sleep(3000);
             setIsLoading(false);

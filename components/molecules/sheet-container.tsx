@@ -6,7 +6,6 @@ import { PropsWithChildren, ReactNode } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
@@ -60,16 +59,15 @@ export const SheetContainer: React.FC<Props> = (props) => {
           <DrawerTitle className="pb-5 pt-3">{title ? title : '过滤选项'}</DrawerTitle>
           {children}
           <DrawerFooter className="grid grid-cols-2 gap-x-2 p-0 pb-2">
-            <DrawerClose asChild>
-              <Button
-                type="button"
-                onClick={onCancle}
-                variant="outline"
-                className="rounded-sm border-primary text-primary font-semibold"
-              >
-                {btnCancelLable ? btnCancelLable : '取消'}
-              </Button>
-            </DrawerClose>
+            <Button
+              type="button"
+              onClick={onCancle}
+              variant="outline"
+              className="rounded-sm border-primary text-primary font-semibold"
+            >
+              {btnCancelLable ? btnCancelLable : '取消'}
+            </Button>
+
             <Button type="submit" onClick={onConfirm} className="rounded-sm font-semibold">
               {btnConfirmLabel ? btnConfirmLabel : '过滤'}
             </Button>

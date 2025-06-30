@@ -16,20 +16,30 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 
 interface Props {
+  disable?: boolean;
   placeholder: string;
+  className?: string;
   items: { label: string; value: string }[];
   onChange: (value: string) => void;
   defaultValue?: string;
 }
 
-export const SearchSelect: React.FC<Props> = ({ items, onChange, placeholder, defaultValue }) => {
+export const SearchSelect: React.FC<Props> = ({
+  items,
+  onChange,
+  disable,
+  className,
+  placeholder,
+  defaultValue,
+}) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(defaultValue || '');
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger className={className} asChild>
         <Button
+          disabled={disable}
           variant="outline"
           role="combobox"
           aria-expanded={open}
@@ -45,8 +55,8 @@ export const SearchSelect: React.FC<Props> = ({ items, onChange, placeholder, de
       </PopoverTrigger>
 
       <PopoverContent className="p-1 ml-10 w-52" side="bottom">
-        <Command defaultValue={value}>
-          <CommandInput placeholder={`搜素...`} className="h-9" />
+        <Command value={value}>
+          <CommandInput placeholder={`搜素工号...`} className="h-9" />
           <CommandList>
             <CommandEmpty>未找到您在搜素部门</CommandEmpty>
             <CommandGroup>

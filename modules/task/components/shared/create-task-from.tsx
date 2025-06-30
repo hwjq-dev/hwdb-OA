@@ -19,7 +19,7 @@ import { useDiscloser } from '@/hooks/use-discloser';
 import { formatToDateTimeString } from '@/lib/dayjs';
 import { FormFieldWrapper } from '@/modules/human-resouce/components/application-blocks/base/form-field-wrapper';
 
-import { selfTaskCreateInput, useSelfTaskCreateForm } from '../../hooks/use-self-task-create-from';
+import { selfTaskCreateInput, useSelfTaskCreateForm } from '../../hooks/use-self-task-create-form';
 
 export const CreateTaskForm = () => {
   return (
@@ -119,7 +119,7 @@ export const CreateFormModal: React.FC<Props> = ({ icon, title = '个人发布�
     >
       <Form {...form}>
         <form className="flex flex-col space-y-3" onSubmit={form.handleSubmit(onSubmit)}>
-          {state.error && <ErrorAlert label="xxxxx" />}
+          {state.error && <ErrorAlert label={state.msg} />}
           {/*--- Title ---*/}
           <FormFieldWrapper label="任务标题">
             <FormField

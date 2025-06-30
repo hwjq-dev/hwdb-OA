@@ -52,6 +52,7 @@ export async function getTasks(options?: I.IFilterTaskOptions) {
     method: 'POST',
     body: {
       page: options?.page || 2,
+      keywords: options?.keywords ? options?.keywords : undefined,
       processor_id: options?.processor_id ? options?.processor_id : undefined,
       priority: options?.priority ? options?.priority : undefined,
       department_id: options?.department_id ? options?.department_id : undefined,
@@ -59,8 +60,6 @@ export async function getTasks(options?: I.IFilterTaskOptions) {
       query_date: options?.query_date ? options?.query_date : undefined,
     },
   });
-
-  console.log('real : ', response);
 
   if (response?.code !== 200) return {};
 
@@ -82,4 +81,54 @@ export async function getTasks(options?: I.IFilterTaskOptions) {
         status: x.status_text as StatusType,
       })) || [],
   };
+}
+
+/**
+ * Prompt : Task Dtail
+ */
+export async function getTaskDetail(id: number) {
+  const response = await fetchApi<I.ITaskDetailReponse>('/task/detail', {
+    method: 'POST',
+    body: { task_id: id },
+  });
+  if (response?.code != 200) return {} as I.ITaskDetail;
+  return response.data as I.ITaskDetail;
+}
+
+/**
+ * Prompt : Add process task
+ */
+export async function addProcessTask(data: I.IAddProcessTask) {
+  return fetchApi<I.IAddProcessTaskResponse>('/task/handle', {
+    method: 'POST',
+    body: data,
+  });
+}
+
+/**
+ * Prompt : Get task stats
+ */
+export async function getTaskStats() {
+  const response = await fetchApi<I.IAddProcessTaskResponse>('/task/stat', {
+    method: 'POST',
+  });
+  if (response?.code !== 200) return {} as I.ITaskStats;
+  return response.data as I.ITaskStats;
+}
+
+/**
+ * Prompt : Get task stats
+ */
+export async function getStaffs(options?: I.IStaffOptionFilter) {
+  const response = await fetchApi<I.IAddProcessTaskResponse>('/common/get_member_list', {
+    method: 'POST',
+    body: {
+      department_id: options?.department_id ? options?.department_id : undefined,
+      position_level: options?.position_level ? options?.position_level : undefined,
+      job_number: options?.job_number ? options?.job_number : undefined,
+    },
+  });
+
+  if (response?.code !== 200) return {} as I.IStaff[];
+  return response.data as I.IStaff[];
 }

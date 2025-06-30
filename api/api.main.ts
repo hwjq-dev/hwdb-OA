@@ -53,7 +53,7 @@ export default async function fetchApi<T = any>(
 
     return response?.response;
   } catch (error) {
-    if (error instanceof Error) alert(`请求失败 : ${error.message}`);
+    if (error instanceof Error) console.log(`请求失败 : ${error.message}`);
     return null;
   }
 }
@@ -88,7 +88,7 @@ async function refetch(args: { url: string; accessToken: string; options: Option
       response,
     };
   } catch (error) {
-    if (error instanceof Error) alert(`请求失败 : ${error.message}`);
+    if (error instanceof Error) console.log(`请求失败 : ${error.message}`);
     return null;
   }
 }
@@ -115,7 +115,7 @@ async function refreshAccessToken(refreshToken: string, accessToken: string) {
     const response = await resolveResponse.json();
     return response;
   } catch (error) {
-    if (error instanceof Error) alert(`请求失败 : ${error.message}`);
+    if (error instanceof Error) console.log(`请求失败 : ${error.message}`);
     return null;
   }
 }

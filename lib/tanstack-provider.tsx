@@ -15,6 +15,6 @@ export const TanstackProvider: React.FC<PropsWithChildren> = ({ children }) => (
   <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 );
 
-export function invalidateQuery(queryKey: string) {
-  queryClient.invalidateQueries({ queryKey: [queryKey] });
+export function invalidateQuery(queryKey: string, dependencies?: any) {
+  queryClient.invalidateQueries({ queryKey: [queryKey, dependencies] });
 }

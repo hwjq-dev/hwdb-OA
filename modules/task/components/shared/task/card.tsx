@@ -32,7 +32,9 @@ export const Card: React.FC<TaskCardProps & { variant: '上级' | '下级' }> = 
                 <span className="text-gray-800 font-semibold">编号</span>
                 <span className="font-light text-[11px] ml-2">#{props.taskNumber}</span>
               </p>
-              <p className="font-bold text-gray-800 line-clamp-2 text-sm">{props.title}</p>
+              <p className="font-bold text-gray-800 line-clamp-2 text-sm">
+                {props.title} id : {props.id}
+              </p>
               <div className="flex items-center py-1">
                 <div className="flex space-x-1 py-1 bg-gradient-to-r from-fuchsia-800 to-fuchsia-600 px-2 items-center border-l border-t border-b border-fuchsia-800">
                   <IconUserCheck className="size-4 text-white" />

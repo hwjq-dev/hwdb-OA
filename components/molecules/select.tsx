@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 interface Props {
   disable?: boolean;
   defaultValue?: string;
+  value?: string;
   placeholder: string;
   className?: string;
   items: { lable: string; value: string }[];
@@ -22,13 +23,14 @@ interface Props {
 export const CustomSelect: React.FC<Props> = ({
   disable,
   defaultValue,
+  value,
   placeholder,
   className,
   items,
   onChange,
 }) => {
   return (
-    <Select disabled={disable} defaultValue={defaultValue} onValueChange={onChange}>
+    <Select disabled={disable} defaultValue={defaultValue} value={value} onValueChange={onChange}>
       <SelectTrigger
         disabled={disable}
         className={cn('flex h-9 rounded-sm w-full items-center space-x-1', className)}

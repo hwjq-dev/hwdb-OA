@@ -14,8 +14,8 @@ interface Props {
 }
 
 export const DatePicker: React.FC<Props> = (props) => {
-  const { id, date: d, onSelected, placeholder, className } = props;
-  const [date, setDate] = useState<Date | undefined>(d);
+  const { id, onSelected, placeholder, className } = props;
+  const [date, setDate] = useState<Date | undefined>(props.date);
 
   return (
     <div className="w-auto">
@@ -25,7 +25,10 @@ export const DatePicker: React.FC<Props> = (props) => {
         locale={zhCN}
         granularity="day"
         value={date}
-        onChange={setDate}
+        onChange={(date) => {
+          onSelected?.(date);
+          setDate(date);
+        }}
         placeholder={placeholder || '选择日期'}
         type="normal"
       />

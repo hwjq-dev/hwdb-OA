@@ -2,9 +2,13 @@ import { PropsWithChildren } from 'react';
 
 import { TaskFilter } from './task-filter';
 
-export const FilterListWrapper: React.FC<PropsWithChildren> = ({ children }) => (
+interface Props extends PropsWithChildren {
+  type: StatusType;
+}
+
+export const FilterListWrapper: React.FC<Props> = ({ type, children }) => (
   <div>
-    <TaskFilter />
+    <TaskFilter type={type} />
     <div className="mt-3">{children}</div>
   </div>
 );

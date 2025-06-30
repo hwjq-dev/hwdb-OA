@@ -61,3 +61,8 @@ export function formatToDateTimeString(date: Date | string | number): string {
   extend(relativeTime);
   return dayjs(date).format('YYYY-MM-DD HH:mm:ss');
 }
+
+export function queryDateConverter(date: Date | string | number): string {
+  extend(relativeTime);
+  return dayjs(date).format('YYYY-MM-DD');
+}

@@ -8,6 +8,7 @@ import { Card } from './card';
 
 interface Props {
   loading?: boolean;
+  isApproval?: boolean;
   variant?: '上级' | '下级';
   emptyState: { title: string; subtitle: string };
   items: TaskCardProps[];
@@ -15,7 +16,7 @@ interface Props {
 }
 
 export const TaskList: React.FC<Props> = (props) => {
-  const { variant = '下级', emptyState, items, className } = props;
+  const { variant = '下级', isApproval = false, emptyState, items, className } = props;
   return (
     <>
       {(items || [])?.length ? (
@@ -24,7 +25,7 @@ export const TaskList: React.FC<Props> = (props) => {
             {items.map((t, i) => (
               <Link
                 key={i}
-                href={variant === '下级' ? ROUTES.$TASK(t.id) : ROUTES.$TASK_REQUEST_APPROVE(t.id)}
+                href={!isApproval ? ROUTES.$TASK(t.id) : ROUTES.$TASK_REQUEST_APPROVE(t.id)}
               >
                 <Card variant={variant} {...t} />
               </Link>

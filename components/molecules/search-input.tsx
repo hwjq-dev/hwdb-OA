@@ -7,23 +7,31 @@ import { Input } from '@/components/ui/input';
 
 interface Props {
   placeholder?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
 }
 
-export const SearchInput: React.FC<Props> = ({ placeholder = '搜素任务标题或编号...' }) => {
+export const SearchInput: React.FC<Props> = ({
+  defaultValue,
+  placeholder = '搜素任务标题或编号...',
+  onChange,
+}) => {
   const id = useId();
-
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState(defaultValue || '');
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     if (inputValue) {
       setIsLoading(true);
       const timer = setTimeout(() => {
+        onChange?.(inputValue);
         setIsLoading(false);
       }, 500);
       return () => clearTimeout(timer);
     }
+    onChange?.('');
     setIsLoading(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputValue]);
 
   return (
